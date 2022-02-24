@@ -77,3 +77,7 @@ Shamt: 0
 Funct: 32
 
 */
+
+//combine together and use switch 
+//for every single fieldo do switch case
+//
