@@ -14,11 +14,12 @@ use: ./LaFrance_Iveth (always use after compiling to see output)
 
 #include <stdio.h> //a standard C library that includes the print function
 #include <string.h>
+#include <stdlib.h>
 
 int main()
 {
 
-    // we need a bit string (character array) to carry the instruction:
+    // // we need a bit string (character array) to carry the instruction:
     char instruction[32];
 
     printf("Hello, welcome to our MIPS Decoder! \n");
@@ -30,35 +31,66 @@ int main()
     // test to check if the instruction was recorded
     printf("Your 32 bit instruction was: %s\n", instruction);
 
-    // test to see if we can check bits:
-    // lets see if we can grab each bit individually:
-    int count = 1; // a counter for each bits entry in the array
-    for (int i = 0; i < 32; i++)
-    {
-        printf("element: %d and bit: %c\n ", count, instruction[i]);
-        count++;
-    }
 
     // we need to first check the first 6 bits of an instruction to determine its type:
-    char opCode[6];
+    char opCode[] = "111111"; // this is a general setting for the opCode (to not leave blank)... will be set by the for loop below:
     for (int j = 0; j < 6; j++)
     {
         opCode[j] = instruction[j];
-        printf("OpCode bit: %c\n ",opCode[j]);
+        printf("OpCode bit: %c\n ", opCode[j]);
     }
 
-    
-    printf("the opCode is: %s\n", opCode); //why doesnt this display the 6 bits??
-
+    printf("\n");
+    printf("the opCode is: %s\n", opCode); // why doesnt this display the 6 bits??
 
     // once that is determined, we can detirmine what the type may be, then move over to 1 of 3 functions
 
-    //function for R
+    // to compare strings we need to create strings to compare to:
+    char R_String[] = "000000"; //A General R Type opCode
+    char I_string1[] = "000010"; //J - in MIPS Reference Sheet
+    char I_string2[] = "000011"; //JAL - in MIPS Reference Sheet
 
-    //Function for I
+    //We also need value holders for each of the comparisons 
+    int value_r;
+    int value_j1;
+    int value_j2;
 
-    //Function for J
+    // the comparison functions, 0 = true, 1 = false
+    value_r = strcmp(opCode, R_String);
+    value_j1 = strcmp(opCode, I_string1);
+    value_j2 = strcmp(opCode,I_string2);
 
+    //creating logical loops to determine type by opCode: 
+    // only R types are == 000000
+    if (value_r == 0)
+    { 
+        // function for R
+       // printf("This is an R-Type instruction!\n");
+        printf("Instruction Type : R\n");
+    }
+    //where the op code is equal to Jump or JAL
+    else if(value_j1 == 0 || value_j2 == 0){ 
+        //Function for J
+        //printf("This is an J-Type instruction!\n");
+        printf("Instruction Type : J\n");
+   
+    }
+    // we can assume this since its not fitting the other criteria
+    else
+    { 
+        // Function for I
+        //printf("This is an I-Type instruction!\n");
+        printf("Instruction Type : I\n");
+    }
+
+
+    // //Trying to impelement the switch case implementation as TA suggested:
+
+    // switch(opCode){
+    //     case "000000" :
+    //         printf("This is an R-Type instruction!");
+    //         break;
+    // }
 
     return 0; // ends main
 }
@@ -78,6 +110,6 @@ Funct: 32
 
 */
 
-//combine together and use switch 
-//for every single fieldo do switch case
+// combine together and use switch
+// for every single fieldo do switch case
 //
