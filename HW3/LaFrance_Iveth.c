@@ -31,26 +31,25 @@ int main()
     // test to check if the instruction was recorded
     printf("Your 32 bit instruction was: %s\n", instruction);
 
-
     // we need to first check the first 6 bits of an instruction to determine its type:
     char opCode[] = "111111"; // this is a general setting for the opCode (to not leave blank)... will be set by the for loop below:
     for (int j = 0; j < 6; j++)
     {
         opCode[j] = instruction[j];
-        printf("OpCode bit: %c\n ", opCode[j]);
+        printf("OpCode bit: %c\n ", opCode[j]); // test to print out bits
     }
 
     printf("\n");
-    printf("the opCode is: %s\n", opCode); // why doesnt this display the 6 bits??
+    printf("the opCode is: %s\n", opCode); // test to display the bits
 
     // once that is determined, we can detirmine what the type may be, then move over to 1 of 3 functions
 
     // to compare strings we need to create strings to compare to:
-    char R_String[] = "000000"; //A General R Type opCode
-    char I_string1[] = "000010"; //J - in MIPS Reference Sheet
-    char I_string2[] = "000011"; //JAL - in MIPS Reference Sheet
+    char R_String[] = "000000";  // A General R Type opCode
+    char I_string1[] = "000010"; // J - in MIPS Reference Sheet
+    char I_string2[] = "000011"; // JAL - in MIPS Reference Sheet
 
-    //We also need value holders for each of the comparisons 
+    // We also need value holders for each of the comparisons
     int value_r;
     int value_j1;
     int value_j2;
@@ -58,39 +57,65 @@ int main()
     // the comparison functions, 0 = true, 1 = false
     value_r = strcmp(opCode, R_String);
     value_j1 = strcmp(opCode, I_string1);
-    value_j2 = strcmp(opCode,I_string2);
+    value_j2 = strcmp(opCode, I_string2);
 
-    //creating logical loops to determine type by opCode: 
-    // only R types are == 000000
+    // creating logical loops to determine type by opCode:
+    //  only R types are == 000000
     if (value_r == 0)
-    { 
+    {
         // function for R
-       // printf("This is an R-Type instruction!\n");
-        printf("Instruction Type : R\n");
+        // printf("This is an R-Type instruction!\n");
+        printf("\nInstruction Type : R\n");
     }
-    //where the op code is equal to Jump or JAL
-    else if(value_j1 == 0 || value_j2 == 0){ 
-        //Function for J
-        //printf("This is an J-Type instruction!\n");
+    // where the op code is equal to Jump or JAL -- since there is only 2 we can knock that out right now!
+    else if (value_j1 == 0)
+    {
+
+        // printf("This is an J-Type instruction!\n");
+        // begin displaying output:
         printf("Instruction Type : J\n");
-   
+        printf("Operation: j\n ");
+
+        char immediate[27] = "11111111111111111111111111"; // this is a general setting for the opCode (to not leave blank)... will be set by the for loop below:
+        for (int j = 6; j < 31; j++)
+        {
+            immediate[j] = instruction[j];
+            printf("Immediate bit: %c\n ", immediate[j]); // test to print out bits
+        }
+
+        printf("\n");
+        printf("the Immediate is: %s\n", immediate + 6); // test to display the bits
+        //enter math to obtain the value of the immediate:
+        // printf("Immediate: %d\n", immediate);
+    }
+    else if (value_j2 == 0)
+    {
+        // printf("This is an J-Type instruction!\n");
+        // begin displaying output:
+        printf("Instruction Type : J\n");
+        printf("Operation: jal\n ");
+
+        char immediate[27] = "11111111111111111111111111"; // this is a general setting for the opCode (to not leave blank)... will be set by the for loop below:
+        for (int j = 6; j < 31; j++)
+        {
+            immediate[j] = instruction[j];
+            printf("Immediate bit: %c\n ", immediate[j]); // test to print out bits
+        }
+
+        printf("\n");
+        printf("the Immediate is: %s\n", immediate + 6); // test to display the bits
+
+        //enter math to obtain the value of the immediate:
+        //printf("Immediate: %d\n", immediate);
     }
     // we can assume this since its not fitting the other criteria
     else
-    { 
+    {
         // Function for I
-        //printf("This is an I-Type instruction!\n");
+        // printf("This is an I-Type instruction!\n");
         printf("Instruction Type : I\n");
     }
 
-
-    // //Trying to impelement the switch case implementation as TA suggested:
-
-    // switch(opCode){
-    //     case "000000" :
-    //         printf("This is an R-Type instruction!");
-    //         break;
-    // }
 
     return 0; // ends main
 }
