@@ -16,8 +16,9 @@ use: ./LaFrance_Iveth (always use after compiling to see output)
 #include <string.h>
 #include <stdlib.h>
 
-void r_Instructions(char instruction[]); //declaring the helper function by passing the instruction char array 
-void i_Instructions(char instruction[]); //declaring the helper function by passing the instruction char array 
+// some functions for Instruction Types where we determine operation
+void r_Instructions(char instruction[]); // declaring the helper function by passing the instruction char array
+void i_Instructions(char instruction[]); // declaring the helper function by passing the instruction char array
 
 int main()
 {
@@ -70,9 +71,7 @@ int main()
         // printf("This is an R-Type instruction!\n");
         printf("\nInstruction Type : R\n");
 
-        r_Instructions(instruction); //passing the char array to the helper functions
-
-
+        r_Instructions(instruction); // passing the char array to the helper functions
     }
     // where the op code is equal to Jump or JAL -- since there is only 2 we can knock that out right now!
     else if (value_I_Check1 == 0)
@@ -92,8 +91,9 @@ int main()
 
         printf("\n");
         printf("the Immediate is: %s\n", immediate + 6); // test to display the bits
-        //enter math to obtain the value of the immediate:
-        // printf("Immediate: %d\n", immediate);
+
+        // enter math to obtain the value of the immediate:
+        //  printf("Immediate: %d\n", ); //test to print out a value
     }
     else if (value_I_Check2 == 0)
     {
@@ -103,7 +103,7 @@ int main()
         printf("Operation: jal\n ");
 
         char immediate[27] = "11111111111111111111111111"; // this is a general setting for the opCode (to not leave blank)... will be set by the for loop below:
-        for (int j = 6; j < 31; j++)
+        for (int j = 6; j < 32; j++)
         {
             immediate[j] = instruction[j];
             printf("Immediate bit: %c\n ", immediate[j]); // test to print out bits
@@ -112,8 +112,8 @@ int main()
         printf("\n");
         printf("the Immediate is: %s\n", immediate + 6); // test to display the bits
 
-        //enter math to obtain the value of the immediate:
-        //printf("Immediate: %d\n", immediate);
+        // enter math to obtain the value of the immediate:
+        // printf("Immediate: %d\n", immediate); //test to print out a value
     }
     // we can assume this since its not fitting the other criteria
     else
@@ -123,24 +123,40 @@ int main()
         printf("Instruction Type : I\n");
     }
 
-
     return 0; // ends main
 
-} //end of main function 
+} // end of main function
 
-//a function exclusive for R Type Instructions:
-void r_Instructions(char instruction[]){ 
+// a function exclusive for R Type Instructions:
+void r_Instructions(char instruction[])
+{
+    // we have account for a total of 12 R Type Instructions
 
     printf("\n");
-    printf("The instruction is (from helper function): %s\n" , instruction); //test to see if passing works
-} //end of helper function 
+    printf("The instruction is (from helper function): %s\n", instruction); // test to see if passing works
 
-//a function exclusive for I Type Instrctions:
-void i_Instructions(char instruction[]){
+    // we need to detirmine the correct operation based off the function code (last 6 bits 0-5):
+    char functCode[6] = "000000";
+    // grabbing thr function Code of the instruction
+    for (int i = 26; i < 32; i++)
+    {
 
-    printf("The instruction is (from helper function): %s\n" , instruction); //test to see if passing works
+        functCode[i] = instruction[i];
+        printf("Function Code Bit: %c\n ", functCode[i]); // test to print out bits
+    }
 
-} //end of helper function 
+    printf("\n");
+    printf("the Function Code is: %s\n", 26 + functCode); // test to display the bits
+
+} // end of helper function
+
+// a function exclusive for I Type Instrctions:
+void i_Instructions(char instruction[])
+{
+
+    printf("The instruction is (from helper function): %s\n", instruction); // test to see if passing works
+
+} // end of helper function
 
 /*
 Example of what output should look like (taken from PDF)
