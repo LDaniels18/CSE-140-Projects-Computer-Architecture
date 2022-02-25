@@ -16,6 +16,9 @@ use: ./LaFrance_Iveth (always use after compiling to see output)
 #include <string.h>
 #include <stdlib.h>
 
+void r_Instructions(char instruction[]); //declaring the helper function by passing the instruction char array 
+void i_Instructions(char instruction[]); //declaring the helper function by passing the instruction char array 
+
 int main()
 {
 
@@ -45,30 +48,34 @@ int main()
     // once that is determined, we can detirmine what the type may be, then move over to 1 of 3 functions
 
     // to compare strings we need to create strings to compare to:
-    char R_String[] = "000000";  // A General R Type opCode
-    char I_string1[] = "000010"; // J - in MIPS Reference Sheet
-    char I_string2[] = "000011"; // JAL - in MIPS Reference Sheet
+    char R_Check[] = "000000";  // A General R Type opCode
+    char I_Check1[] = "000010"; // J - in MIPS Reference Sheet
+    char I_Check2[] = "000011"; // JAL - in MIPS Reference Sheet
 
     // We also need value holders for each of the comparisons
-    int value_r;
-    int value_j1;
-    int value_j2;
+    int value_R_Check;
+    int value_I_Check1;
+    int value_I_Check2;
 
     // the comparison functions, 0 = true, 1 = false
-    value_r = strcmp(opCode, R_String);
-    value_j1 = strcmp(opCode, I_string1);
-    value_j2 = strcmp(opCode, I_string2);
+    value_R_Check = strcmp(opCode, R_Check);
+    value_I_Check1 = strcmp(opCode, I_Check1);
+    value_I_Check2 = strcmp(opCode, I_Check2);
 
     // creating logical loops to determine type by opCode:
     //  only R types are == 000000
-    if (value_r == 0)
+    if (value_R_Check == 0)
     {
         // function for R
         // printf("This is an R-Type instruction!\n");
         printf("\nInstruction Type : R\n");
+
+        r_Instructions(instruction); //passing the char array to the helper functions
+
+
     }
     // where the op code is equal to Jump or JAL -- since there is only 2 we can knock that out right now!
-    else if (value_j1 == 0)
+    else if (value_I_Check1 == 0)
     {
 
         // printf("This is an J-Type instruction!\n");
@@ -88,7 +95,7 @@ int main()
         //enter math to obtain the value of the immediate:
         // printf("Immediate: %d\n", immediate);
     }
-    else if (value_j2 == 0)
+    else if (value_I_Check2 == 0)
     {
         // printf("This is an J-Type instruction!\n");
         // begin displaying output:
@@ -118,7 +125,22 @@ int main()
 
 
     return 0; // ends main
-}
+
+} //end of main function 
+
+//a function exclusive for R Type Instructions:
+void r_Instructions(char instruction[]){ 
+
+    printf("\n");
+    printf("The instruction is (from helper function): %s\n" , instruction); //test to see if passing works
+} //end of helper function 
+
+//a function exclusive for I Type Instrctions:
+void i_Instructions(char instruction[]){
+
+    printf("The instruction is (from helper function): %s\n" , instruction); //test to see if passing works
+
+} //end of helper function 
 
 /*
 Example of what output should look like (taken from PDF)
