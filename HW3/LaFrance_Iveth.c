@@ -50,18 +50,18 @@ int main()
 
     // to compare strings we need to create strings to compare to:
     char R_Check[] = "000000";  // A General R Type opCode
-    char I_Check1[] = "000010"; // J - in MIPS Reference Sheet
-    char I_Check2[] = "000011"; // JAL - in MIPS Reference Sheet
+    char J_Check1[] = "000010"; // J - in MIPS Reference Sheet
+    char J_Check2[] = "000011"; // JAL - in MIPS Reference Sheet
 
     // We also need value holders for each of the comparisons
     int value_R_Check;
-    int value_I_Check1;
-    int value_I_Check2;
+    int value_J_Check1;
+    int value_J_Check2;
 
     // the comparison functions, 0 = true, 1 = false
     value_R_Check = strcmp(opCode, R_Check);
-    value_I_Check1 = strcmp(opCode, I_Check1);
-    value_I_Check2 = strcmp(opCode, I_Check2);
+    value_J_Check1 = strcmp(opCode, J_Check1);
+    value_J_Check2 = strcmp(opCode, J_Check2);
 
     // creating logical loops to determine type by opCode:
     //  only R types are == 000000
@@ -74,7 +74,7 @@ int main()
         r_Instructions(instruction); // passing the char array to the helper functions
     }
     // where the op code is equal to Jump or JAL -- since there is only 2 we can knock that out right now!
-    else if (value_I_Check1 == 0)
+    else if (value_J_Check1 == 0)
     {
 
         // printf("This is an J-Type instruction!\n");
@@ -95,7 +95,7 @@ int main()
         // enter math to obtain the value of the immediate:
         //  printf("Immediate: %d\n", ); //test to print out a value
     }
-    else if (value_I_Check2 == 0)
+    else if (value_J_Check2 == 0)
     {
         // printf("This is an J-Type instruction!\n");
         // begin displaying output:
@@ -121,6 +121,8 @@ int main()
         // Function for I
         // printf("This is an I-Type instruction!\n");
         printf("Instruction Type : I\n");
+
+        i_Instructions(instruction); // passing the char array to the helper functions
     }
 
     return 0; // ends main
@@ -155,6 +157,8 @@ void i_Instructions(char instruction[])
 {
 
     printf("The instruction is (from helper function): %s\n", instruction); // test to see if passing works
+
+    //make a series of nested loops to figure out the correct instruction:
 
 } // end of helper function
 
