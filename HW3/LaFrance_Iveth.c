@@ -123,6 +123,10 @@ int main()
         printf("Instruction Type : I\n");
 
         i_Instructions(instruction); // passing the char array to the helper functions
+
+        // use the opcode to determine the operation:
+
+        if()
     }
 
     return 0; // ends main
@@ -158,8 +162,25 @@ void i_Instructions(char instruction[])
 
     printf("The instruction is (from helper function): %s\n", instruction); // test to see if passing works
 
-    //make a series of nested loops to figure out the correct instruction:
+    // create various opcodes to compare instructions:
+    char Addi_Check[] = "001000";
 
+    //make string compare variable and function:
+    int value_Addi_Check;
+
+    value_Addi_Check = strcmp(opCode, Addi_Check); //For Addi
+
+
+    //make a series of nested loops to figure out the correct instruction:
+    if(value_Addi_Check == 0){
+        //print output from lab sheet:
+    }else if(){
+
+    }else if(){
+
+    }
+    
+     
 } // end of helper function
 
 /*
