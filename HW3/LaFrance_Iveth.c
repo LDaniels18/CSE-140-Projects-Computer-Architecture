@@ -110,7 +110,6 @@ int main()
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
-    
     // Determining Type of Instruction:
 
     // creating logical loops to determine type by opCode:
@@ -157,32 +156,64 @@ int main()
         value_JumpR_Check = strcmp(functCodeTransfer, JumpRegister_Check);
         value_Nor_Check = strcmp(functCodeTransfer, Nor_Check);
         value_Or_Check = strcmp(functCodeTransfer, Or_check);
-        value_
+        value_SLT_Check = strcmp(functCodeTransfer, SLT_Check);
+        value_SLTU_Check = strcmp(functCodeTransfer, SLTU_Check);
+        value_SLL_Check = strcmp(functCodeTransfer, SLL_Check);
+        value_SRL_Check = strcmp(functCodeTransfer, SRL_Check);
+        value_Subtract_Check = strcmp(functCodeTransfer, Subtract_Check);
+        value_SubU_Check = strcmp(functCodeTransfer, SubtractUnsign_Check);
 
-        //printf("the check value is: %d\n", value_Add_Check); //test to check the compare function 
+        // printf("the check value is: %d\n", value_Add_Check); //test to check the compare function
 
         // make a series of nested loops to figure out the correct instruction:
         if (value_Add_Check == 0) // 00000001000010011000100000100000 for test
         {
-            // print output from lab sheet:
-            printf("The operation is ADD\n");
-        }
 
+            printf("The operation is Add\n");
+        }
         else if (value_unsignAdd_check == 0) // 00000001000010011000100000100001 for test
         {
-            printf("Operation: add\n");
-        }
-        else if(){
             printf("Operation: addu\n");
         }
-        else if (){
+        else if (value_And_Check == 0) // 00000001000010011000100000100100 for test
+        {
             printf("Operation: and\n");
         }
-        else if (){
+        else if (value_JumpR_Check == 0) // 00000001000010011000100000001000 for test
+        {
             printf("Operation: jr\n");
         }
-        else if (){
-
+        else if (value_Nor_Check == 0) // 00000001000010011000100000100111 for test
+        {
+            printf("Operation: nor\n");
+        }
+        else if (value_Or_Check == 0) // 00000001000010011000100000100101 for test
+        {
+            printf("Operation: or\n");
+        }
+        else if (value_SLT_Check == 0) // 00000001000010011000100000101010 for test
+        {
+            printf("Operation: slt\n");
+        }
+        else if (value_SLTU_Check == 0) // 00000001000010011000100000101011 for test
+        {
+            printf("Operation: sltu\n");
+        }
+        else if (value_SLL_Check == 0) // 00000001000010011000100000000000 for test
+        {
+            printf("Operation: sll\n");
+        }
+        else if (value_SRL_Check == 0) // 00000001000010011000100000000010 for test
+        {
+            printf("Operation: srl\n");
+        }
+        else if (value_Subtract_Check == 0) // 00000001000010011000100000100010 for test
+        {
+            printf("Operation: sub\n");
+        }
+        else if (value_SubU_Check == 0) // 00000001000010011000100000100011 for test
+        {
+            printf("Operation: subu\n");
         }
         else
         {
