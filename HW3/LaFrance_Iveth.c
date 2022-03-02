@@ -41,7 +41,7 @@ int main()
     for (int j = 0; j < 6; j++)
     {
         opCode[j] = instruction[j];
-        printf("OpCode bit: %c\n ", opCode[j]); // test to print out bits
+        //printf("OpCode bit: %c\n ", opCode[j]); // test to print out bits
     }
 
     printf("\n");
@@ -74,11 +74,11 @@ int main()
 
         functCode[i] = instruction[i];
 
-        printf("Function Code Bit: %c\n ", functCode[i]); // test to print out bits
+        //printf("Function Code Bit: %c\n ", functCode[i]); // test to print out bits
     }
 
     printf("\n");
-    printf("the Function Code is: %s\n", functCode + 26); // test to display the bits
+    //printf("the Function Code is: %s\n", functCode + 26); // test to display the bits
 
     // transferring bits to a new char array
     char functCodeTransfer[] = "111111";
@@ -86,19 +86,48 @@ int main()
     for (int j = 0; j < 6; j++)
     {
         functCodeTransfer[j] = functCode[j + 26];
-        printf("Transferred Function Code bit: %c\n ", functCodeTransfer[j]); // test to print out bits
+        //printf("Transferred Function Code bit: %c\n ", functCodeTransfer[j]); // test to print out bits
     }
 
     printf("\n");
-    printf("the Transferred Function Code is: %s\n", functCodeTransfer); // test to display the transferred code
+    printf("The Transferred Function Code is: %s\n", functCodeTransfer); // test to display the transferred code
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    ////////////////////////////////////////-- Destination Register-- ///////////////////////////////
+    ////////////////////////////////////////-- Source Register-- ///////////////////////////////
+    // This is a 5 bit field after the OpCode:
+
+    printf("\n");
+    char rsCode[5] = "11111";
+
+    // grabbing thr function Code of the instruction
+    for (int i = 6; i < 11; i++) // 5 bits:
+    {
+        // printf("Instruction Code Bit: %c\n ", instruction[i]); //test to see instruction bits
+
+        rsCode[i] = instruction[i];
+
+        //printf("RS Bit: %c\n ", rsCode[i]); // test to print out bits
+    }
+
+    printf("\n");
+    //printf("The Rs is: %s\n", rsCode + 6); // test to display the bits
+
+    // transferring bits to a new char array
+    char rsCodeTransfer[] = "11111";
+
+    for (int j = 0; j < 5; j++)
+    {
+        rsCodeTransfer[j] = rsCode[j + 6];
+        //printf("Transferred RS is: %c\n ", rsCodeTransfer[j]); // test to print out bits
+    }
+
+    printf("\n");
+    printf("the Transferred RS is: %s\n", rsCodeTransfer); // test to display the transferred code
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
-    ////////////////////////////////////////-- Source Register-- ///////////////////////////////
+    ////////////////////////////////////////-- Destination Register-- ///////////////////////////////
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
