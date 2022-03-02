@@ -35,18 +35,17 @@ int main()
     // test to check if the instruction was recorded
     printf("Your 32 bit instruction was: %s\n", instruction);
 
+    ///////////////////////////////////////--Operation Code--/////////////////////////////////////
     // we need to first check the first 6 bits of an instruction to determine its type:
     char opCode[] = "111111"; // this is a general setting for the opCode (to not leave blank)... will be set by the for loop below:
     for (int j = 0; j < 6; j++)
     {
         opCode[j] = instruction[j];
-        printf("OpCode bit: %c\n ", opCode[j]); // test to print out bits
+        //printf("OpCode bit: %c\n ", opCode[j]); // test to print out bits
     }
 
     printf("\n");
     printf("the opCode is: %s\n", opCode); // test to display the bits
-
-    // once that is determined, we can detirmine what the type may be, then move over to 1 of 3 functions
 
     // to compare strings we need to create strings to compare to:
     char R_Check[] = "000000";  // A General R Type opCode
@@ -63,15 +62,211 @@ int main()
     value_J_Check1 = strcmp(opCode, J_Check1);
     value_J_Check2 = strcmp(opCode, J_Check2);
 
+    /////////////////////////////////////////////////////////////////////////////////////////////
+
+    //////////////////////////////////////////--Function Code --/////////////////////////////////////////////////////
+    // we need to detirmine the correct operation based off the function code (last 6 bits 0-5):
+    char functCode[6] = "111111";
+    // grabbing thr function Code of the instruction
+    for (int i = 26; i < 32; i++)
+    {
+        // printf("Instruction Code Bit: %c\n ", instruction[i]); //test to see instruction bits
+
+        functCode[i] = instruction[i];
+
+        //printf("Function Code Bit: %c\n ", functCode[i]); // test to print out bits
+    }
+
+    printf("\n");
+    //printf("the Function Code is: %s\n", functCode + 26); // test to display the bits
+
+    // transferring bits to a new char array
+    char functCodeTransfer[] = "111111";
+
+    for (int j = 0; j < 6; j++)
+    {
+        functCodeTransfer[j] = functCode[j + 26];
+        //printf("Transferred Function Code bit: %c\n ", functCodeTransfer[j]); // test to print out bits
+    }
+
+    printf("\n");
+    printf("The Transferred Function Code is: %s\n", functCodeTransfer); // test to display the transferred code
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////-- Source Register-- ///////////////////////////////
+    // This is a 5 bit field after the OpCode:
+
+    printf("\n");
+    char rsCode[5] = "11111";
+
+    // grabbing thr function Code of the instruction
+    for (int i = 6; i < 11; i++) // 5 bits:
+    {
+        // printf("Instruction Code Bit: %c\n ", instruction[i]); //test to see instruction bits
+
+        rsCode[i] = instruction[i];
+
+        //printf("RS Bit: %c\n ", rsCode[i]); // test to print out bits
+    }
+
+    printf("\n");
+    //printf("The Rs is: %s\n", rsCode + 6); // test to display the bits
+
+    // transferring bits to a new char array
+    char rsCodeTransfer[] = "11111";
+
+    for (int j = 0; j < 5; j++)
+    {
+        rsCodeTransfer[j] = rsCode[j + 6];
+        //printf("Transferred RS is: %c\n ", rsCodeTransfer[j]); // test to print out bits
+    }
+
+    printf("\n");
+    printf("the Transferred RS is: %s\n", rsCodeTransfer); // test to display the transferred code
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////-- Destination Register-- ///////////////////////////////
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////-- Target Register-- ///////////////////////////////
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////-- Shift Amount-- ///////////////////////////////
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // Determining Type of Instruction:
+
     // creating logical loops to determine type by opCode:
-    //  only R types are == 000000
-    if (value_R_Check == 0)
+
+    if (value_R_Check == 0) //  only R types are == 000000
     {
         // function for R
         // printf("This is an R-Type instruction!\n");
         printf("\nInstruction Type : R\n");
 
-        r_Instructions(instruction); // passing the char array to the helper functions
+        // r_Instructions(instruction); // passing the char array to the helper functions
+
+        // create various function codes to compare instructions (R-Types):
+        char Add_Check[] = "100000";
+        char UnsignAdd_Check[] = "100001";
+        char And_Check[] = "100100";
+        char JumpRegister_Check[] = "001000";
+        char Nor_Check[] = "100111";
+        char Or_check[] = "100101";
+        char SLT_Check[] = "101010";
+        char SLTU_Check[] = "101011";
+        char SLL_Check[] = "000000";
+        char SRL_Check[] = "000010";
+        char Subtract_Check[] = "100010";
+        char SubtractUnsign_Check[] = "100011";
+        /*===================================================================================
+        I-Types*/
+        char Add_Immediate[]="" ;
+        char Add_unsign_Immediate[]="";
+        char And_Immediate[]="";
+        char Branch_equal[]= "";
+        char Branch_Not_Equal[]= "";
+        char Load_Byte_Unsigned[]= "";
+        char Load_Halfword_Unsigned[]= "";
+        char Load_Linked[]= "";
+        char Load_Upper_Imm[]= "";
+        char Load_Word[]= "";
+        char Or_Imm[]= "";
+        char Less_Than_Imm[]= "";
+        char Less_Than_Imm_Unsign[]= "";
+        char Store_Byte[]= "";
+        char Store_Cond[]= "";
+        char Store_Halfword[]= "";
+        char Store_Word[]= "";
+/*============================================================================================*/    
+        // make string compare variable and function:
+        int value_Add_Check;
+        int value_unsignAdd_check;
+        int value_And_Check;
+        int value_JumpR_Check;
+        int value_Nor_Check;
+        int value_Or_Check;
+        int value_SLT_Check;
+        int value_SLTU_Check;
+        int value_SLL_Check;
+        int value_SRL_Check;
+        int value_Subtract_Check;
+        int value_SubU_Check;
+
+        value_Add_Check = strcmp(functCodeTransfer, Add_Check);             // For Add
+        value_unsignAdd_check = strcmp(functCodeTransfer, UnsignAdd_Check); // For unsigned Add
+        value_And_Check = strcmp(functCodeTransfer, And_Check);
+        value_JumpR_Check = strcmp(functCodeTransfer, JumpRegister_Check);
+        value_Nor_Check = strcmp(functCodeTransfer, Nor_Check);
+        value_Or_Check = strcmp(functCodeTransfer, Or_check);
+        value_SLT_Check = strcmp(functCodeTransfer, SLT_Check);
+        value_SLTU_Check = strcmp(functCodeTransfer, SLTU_Check);
+        value_SLL_Check = strcmp(functCodeTransfer, SLL_Check);
+        value_SRL_Check = strcmp(functCodeTransfer, SRL_Check);
+        value_Subtract_Check = strcmp(functCodeTransfer, Subtract_Check);
+        value_SubU_Check = strcmp(functCodeTransfer, SubtractUnsign_Check);
+
+        // printf("the check value is: %d\n", value_Add_Check); //test to check the compare function
+
+        // make a series of nested loops to figure out the correct instruction:
+        if (value_Add_Check == 0) // 00000001000010011000100000100000 for test
+        {
+
+            printf("The operation is Add\n");
+        }
+        else if (value_unsignAdd_check == 0) // 00000001000010011000100000100001 for test
+        {
+            printf("Operation: addu\n");
+        }
+        else if (value_And_Check == 0) // 00000001000010011000100000100100 for test
+        {
+            printf("Operation: and\n");
+        }
+        else if (value_JumpR_Check == 0) // 00000001000010011000100000001000 for test
+        {
+            printf("Operation: jr\n");
+        }
+        else if (value_Nor_Check == 0) // 00000001000010011000100000100111 for test
+        {
+            printf("Operation: nor\n");
+        }
+        else if (value_Or_Check == 0) // 00000001000010011000100000100101 for test
+        {
+            printf("Operation: or\n");
+        }
+        else if (value_SLT_Check == 0) // 00000001000010011000100000101010 for test
+        {
+            printf("Operation: slt\n");
+        }
+        else if (value_SLTU_Check == 0) // 00000001000010011000100000101011 for test
+        {
+            printf("Operation: sltu\n");
+        }
+        else if (value_SLL_Check == 0) // 00000001000010011000100000000000 for test
+        {
+            printf("Operation: sll\n");
+        }
+        else if (value_SRL_Check == 0) // 00000001000010011000100000000010 for test
+        {
+            printf("Operation: srl\n");
+        }
+        else if (value_Subtract_Check == 0) // 00000001000010011000100000100010 for test
+        {
+            printf("Operation: sub\n");
+        }
+        else if (value_SubU_Check == 0) // 00000001000010011000100000100011 for test
+        {
+            printf("Operation: subu\n");
+        }
+        else
+        {
+            printf("This is an error! No operation found");
+        }
     }
     // where the op code is equal to Jump or JAL -- since there is only 2 we can knock that out right now!
     else if (value_J_Check1 == 0)
@@ -123,10 +318,6 @@ int main()
         printf("Instruction Type : I\n");
 
         i_Instructions(instruction); // passing the char array to the helper functions
-
-        // use the opcode to determine the operation:
-
-        if()
     }
 
     return 0; // ends main
@@ -141,19 +332,6 @@ void r_Instructions(char instruction[])
     printf("\n");
     printf("The instruction is (from helper function): %s\n", instruction); // test to see if passing works
 
-    // we need to detirmine the correct operation based off the function code (last 6 bits 0-5):
-    char functCode[6] = "000000";
-    // grabbing thr function Code of the instruction
-    for (int i = 26; i < 32; i++)
-    {
-
-        functCode[i] = instruction[i];
-        printf("Function Code Bit: %c\n ", functCode[i]); // test to print out bits
-    }
-
-    printf("\n");
-    printf("the Function Code is: %s\n", 26 + functCode); // test to display the bits
-
 } // end of helper function
 
 // a function exclusive for I Type Instrctions:
@@ -162,25 +340,8 @@ void i_Instructions(char instruction[])
 
     printf("The instruction is (from helper function): %s\n", instruction); // test to see if passing works
 
-    // create various opcodes to compare instructions:
-    char Addi_Check[] = "001000";
+    // make a series of nested loops to figure out the correct instruction:
 
-    //make string compare variable and function:
-    int value_Addi_Check;
-
-    value_Addi_Check = strcmp(opCode, Addi_Check); //For Addi
-
-
-    //make a series of nested loops to figure out the correct instruction:
-    if(value_Addi_Check == 0){
-        //print output from lab sheet:
-    }else if(){
-
-    }else if(){
-
-    }
-    
-     
 } // end of helper function
 
 /*
