@@ -521,105 +521,205 @@ int registers(char binCode[5])
 
     int reg; // to hold an actual integer to return
 
-    if (binCode == "00000")
+        char bin_0[] = "00000";
+        char bin_1[] = "00001";
+        char bin_2[] = "00010";
+        char bin_3[] = "00011";
+        char bin_4[] = "00100";
+        char bin_5[] = "00101";
+        char bin_6[] = "00110";
+        char bin_7[] = "00111";
+        char bin_8[] = "01000";
+        char bin_9[] = "01001";
+        char bin_10[] = "01010";
+        char bin_11[] = "01011";
+        char bin_12[] = "01100";
+        char bin_13[] = "01101";
+        char bin_14[] = "01110";
+        char bin_15[] = "01111";
+        char bin_16[] = "10000";
+        char bin_17[] = "10001";
+        char bin_18[] = "10010";
+        char bin_19[] = "10011";
+        char bin_20[] = "10100";
+        char bin_21[] = "10101";
+        char bin_22[] = "10110";
+        char bin_23[] = "10111";
+        char bin_24[] = "11000";
+        char bin_25[] = "11001";
+        char bin_26[] = "11010";
+        char bin_27[] = "11011";
+        char bin_28[] = "11100";
+        char bin_29[] = "11101";
+        char bin_30[] = "11110";
+        char bin_31[] = "11111";
+        
+        // make string compare variable and function:
+        int bin_value_0;
+        int bin_value_1;
+        int bin_value_2;
+        int bin_value_3;
+        int bin_value_4;
+        int bin_value_5;
+        int bin_value_6;
+        int bin_value_7;
+        int bin_value_8;
+        int bin_value_9;
+        int bin_value_10;
+        int bin_value_11;
+        int bin_value_12;
+        int bin_value_13;
+        int bin_value_14;
+        int bin_value_15;
+        int bin_value_16;
+        int bin_value_17;
+        int bin_value_18;
+        int bin_value_19;
+        int bin_value_20;
+        int bin_value_21;
+        int bin_value_22;
+        int bin_value_23;
+        int bin_value_24;
+        int bin_value_25;
+        int bin_value_26;
+        int bin_value_27;
+        int bin_value_28;
+        int bin_value_29;
+        int bin_value_30;
+        int bin_value_31;
+
+        bin_value_0 = strcmp(binCode, bin_0);
+        bin_value_1 = strcmp(binCode, bin_1);
+        bin_value_2 = strcmp(binCode, bin_2);
+        bin_value_3 = strcmp(binCode, bin_3);
+        bin_value_4 = strcmp(binCode, bin_4);
+         bin_value_5 = strcmp(binCode, bin_5);
+        bin_value_6 = strcmp(binCode, bin_6);
+        bin_value_7 = strcmp(binCode, bin_7);
+        bin_value_8 = strcmp(binCode, bin_8);
+        bin_value_9 = strcmp(binCode, bin_9);
+         bin_value_10 = strcmp(binCode, bin_10);
+        bin_value_11 = strcmp(binCode, bin_11);
+        bin_value_12 = strcmp(binCode, bin_12);
+        bin_value_13 = strcmp(binCode, bin_13);
+        bin_value_14 = strcmp(binCode, bin_14);
+         bin_value_15 = strcmp(binCode, bin_15);
+        bin_value_16 = strcmp(binCode, bin_16);
+        bin_value_17 = strcmp(binCode, bin_17);
+        bin_value_18 = strcmp(binCode, bin_18);
+        bin_value_19 = strcmp(binCode, bin_19);
+        bin_value_20 = strcmp(binCode, bin_20);
+        bin_value_21 = strcmp(binCode, bin_21);
+        bin_value_22 = strcmp(binCode, bin_22);
+        bin_value_23 = strcmp(binCode, bin_23);
+        bin_value_24 = strcmp(binCode, bin_24);
+         bin_value_25 = strcmp(binCode, bin_25);
+        bin_value_26 = strcmp(binCode, bin_26);
+        bin_value_27 = strcmp(binCode, bin_27);
+        bin_value_28 = strcmp(binCode, bin_28);
+        bin_value_29 = strcmp(binCode, bin_29);
+        bin_value_30 = strcmp(binCode, bin_30);
+        bin_value_31 = strcmp(binCode, bin_31);
+
+    if (bin_value_0 == 0)
     {
 
         reg = 0;
     }
-    else if (binCode == "00001")
+    else if (bin_value_1 == 0)
     {
     }
-    else if (binCode == "00010")
+    else if (bin_value_2 == 0)
     {
     }
-    else if (binCode == "00011")
+    else if (bin_value_3 == 0)
     {
     }
-    else if (binCode == "00100")
+    else if (bin_value_4 == 0)
     {
     }
-    else if (binCode == "00101")
+    else if (bin_value_5 == 0)
     { // 5
     }
-    else if (binCode == "00110")
+    else if (bin_value_6 == 0)
     {
     }
-    else if (binCode == "00111")
+    else if (bin_value_7 == 0)
     {
     }
-    else if (binCode == "01000")
+    else if (bin_value_8 == 0)
     {
         reg = 8;
     }
-    else if (binCode == "01001")
+    else if (bin_value_9 == 0)
     {
         reg = 9;
     }
-    else if (binCode == "01010")
+    else if (bin_value_10 == 0)
     { // 10
     }
-    else if (binCode == "01011")
+    else if (bin_value_11 == 0)
     {
     }
-    else if (binCode == "01100")
+    else if (bin_value_12 == 0)
     {
     }
-    else if (binCode == "01101")
+    else if (bin_value_13 == 0)
     {
     }
-    else if (binCode == "01110")
+    else if (bin_value_14 == 0)
     {
     }
-    else if (binCode == "01111")
+    else if (bin_value_15 == 0)
     { // 15
     }
-    else if (binCode == "10000")
+    else if (bin_value_16 == 0)
     {
     }
-    else if (binCode == "10001")
+    else if (bin_value_17 == 0)
     {
         reg = 17;
     }
-    else if (binCode == "10010")
+    else if (bin_value_18 == 0)
     {
     }
-    else if (binCode == "10011")
+    else if (bin_value_19 == 0)
     {
     }
-    else if (binCode == "10100")
+    else if (bin_value_20 == 0)
     {
     }
-    else if (binCode == "10101")
+    else if (bin_value_21 == 0)
     {
     }
-    else if (binCode == "10110")
+    else if (bin_value_22 == 0)
     {
     }
-    else if (binCode == "10111")
+    else if (bin_value_23 == 0)
     {
     }
-    else if (binCode == "11000")
+    else if (bin_value_24 == 0)
     {
     }
-    else if (binCode == "11001")
+    else if (bin_value_25 == 0)
     {
     }
-    else if (binCode == "11010")
+    else if (bin_value_26 == 0)
     {
     }
-    else if (binCode == "11011")
+    else if (bin_value_27 == 0)
     {
     }
-    else if (binCode == "11100")
+    else if (bin_value_28 == 0)
     {
     }
-    else if (binCode == "11101")
+    else if (bin_value_29 == 0)
     {
     }
-    else if (binCode == "11110")
+    else if (bin_value_30 == 0)
     {
     }
-    else if (binCode == "11111")
+    else if (bin_value_31 == 0)
     {
     }
     else
