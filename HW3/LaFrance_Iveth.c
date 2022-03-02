@@ -142,29 +142,11 @@ int main()
     // Determining Type of Instruction:
 
     // creating logical loops to determine type by opCode:
-
-    if (value_R_Check == 0) //  only R types are == 000000
+    
+//===========================I types=================================================================
+    if(value_I_Check =0 )
     {
-        // function for R
-        // printf("This is an R-Type instruction!\n");
-        printf("\nInstruction Type : R\n");
-
-        // r_Instructions(instruction); // passing the char array to the helper functions
-
-        // create various function codes to compare instructions (R-Types):
-        char Add_Check[] = "100000";
-        char UnsignAdd_Check[] = "100001";
-        char And_Check[] = "100100";
-        char JumpRegister_Check[] = "001000";
-        char Nor_Check[] = "100111";
-        char Or_check[] = "100101";
-        char SLT_Check[] = "101010";
-        char SLTU_Check[] = "101011";
-        char SLL_Check[] = "000000";
-        char SRL_Check[] = "000010";
-        char Subtract_Check[] = "100010";
-        char SubtractUnsign_Check[] = "100011";
-        /*===================================================================================
+                /*===================================================================================
         I-Types*/
         char Add_Immediate[]="001000" ;
         char Add_unsign_Immediate[]="001001";
@@ -203,7 +185,7 @@ int main()
         int value_Store_Cond;
         int value_Store_Halfword;
         int value_Store_word;
-//========================================================
+//=======================================================================
     value_add_Imm_Check = strcmp(opCode,Add_Immediate);
     value_unAdd_Check = strcmp(opCode,Add_unsign_Immediate);
     value_and_Imm = strcmp(opCode,And_Immediate);
@@ -221,7 +203,7 @@ int main()
     value_Store_Cond = strcmp(opCode,Store_Cond);
     value_Store_Halfword = strcmp(opCode,Store_Halfword);
     value_Store_word = strcmp(opCode,Store_Word);
-//=================================================
+//=======================================================================
         if (value_add_Imm_Check == 0) 
         {
 
@@ -295,7 +277,29 @@ int main()
         {
             printf("This is an error! No operation found");
         }
-    
+    }
+//===================================================================================================
+    if (value_R_Check == 0) //  only R types are == 000000
+    {
+        // function for R
+        // printf("This is an R-Type instruction!\n");
+        printf("\nInstruction Type : R\n");
+
+        // r_Instructions(instruction); // passing the char array to the helper functions
+
+        // create various function codes to compare instructions (R-Types):
+        char Add_Check[] = "100000";
+        char UnsignAdd_Check[] = "100001";
+        char And_Check[] = "100100";
+        char JumpRegister_Check[] = "001000";
+        char Nor_Check[] = "100111";
+        char Or_check[] = "100101";
+        char SLT_Check[] = "101010";
+        char SLTU_Check[] = "101011";
+        char SLL_Check[] = "000000";
+        char SRL_Check[] = "000010";
+        char Subtract_Check[] = "100010";
+        char SubtractUnsign_Check[] = "100011";   
 /*============================================================================================*/    
         // make string compare variable and function:
         int value_Add_Check;
