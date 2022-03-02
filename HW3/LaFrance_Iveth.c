@@ -18,19 +18,19 @@ use: ./LaFrance_Iveth (always use after compiling to see output)
 
 // some functions for Instruction Types where we determine operation
 int registers(char binCode[5]); // declaring the helper function by passing the instruction char array
-
+int binToDec(char binCode[]);
 int main()
 {
 
     // // we need a bit string (character array) to carry the instruction:
     char instruction[32];
 
-    //printf("Hello, welcome to our MIPS Decoder! \n");
-    //printf("Please enter a 32 bit instruction: ");
+    // printf("Hello, welcome to our MIPS Decoder! \n");
+    // printf("Please enter a 32 bit instruction: ");
 
     // To follow lab guidelines:
     printf("Enter an instruction: \n");
-    // printf("\n");
+    printf("\n");
 
     scanf("%s", instruction); // looks for input and assigns it to the variable
 
@@ -143,40 +143,12 @@ int main()
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //////////////////////////////////////////--Jump Immediate (Address - Type J)--/////////////////////////////////////////
-    // a field for a total of 26 bits
-    char jumpImmediate[27] = "11111111111111111111111111"; // this is a general setting for the opCode (to not leave blank)... will be set by the for loop below:
-    for (int j = 0; j < 28; j++)
-    {
-        jumpImmediate[j] = instruction[j + 6];
-        // printf("Immediate bit: %c\n ", immediate[j]); // test to print out bits
-    }
-
-    // printf("\n");
-    // printf("the Jump Immediate is: %s\n", jumpImmediate); // test to display the bits
-
-    // enter math to obtain the value of the immediate:
-    //  printf("Immediate: %d\n", ); //test to print out a value
-    /////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    //////////////////////////////////////////--Immediate (Type I)--/////////////////////////////////////////
-
-    char immediate[16] = "1111111111111111"; // this is a general setting for the opCode (to not leave blank)... will be set by the for loop below:
-    for (int j = 0; j < 17; j++)
-    {
-        immediate[j] = instruction[j + 16];
-        // printf("Immediate bit: %c\n ", immediate[j]); // test to print out bits
-    }
-
-    // printf("\n");
-    // printf("the Immediate is: %s\n", immediate); // test to display the bits
-
-    /////////////////////////////////////////////////////////////////////////////////////////////
     // Determining Type of Instruction:
     // creating logical loops to determine type by opCode:
 
     if (value_R_Check == 0) //  only R types are == 000000
     {
+
         // function for R
         // printf("This is an R-Type instruction!\n");
         printf("\nInstruction Type : R\n");
@@ -234,8 +206,8 @@ int main()
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
             printf("Rd: $%d\n", registers(rdCodeTransfer));
-            printf("Shamt: %d\n", registers(shiftAmount)); // need to work on this as well
-            printf("Funct: %s\n", functCodeTransfer);      // need to work on this as well
+            printf("Shamt: %d\n", registers(shiftAmount));
+            printf("Funct: %d\n", binToDec(functCodeTransfer)); // need to work on this as well
         }
         else if (value_unsignAdd_check == 0) // 00000001000010011000100000100001 for test
         {
@@ -243,16 +215,26 @@ int main()
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
             printf("Rd: $%d\n", registers(rdCodeTransfer));
-            printf("Shamt: \n"); // need to work on this as well
-            printf("Funct: \n"); // need to work on this as well
+            printf("Shamt: %d\n", registers(shiftAmount));
+            printf("Funct: %d\n", binToDec(functCodeTransfer)); // need to work on this as well
         }
         else if (value_And_Check == 0) // 00000001000010011000100000100100 for test
         {
             printf("Operation: and\n");
+            printf("Rs: $%d\n", registers(rsCodeTransfer));
+            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Rd: $%d\n", registers(rdCodeTransfer));
+            printf("Shamt: %d\n", registers(shiftAmount));
+            printf("Funct: %d\n", binToDec(functCodeTransfer));
         }
         else if (value_JumpR_Check == 0) // 00000001000010011000100000001000 for test
         {
             printf("Operation: jr\n");
+            printf("Rs: $%d\n", registers(rsCodeTransfer));
+            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Rd: $%d\n", registers(rdCodeTransfer));
+            printf("Shamt: %d\n", registers(shiftAmount));
+            printf("Funct: %d\n", binToDec(functCodeTransfer));
         }
         else if (value_Nor_Check == 0) // 00000001000010011000100000100111 for test
         {
@@ -282,9 +264,14 @@ int main()
         {
             printf("Operation: sub\n");
         }
-        else if (value_SubU_Check == 0) // 00000001000010011000100000100011 for test
+        else if (value_SubU_Check == 0) // 00000001010000111011000000100011 for test
         {
             printf("Operation: subu\n");
+            printf("Rs: $%d\n", registers(rsCodeTransfer));
+            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Rd: $%d\n", registers(rdCodeTransfer));
+            printf("Shamt: %d\n", registers(shiftAmount)); // need to work on this as well
+            printf("Funct: %s\n", functCodeTransfer);      // need to work on this as well
         }
         else
         {
@@ -295,25 +282,61 @@ int main()
     else if (value_J_Check1 == 0)
     {
 
-        // printf("This is an J-Type instruction!\n");
-        // begin displaying output:
+        //////////////////////////////////////////--Jump Immediate (Address - Type J)--/////////////////////////////////////////
+        // a field for a total of 26 bits
+        char jumpImmediate[26] = "11111111111111111111111111"; // this is a general setting for the opCode (to not leave blank)... will be set by the for loop below:
+        for (int j = 0; j < 27; j++)
+        {
+            jumpImmediate[j] = instruction[j + 6];
+            // printf("Immediate bit: %c\n ", immediate[j]); // test to print out bits
+        }
+
+        // printf("\n");
+        // printf("the Jump Immediate is: %s\n", jumpImmediate); // test to display the bits
+        /////////////////////////////////////////////////////////////////////////////////////////////////////
 
         printf("Instruction Type : J\n");
         printf("Operation: j\n ");
-        printf("Immediate: %s\n", jumpImmediate); 
+        printf("Immediate: %d\n", binToDec(jumpImmediate));
+        //printf("\n");
     }
-    else if (value_J_Check2 == 0)
+    else if (value_J_Check2 == 0) // 00001100000000100000000000000000   --to test
     {
-        // printf("This is an J-Type instruction!\n");
-        // begin displaying output:
+
+        //////////////////////////////////////////--Jump Immediate (Address - Type J)--/////////////////////////////////////////
+        // a field for a total of 26 bits
+        char jumpImmediate[26] = "11111111111111111111111111"; // this is a general setting for the opCode (to not leave blank)... will be set by the for loop below:
+        for (int j = 0; j < 27; j++)
+        {
+            jumpImmediate[j] = instruction[j + 6];
+            // printf("Immediate bit: %c\n ", immediate[j]); // test to print out bits
+        }
+
+        // printf("\n");
+        // printf("the Jump Immediate is: %s\n", jumpImmediate); // test to display the bits
+        /////////////////////////////////////////////////////////////////////////////////////////////////////
 
         printf("Instruction Type : J\n");
-        printf("Operation: jal\n ");
-        printf("Immediate: %s\n", jumpImmediate);
+        printf("Operation: jal\n");
+        printf("Immediate: %d\n", binToDec(jumpImmediate));
+       // printf("\n");
     }
     // we can assume this since its not fitting the other criteria
     else
     {
+
+        //////////////////////////////////////////--Immediate (Type I)--/////////////////////////////////////////
+        char immediate[16] = "1111111111111111"; // this is a general setting for the opCode (to not leave blank)... will be set by the for loop below:
+        for (int j = 0; j < 17; j++)
+        {
+            immediate[j] = instruction[j + 16];
+            // printf("Immediate bit: %c\n ", immediate[j]); // test to print out bits
+        }
+
+        // printf("\n");
+        //printf("the Immediate is: %s\n", immediate); // test to display the bits
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         // Function for I
         printf("Instruction Type: I\n");
 
@@ -372,13 +395,13 @@ int main()
         value_Store_Halfword = strcmp(opCode, Store_Halfword);
         value_Store_word = strcmp(opCode, Store_Word);
         //=======================================================================
-        if (value_add_Imm_Check == 0)
+        if (value_add_Imm_Check == 0) // 00100000001001000000000000000000  --to test
         {
 
             printf("The operation is Addi\n");
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Immediate: %s\n", immediate);
+            printf("Immediate: %d\n", binToDec(immediate));
         }
         else if (value_unAdd_Check == 0)
         {
@@ -400,9 +423,12 @@ int main()
         {
             printf("Operation: ibu\n");
         }
-        else if (value_Halfword_Unsign == 0)
+        else if (value_Halfword_Unsign == 0) // 10010101010000110000000000101010  --to test
         {
             printf("Operation: lhu\n");
+            printf("Rs: $%d\n", registers(rsCodeTransfer));
+            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Immediate: %s\n", immediate);
         }
         else if (value_Load_Linked == 0)
         {
@@ -421,7 +447,7 @@ int main()
             printf("Operation: ori\n");
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Immediate: %s\n", immediate);
+            printf("Immediate: %d\n", binToDec(immediate));
         }
         else if (value_Less_Than_Imm == 0)
         {
@@ -571,15 +597,18 @@ int registers(char binCode[5])
     }
     else if (bin_value_1 == 0)
     {
+        reg = 1;
     }
     else if (bin_value_2 == 0)
     {
     }
     else if (bin_value_3 == 0)
     {
+        reg = 3;
     }
     else if (bin_value_4 == 0)
     {
+        reg = 4;
     }
     else if (bin_value_5 == 0)
     { // 5
@@ -600,6 +629,7 @@ int registers(char binCode[5])
     }
     else if (bin_value_10 == 0)
     { // 10
+        reg = 10;
     }
     else if (bin_value_11 == 0)
     {
@@ -618,6 +648,7 @@ int registers(char binCode[5])
     }
     else if (bin_value_16 == 0)
     {
+        reg = 16;
     }
     else if (bin_value_17 == 0)
     {
@@ -625,6 +656,7 @@ int registers(char binCode[5])
     }
     else if (bin_value_18 == 0)
     {
+        reg = 18;
     }
     else if (bin_value_19 == 0)
     {
@@ -637,6 +669,7 @@ int registers(char binCode[5])
     }
     else if (bin_value_22 == 0)
     {
+        reg = 22;
     }
     else if (bin_value_23 == 0)
     {
@@ -673,6 +706,61 @@ int registers(char binCode[5])
     return reg; // return the int number to be displayed
 } // end of helper function
 
+int binToDec(char binCode[])
+{
+
+    //printf("the binary code is: %s\n", binCode); 
+
+    while (binCode != NULL)
+    {
+        int base = strlen(binCode) - 1; // the base of 2 to be multiplied, we start of -1 because we dont account for the last bit here
+        int sum = 0;
+        int count_of_zeros = 0;
+        for (int i = 0; i < strlen(binCode) - 1; i++) //we do not account for the last bit of the binary code here....
+        {
+           // printf("the binary code is: %c\n", binCode[i]);
+
+            int decimal = 1;
+
+            if (binCode[i] == '1')
+            {
+                for (int j = 0; j < base; j++) //we want to just multiply the number of true bits (not including the 1)
+                {
+                    
+                    decimal = decimal * 2;
+                    //printf("the decimal is: %d\n", decimal);
+                    
+                }
+               // printf("(outside for)the decimal is: %d\n", decimal);
+
+                base = base - 1; //subtract base by 1 since we are moving down the string by 1
+            }
+            else //we encounter a zero
+            {
+                base = base - 1; //subtract a base multiple everytime we encounter a zero...
+                continue; //carry on with the code
+            }
+
+            sum += decimal;
+            //printf("the sum is: %d\n", decimal); --test
+
+            //base = base - count_of_zeros; // starting from the left (higher power) to the end (lowest power or 1)
+        }
+
+        for(int j = strlen(binCode) - 1; j < strlen(binCode) + 1; j++){ //accounting for the endian bit that is always 1
+
+            //printf("the last bit is: %c\n ", binCode[j]); --test
+
+            if(binCode[j] == '1'){
+                
+                sum += 1; //add 1 to the sum total
+            }
+            
+        }
+
+        return sum; //same as saying break after the for loop, return the sum as an int
+    }
+}
 /*
 Example of what output should look like (taken from PDF)
 
@@ -686,8 +774,23 @@ Rd: $17
 Shamt: 0
 Funct: 32
 
+Enter an instruction:
+00110100001001000000000000000000
+Instruction Type : I
+Operation: ori
+Rs: $1
+Rt: $4
+Immediate: 0 (or 0x0)
+
+
+Enter an instruction:
+00001100000000100000000000000000
+Instruction Type : J
+Operation: jal
+Immediate: 131072 (or 0x0020000)
+
 */
 
-// combine together and use switch
-// for every single fieldo do switch case
-// 00110101000010011000100000100011 - example for I
+// recommendation by TA:
+//  combine together and use switch
+//  for every single fieldo do switch case
