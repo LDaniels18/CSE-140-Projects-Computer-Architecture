@@ -51,20 +51,20 @@ int main()
     char R_Check[] = "000000";  // A General R Type opCode
     char J_Check1[] = "000010"; // J - in MIPS Reference Sheet
     char J_Check2[] = "000011"; // JAL - in MIPS Reference Sheet
-    char I_Check[] = ""; //added by Iveth 
+ //   char I_Check[] = ""; //added by Iveth 
 
     // We also need value holders for each of the comparisons
     int value_R_Check;
     int value_J_Check1;
     int value_J_Check2;
-    int value_I_Check; // added by Iveth
+   // int value_I_Check; // added by Iveth
 
     // the comparison functions, 0 = true, 1 = false
     value_R_Check = strcmp(opCode, R_Check);
     value_J_Check1 = strcmp(opCode, J_Check1);
     value_J_Check2 = strcmp(opCode, J_Check2);
 
-    value_I_Check = strcmp(opCode, I_Check); //added by Iveth 
+  //  value_I_Check = strcmp(opCode, I_Check); //added by Iveth 
 
     /////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -148,140 +148,10 @@ int main()
     // creating logical loops to determine type by opCode:
     
 //===========================I types=================================================================
-    if(value_I_Check =0 )
-    {
+
                 /*===================================================================================
         I-Types*/
-        char Add_Immediate[]="001000" ;
-        char Add_unsign_Immediate[]="001001";
-        char And_Immediate[]="001100";
-        char Branch_equal[]= "000100";
-        char Branch_Not_Equal[]= "000101";
-        char Load_Byte_Unsigned[]= "100100";
-        char Load_Halfword_Unsigned[]= "100101";
-        char Load_Linked[]= "110000";
-        char Load_Upper_Imm[]= "001111";
-        char Load_Word[]= "100011";
-        char Or_Imm[]= "001101";
-        char Less_Than_Imm[]= "001010";
-        char Less_Than_Imm_Unsign[]= "001011";
-        char Store_Byte[]= "101000";
-        char Store_Cond[]= "111000";
-        char Store_Halfword[]= "101001";
-        char Store_Word[]= "101011";
 
-
-//========================================
-        int value_add_Imm_Check;
-        int value_unAdd_Check;
-        int value_and_Imm;
-        int value_branch_Equal;
-        int value_branch_Not_equal;
-        int value_Load_Byte_Unsign;
-        int value_Halfword_Unsign;
-        int value_Load_Linked;
-        int value_Load_Upper_Imm;
-        int value_Load_Word;
-        int value_Or_Imm;
-        int value_Less_Than_Imm;
-        int value_Less_Than_Unsign;
-        int value_Store_Byte;
-        int value_Store_Cond;
-        int value_Store_Halfword;
-        int value_Store_word;
-//=======================================================================
-    value_add_Imm_Check = strcmp(opCode,Add_Immediate);
-    value_unAdd_Check = strcmp(opCode,Add_unsign_Immediate);
-    value_and_Imm = strcmp(opCode,And_Immediate);
-    value_branch_Equal = strcmp(opCode,Branch_equal);
-    value_branch_Not_equal = strcmp(opCode,Branch_Not_Equal);
-    value_Load_Byte_Unsign = strcmp(opCode,Load_Byte_Unsigned);
-    value_Halfword_Unsign = strcmp(opCode,Load_Halfword_Unsigned);
-    value_Load_Linked = strcmp(opCode,Load_Linked);
-    value_Load_Upper_Imm = strcmp(opCode,Load_Upper_Imm);
-    value_Load_Word = strcmp(opCode,Load_Word);
-    value_Or_Imm = strcmp(opCode,Or_Imm);
-    value_Less_Than_Imm = strcmp(opCode,Less_Than_Imm);
-    value_Less_Than_Unsign = strcmp(opCode,Less_Than_Imm_Unsign);
-    value_Store_Byte = strcmp(opCode,Store_Byte);
-    value_Store_Cond = strcmp(opCode,Store_Cond);
-    value_Store_Halfword = strcmp(opCode,Store_Halfword);
-    value_Store_word = strcmp(opCode,Store_Word);
-//=======================================================================
-        if (value_add_Imm_Check == 0) 
-        {
-
-            printf("The operation is Addi\n");
-        }
-        else if (value_unAdd_Check == 0)
-        {
-            printf("Operation: addiu\n");
-        }
-        else if (value_and_Imm == 0) 
-        {
-            printf("Operation: andi\n");
-        }
-        else if (value_branch_Equal  == 0) 
-        {
-            printf("Operation: beq\n");
-        }
-        else if (value_branch_Not_equal == 0) 
-        {
-            printf("Operation: bne\n");
-        }
-        else if (value_Load_Byte_Unsign == 0) 
-        {
-            printf("Operation: ibu\n");
-        }
-        else if (value_Halfword_Unsign == 0) 
-        {
-            printf("Operation: lhu\n");
-        }
-        else if (value_Load_Linked  == 0) 
-        {
-            printf("Operation: ll\n");
-        }
-        else if (value_Load_Upper_Imm == 0) 
-        {
-            printf("Operation: lui\n");
-        }
-        else if (value_Load_Word  == 0) 
-        {
-            printf("Operation: lw\n");
-        }
-        else if (value_Or_Imm  == 0) 
-        {
-            printf("Operation: ori\n");
-        }
-        else if (value_Less_Than_Imm  == 0) 
-        {
-            printf("Operation: slti\n");
-        }
-        else if (value_Less_Than_Unsign == 0)
-        {
-            printf("Operation: sltiu\n");
-        }
-        else if (value_Store_Byte== 0) 
-        {
-            printf("Operation: sb\n");
-        }
-        else if (value_Store_Cond == 0) 
-        {
-            printf("Operation: sc\n");
-        }
-        else if (value_Store_Halfword == 0) 
-        {
-            printf("Operation: sh\n");
-        }
-        else if (value_Store_word == 0) 
-        {
-            printf("Operation: sw\n");
-        }
-        else
-        {
-            printf("This is an error! No operation found");
-        }
-    }
 //===================================================================================================
     if (value_R_Check == 0) //  only R types are == 000000
     {
@@ -434,6 +304,135 @@ int main()
     // we can assume this since its not fitting the other criteria
     else
     {
+        char Add_Immediate[]="001000" ;
+        char Add_unsign_Immediate[]="001001";
+        char And_Immediate[]="001100";
+        char Branch_equal[]= "000100";
+        char Branch_Not_Equal[]= "000101";
+        char Load_Byte_Unsigned[]= "100100";
+        char Load_Halfword_Unsigned[]= "100101";
+        char Load_Linked[]= "110000";
+        char Load_Upper_Imm[]= "001111";
+        char Load_Word[]= "100011";
+        char Or_Imm[]= "001101";
+        char Less_Than_Imm[]= "001010";
+        char Less_Than_Imm_Unsign[]= "001011";
+        char Store_Byte[]= "101000";
+        char Store_Cond[]= "111000";
+        char Store_Halfword[]= "101001";
+        char Store_Word[]= "101011";
+
+
+//========================================
+        int value_add_Imm_Check;
+        int value_unAdd_Check;
+        int value_and_Imm;
+        int value_branch_Equal;
+        int value_branch_Not_equal;
+        int value_Load_Byte_Unsign;
+        int value_Halfword_Unsign;
+        int value_Load_Linked;
+        int value_Load_Upper_Imm;
+        int value_Load_Word;
+        int value_Or_Imm;
+        int value_Less_Than_Imm;
+        int value_Less_Than_Unsign;
+        int value_Store_Byte;
+        int value_Store_Cond;
+        int value_Store_Halfword;
+        int value_Store_word;
+//=======================================================================
+    value_add_Imm_Check = strcmp(opCode,Add_Immediate);
+    value_unAdd_Check = strcmp(opCode,Add_unsign_Immediate);
+    value_and_Imm = strcmp(opCode,And_Immediate);
+    value_branch_Equal = strcmp(opCode,Branch_equal);
+    value_branch_Not_equal = strcmp(opCode,Branch_Not_Equal);
+    value_Load_Byte_Unsign = strcmp(opCode,Load_Byte_Unsigned);
+    value_Halfword_Unsign = strcmp(opCode,Load_Halfword_Unsigned);
+    value_Load_Linked = strcmp(opCode,Load_Linked);
+    value_Load_Upper_Imm = strcmp(opCode,Load_Upper_Imm);
+    value_Load_Word = strcmp(opCode,Load_Word);
+    value_Or_Imm = strcmp(opCode,Or_Imm);
+    value_Less_Than_Imm = strcmp(opCode,Less_Than_Imm);
+    value_Less_Than_Unsign = strcmp(opCode,Less_Than_Imm_Unsign);
+    value_Store_Byte = strcmp(opCode,Store_Byte);
+    value_Store_Cond = strcmp(opCode,Store_Cond);
+    value_Store_Halfword = strcmp(opCode,Store_Halfword);
+    value_Store_word = strcmp(opCode,Store_Word);
+//=======================================================================
+        if (value_add_Imm_Check == 0) 
+        {
+
+            printf("The operation is Addi\n");
+        }
+        else if (value_unAdd_Check == 0)
+        {
+            printf("Operation: addiu\n");
+        }
+        else if (value_and_Imm == 0) 
+        {
+            printf("Operation: andi\n");
+        }
+        else if (value_branch_Equal  == 0) 
+        {
+            printf("Operation: beq\n");
+        }
+        else if (value_branch_Not_equal == 0) 
+        {
+            printf("Operation: bne\n");
+        }
+        else if (value_Load_Byte_Unsign == 0) 
+        {
+            printf("Operation: ibu\n");
+        }
+        else if (value_Halfword_Unsign == 0) 
+        {
+            printf("Operation: lhu\n");
+        }
+        else if (value_Load_Linked  == 0) 
+        {
+            printf("Operation: ll\n");
+        }
+        else if (value_Load_Upper_Imm == 0) 
+        {
+            printf("Operation: lui\n");
+        }
+        else if (value_Load_Word  == 0) 
+        {
+            printf("Operation: lw\n");
+        }
+        else if (value_Or_Imm  == 0) 
+        {
+            printf("Operation: ori\n");
+        }
+        else if (value_Less_Than_Imm  == 0) 
+        {
+            printf("Operation: slti\n");
+        }
+        else if (value_Less_Than_Unsign == 0)
+        {
+            printf("Operation: sltiu\n");
+        }
+        else if (value_Store_Byte== 0) 
+        {
+            printf("Operation: sb\n");
+        }
+        else if (value_Store_Cond == 0) 
+        {
+            printf("Operation: sc\n");
+        }
+        else if (value_Store_Halfword == 0) 
+        {
+            printf("Operation: sh\n");
+        }
+        else if (value_Store_word == 0) 
+        {
+            printf("Operation: sw\n");
+        }
+        else
+        {
+            printf("This is an error! No operation found");
+        }
         // Function for I
         // printf("This is an I-Type instruction!\n");
         printf("Instruction Type : I\n");
