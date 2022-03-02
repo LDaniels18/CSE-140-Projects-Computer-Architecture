@@ -3,6 +3,12 @@
 // CSE 140 - Spring 2022
 // University of California - Merced
 
+
+//WORK DISTRIBUTION:
+// Iveth: handled output statements for R and I type and binary conversion for I types,
+//Also handled string compares for all instructions
+
+//LaFrance: Handled registers and binary to decimal and bit manipulation.
 /*
 instructions if using linux... to run you have to compile using gcc
 use: gcc LaFrance_Iveth.c --this compiles the program (only use if you dont want to name an executable file)
