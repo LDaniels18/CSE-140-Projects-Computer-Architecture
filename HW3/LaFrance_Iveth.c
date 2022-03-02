@@ -183,6 +183,8 @@ int main()
         char Store_Cond[]= "";
         char Store_Halfword[]= "";
         char Store_Word[]= "";
+
+
 //========================================
         int value_add_Imm_Check;
         int value_unAdd_Check;
@@ -201,6 +203,25 @@ int main()
         int value_Store_Cond;
         int value_Store_Halfword;
         int value_Store_word;
+//========================================================
+    value_add_Imm_Check = strcmp(functCodeTransfer,Add_Immediate);
+    value_unAdd_Check = strcmp(functCodeTransfer,Add_unsign_Immediate);
+    value_and_Imm = strcmp(functCodeTransfer,And_Immediate);
+    value_branch_Equal = strcmp(functCodeTransfer,Branch_equal);
+    value_branch_Not_equal = strcmp(functCodeTransfer,Branch_Not_Equal);
+    value_Load_Byte_Unsign = strcmp(functCodeTransfer,Load_Byte_Unsigned);
+    value_Halfword_Unsign = strcmp(functCodeTransfer,Load_Halfword_Unsigned);
+    value_Load_Linked = strcmp(functCodeTransfer,Load_Linked);
+    value_Load_Upper_Imm = strcmp(functCodeTransfer,Load_Upper_Imm);
+    value_Load_Word = strcmp(functCodeTransfer,Load_Word);
+    value_Or_Imm = strcmp(functCodeTransfer,Or_Imm);
+    value_Less_Than_Imm = strcmp(functCodeTransfer,Less_Than_Imm);
+    value_Less_Than_Unsign = strcmp(functCodeTransfer,Less_Than_Imm_Unsign);
+    value_Store_Byte = strcmp(functCodeTransfer,Store_Byte);
+    value_Store_Cond = strcmp(functCodeTransfer,Store_Cond);
+    value_Store_Halfword = strcmp(functCodeTransfer,Store_Halfword);
+    value_Store_word = strcmp(functCodeTransfer,Store_Word);
+//=================================================
 
 /*============================================================================================*/    
         // make string compare variable and function:
