@@ -17,7 +17,7 @@ use: ./LaFrance_Iveth (always use after compiling to see output)
 #include <stdlib.h>
 
 // some functions for Instruction Types where we determine operation
-int registers(char binCode[]); // declaring the helper function by passing the instruction char array
+int registers(char binCode[5]); // declaring the helper function by passing the instruction char array
 
 int main()
 {
@@ -66,18 +66,18 @@ int main()
     ////////////////////////////////////////-- Source Register-- ///////////////////////////////
     // This is a 5 bit field after the OpCode:
 
-    printf("\n");
-    char rsCode[5] = "11111";
+    // printf("\n");
+    // char rsCode[5] = "11111";
 
-    // grabbing thr function Code of the instruction
-    for (int i = 6; i < 11; i++) // 5 bits:
-    {
-        // printf("Instruction Code Bit: %c\n ", instruction[i]); //test to see instruction bits
+    // // grabbing thr function Code of the instruction
+    // for (int i = 6; i < 11; i++) // 5 bits:
+    // {
+    //     // printf("Instruction Code Bit: %c\n ", instruction[i]); //test to see instruction bits
 
-        rsCode[i] = instruction[i];
+    //     rsCode[i] = instruction[i];
 
-        // printf("RS Bit: %c\n ", rsCode[i]); // test to print out bits
-    }
+    //     // printf("RS Bit: %c\n ", rsCode[i]); // test to print out bits
+    // }
 
     printf("\n");
     // printf("The Rs is: %s\n", rsCode + 6); // test to display the bits
@@ -87,7 +87,7 @@ int main()
 
     for (int j = 0; j < 5; j++)
     {
-        rsCodeTransfer[j] = rsCode[j + 6];
+        rsCodeTransfer[j] = instruction[j + 6];
         // printf("Transferred RS is: %c\n ", rsCodeTransfer[j]); // test to print out bits
     }
 
@@ -99,18 +99,18 @@ int main()
     ////////////////////////////////////////-- Target Register-- ///////////////////////////////
     // This is a 5 bit field after the Rs:
 
-    printf("\n");
-    char rtCode[5] = "11111";
+    // printf("\n");
+    // char rtCode[5] = "11111";
 
-    // grabbing thr function Code of the instruction
-    for (int i = 11; i < 16; i++) // 5 bits:
-    {
-        // printf("Instruction Code Bit: %c\n ", instruction[i]); //test to see instruction bits
+    // // grabbing thr function Code of the instruction
+    // for (int i = 11; i < 16; i++) // 5 bits:
+    // {
+    //     // printf("Instruction Code Bit: %c\n ", instruction[i]); //test to see instruction bits
 
-        rtCode[i] = instruction[i];
+    //     rtCode[i] = instruction[i];
 
-        // printf("RT Bit: %c\n ", rtCode[i]); // test to print out bits
-    }
+    //     // printf("RT Bit: %c\n ", rtCode[i]); // test to print out bits
+    // }
 
     printf("\n");
     // printf("The RT is: %s\n", rtCode + 6); // test to display the bits
@@ -120,7 +120,7 @@ int main()
 
     for (int j = 0; j < 5; j++)
     {
-        rtCodeTransfer[j] = rtCode[j + 11];
+        rtCodeTransfer[j] = instruction[j + 11];
         // printf("Transferred RT is: %c\n ", rtCodeTransfer[j]); // test to print out bits
     }
 
@@ -132,18 +132,18 @@ int main()
     ////////////////////////////////////////-- Destination Register-- ///////////////////////////////
     // This is a 5 bit field after the Rt:
 
-    printf("\n");
-    char rdCode[5] = "";
+    // printf("\n");
+    // char rdCode[5] = "";
 
-    // grabbing thr function Code of the instruction
-    for (int i = 16; i < 21; i++) // 5 bits:
-    {
-        // printf("Instruction Code Bit: %c\n ", instruction[i]); //test to see instruction bits
+    // // grabbing thr function Code of the instruction
+    // for (int i = 16; i < 21; i++) // 5 bits:
+    // {
+    //     // printf("Instruction Code Bit: %c\n ", instruction[i]); //test to see instruction bits
 
-        rdCode[i] = instruction[i];
+    //     rdCode[i] = instruction[i];
 
-        // printf("RD Bit: %c\n ", rdCode[i]); // test to print out bits
-    }
+    //     // printf("RD Bit: %c\n ", rdCode[i]); // test to print out bits
+    // }
 
     printf("\n");
     // printf("The Rd is: %s\n", rdCode + 16); // test to display the bits
@@ -181,16 +181,16 @@ int main()
 
     //////////////////////////////////////////--Function Code --/////////////////////////////////////////////////////
     // we need to detirmine the correct operation based off the function code (last 6 bits 0-5):
-    char functCode[6] = "111111";
-    // grabbing thr function Code of the instruction
-    for (int i = 26; i < 32; i++)
-    {
-        // printf("Instruction Code Bit: %c\n ", instruction[i]); //test to see instruction bits
+    // char functCode[6] = "111111";
+    // // grabbing thr function Code of the instruction
+    // for (int i = 26; i < 32; i++)
+    // {
+    //     // printf("Instruction Code Bit: %c\n ", instruction[i]); //test to see instruction bits
 
-        functCode[i] = instruction[i];
+    //     functCode[i] = instruction[i];
 
-        // printf("Function Code Bit: %c\n ", functCode[i]); // test to print out bits
-    }
+    //     // printf("Function Code Bit: %c\n ", functCode[i]); // test to print out bits
+    // }
 
     printf("\n");
     // printf("the Function Code is: %s\n", functCode + 26); // test to display the bits
@@ -200,7 +200,7 @@ int main()
 
     for (int j = 0; j < 6; j++)
     {
-        functCodeTransfer[j] = functCode[j + 26];
+        functCodeTransfer[j] = instruction[j + 26];
         // printf("Transferred Function Code bit: %c\n ", functCodeTransfer[j]); // test to print out bits
     }
 
@@ -275,8 +275,8 @@ int main()
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
             printf("Rd: $%d\n", registers(rdCodeTransfer));
-            printf("Shamt: "); // need to work on this as well
-            printf("Funct: "); // need to work on this as well
+            printf("Shamt: \n"); // need to work on this as well
+            printf("Funct: \n"); // need to work on this as well
         }
         else if (value_unsignAdd_check == 0) // 00000001000010011000100000100001 for test
         {
@@ -284,8 +284,8 @@ int main()
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
             printf("Rd: $%d\n", registers(rdCodeTransfer));
-            printf("Shamt: "); // need to work on this as well
-            printf("Funct: "); // need to work on this as well
+            printf("Shamt: \n"); // need to work on this as well
+            printf("Funct: \n"); // need to work on this as well
         }
         else if (value_And_Check == 0) // 00000001000010011000100000100100 for test
         {
@@ -515,8 +515,10 @@ int main()
 } // end of main function
 
 // a function exclusive for R Type Instructions:
-int registers(char binCode[])
+int registers(char binCode[5])
 {
+    printf("bin code is: %s\n", binCode);
+
     int reg; // to hold an actual integer to return
 
     if (binCode == "00000")
@@ -547,9 +549,11 @@ int registers(char binCode[])
     }
     else if (binCode == "01000")
     {
+        reg = 8;
     }
     else if (binCode == "01001")
     {
+        reg = 9;
     }
     else if (binCode == "01010")
     { // 10
@@ -574,6 +578,7 @@ int registers(char binCode[])
     }
     else if (binCode == "10001")
     {
+        reg = 17;
     }
     else if (binCode == "10010")
     {
@@ -619,7 +624,7 @@ int registers(char binCode[])
     }
     else
     {
-        printf("Error\n");
+        //printf("Error\n");
     }
 
     return reg; // return the int number to be displayed
