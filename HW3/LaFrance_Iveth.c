@@ -183,6 +183,25 @@ int main()
         char Store_Cond[]= "";
         char Store_Halfword[]= "";
         char Store_Word[]= "";
+//========================================
+        int value_add_Imm_Check;
+        int value_unAdd_Check;
+        int value_and_Imm;
+        int value_branch_Equal;
+        int value_branch_Not_equal;
+        int value_Load_Byte_Unsign;
+        int value_Halfword_Unsign;
+        int value_Load_Linked;
+        int value_Load_Upper_Imm;
+        int value_Load_Word;
+        int value_Or_Imm;
+        int value_Less_Than_Imm;
+        int value_Less_Than_Unsign;
+        int value_Store_Byte;
+        int value_Store_Cond;
+        int value_Store_Halfword;
+        int value_Store_word;
+
 /*============================================================================================*/    
         // make string compare variable and function:
         int value_Add_Check;
