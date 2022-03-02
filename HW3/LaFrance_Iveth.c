@@ -17,8 +17,7 @@ use: ./LaFrance_Iveth (always use after compiling to see output)
 #include <stdlib.h>
 
 // some functions for Instruction Types where we determine operation
-void registers(char instruction[]); // declaring the helper function by passing the instruction char array
-void i_Instructions(char instruction[]); // declaring the helper function by passing the instruction char array
+int registers(char binCode[]); // declaring the helper function by passing the instruction char array
 
 int main()
 {
@@ -269,10 +268,20 @@ int main()
         {
 
             printf("The operation is Add\n");
+            printf("Rs: $%d\n", registers(rsCodeTransfer));
+            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Rd: $%d\n", registers(rdCodeTransfer));
+            printf("Shamt: "); //need to work on this as well
+            printf("Funct: "); //need to work on this as well 
         }
         else if (value_unsignAdd_check == 0) // 00000001000010011000100000100001 for test
         {
             printf("Operation: addu\n");
+            printf("Rs: $%d\n", registers(rsCodeTransfer));
+            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Rd: $%d\n", registers(rdCodeTransfer));
+            printf("Shamt: "); //need to work on this as well
+            printf("Funct: "); //need to work on this as well 
         }
         else if (value_And_Check == 0) // 00000001000010011000100000100100 for test
         {
@@ -368,7 +377,6 @@ int main()
         // printf("This is an I-Type instruction!\n");
         printf("Instruction Type : I\n");
 
-        i_Instructions(instruction); // passing the char array to the helper functions
     }
 
     return 0; // ends main
@@ -376,23 +384,83 @@ int main()
 } // end of main function
 
 // a function exclusive for R Type Instructions:
-void registers(char instruction[])
+int registers(char binCode[])
 {
     int reg; //to hold an actual integer to return
 
-    if(instruction == "00000")
+    if(binCode == "00000"){
 
+        reg = 0;
+
+    }else if(binCode == "00001"){
+
+    }else if(binCode == "00010"){
+
+    }else if(binCode == "00011"){
+
+    }else if(binCode == "00100"){
+
+    }else if(binCode == "00101"){ //5
+
+    }else if(binCode == "00110"){
+
+    }else if(binCode == "00111"){
+
+    }else if(binCode == "01000"){
+
+    }else if(binCode == "01001"){
+
+    }else if(binCode == "01010"){ //10
+
+    }else if(binCode == "01011"){
+
+    }else if(binCode == "01100"){
+
+    }else if(binCode == "01101"){
+
+    }else if(binCode == "01110"){
+
+    }else if(binCode == "01111"){//15
+
+    }else if(binCode == "10000"){
+
+    }else if(binCode == "10001"){
+
+    }else if(binCode == "10010"){
+
+    }else if(binCode == "10011"){
+
+    }else if(binCode == "10100"){
+
+    }else if(binCode == "10101"){
+
+    }else if(binCode == "10110"){
+
+    }else if(binCode == "10111"){
+
+    }else if(binCode == "11000"){
+
+    }else if(binCode == "11001"){
+
+    }else if(binCode == "11010"){
+
+    }else if(binCode == "11011"){
+
+    }else if(binCode == "11100"){
+
+    }else if(binCode == "11101"){
+
+    }else if(binCode == "11110"){
+
+    }else if(binCode == "11111"){
+
+    }else{
+        printf("Error\n");
+    }
+
+    return reg; //return the int number to be displayed
 } // end of helper function
 
-// a function exclusive for I Type Instrctions:
-void i_Instructions(char instruction[])
-{
-
-    printf("The instruction is (from helper function): %s\n", instruction); // test to see if passing works
-
-    // make a series of nested loops to figure out the correct instruction:
-
-} // end of helper function
 
 /*
 Example of what output should look like (taken from PDF)
