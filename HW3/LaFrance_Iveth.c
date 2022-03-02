@@ -17,7 +17,7 @@ use: ./LaFrance_Iveth (always use after compiling to see output)
 #include <stdlib.h>
 
 // some functions for Instruction Types where we determine operation
-void r_Instructions(char instruction[]); // declaring the helper function by passing the instruction char array
+void registers(char instruction[]); // declaring the helper function by passing the instruction char array
 void i_Instructions(char instruction[]); // declaring the helper function by passing the instruction char array
 
 int main()
@@ -219,7 +219,7 @@ int main()
         // printf("This is an R-Type instruction!\n");
         printf("\nInstruction Type : R\n");
 
-        // r_Instructions(instruction); // passing the char array to the helper functions
+        // registers(instruction); // passing the char array to the helper functions
 
         // create various function codes to compare instructions (R-Types):
         char Add_Check[] = "100000";
@@ -376,12 +376,11 @@ int main()
 } // end of main function
 
 // a function exclusive for R Type Instructions:
-void r_Instructions(char instruction[])
+void registers(char instruction[])
 {
-    // we have account for a total of 12 R Type Instructions
+    int reg; //to hold an actual integer to return
 
-    printf("\n");
-    printf("The instruction is (from helper function): %s\n", instruction); // test to see if passing works
+    if(instruction == "00000")
 
 } // end of helper function
 
