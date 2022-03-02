@@ -166,23 +166,23 @@ int main()
         char SubtractUnsign_Check[] = "100011";
         /*===================================================================================
         I-Types*/
-        char Add_Immediate[]="" ;
-        char Add_unsign_Immediate[]="";
-        char And_Immediate[]="";
-        char Branch_equal[]= "";
-        char Branch_Not_Equal[]= "";
-        char Load_Byte_Unsigned[]= "";
-        char Load_Halfword_Unsigned[]= "";
-        char Load_Linked[]= "";
-        char Load_Upper_Imm[]= "";
-        char Load_Word[]= "";
-        char Or_Imm[]= "";
-        char Less_Than_Imm[]= "";
-        char Less_Than_Imm_Unsign[]= "";
-        char Store_Byte[]= "";
-        char Store_Cond[]= "";
-        char Store_Halfword[]= "";
-        char Store_Word[]= "";
+        char Add_Immediate[]="001000" ;
+        char Add_unsign_Immediate[]="001001";
+        char And_Immediate[]="001100";
+        char Branch_equal[]= "000100";
+        char Branch_Not_Equal[]= "000101";
+        char Load_Byte_Unsigned[]= "100100";
+        char Load_Halfword_Unsigned[]= "100101";
+        char Load_Linked[]= "110000";
+        char Load_Upper_Imm[]= "001111";
+        char Load_Word[]= "100011";
+        char Or_Imm[]= "001101";
+        char Less_Than_Imm[]= "001010";
+        char Less_Than_Imm_Unsign[]= "001011";
+        char Store_Byte[]= "101000";
+        char Store_Cond[]= "111000";
+        char Store_Halfword[]= "101001";
+        char Store_Word[]= "101011";
 
 
 //========================================
@@ -220,7 +220,7 @@ int main()
     value_Store_Byte = strcmp(opCode,Store_Byte);
     value_Store_Cond = strcmp(opCode,Store_Cond);
     value_Store_Halfword = strcmp(opCode,Store_Halfword);
-    value_Store_word = strcmp(opCode,Store_Word);
+     value_Store_word = strcmp(opCode,Store_Word);
 //=================================================
 
 /*============================================================================================*/    
