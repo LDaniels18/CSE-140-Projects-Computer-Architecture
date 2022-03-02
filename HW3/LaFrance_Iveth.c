@@ -109,7 +109,7 @@ int main()
 
         rtCode[i] = instruction[i];
 
-        //printf("RT Bit: %c\n ", rtCode[i]); // test to print out bits
+        // printf("RT Bit: %c\n ", rtCode[i]); // test to print out bits
     }
 
     printf("\n");
@@ -121,7 +121,7 @@ int main()
     for (int j = 0; j < 5; j++)
     {
         rtCodeTransfer[j] = rtCode[j + 11];
-        //printf("Transferred RT is: %c\n ", rtCodeTransfer[j]); // test to print out bits
+        // printf("Transferred RT is: %c\n ", rtCodeTransfer[j]); // test to print out bits
     }
 
     printf("\n");
@@ -142,7 +142,7 @@ int main()
 
         rdCode[i] = instruction[i];
 
-        //printf("RD Bit: %c\n ", rdCode[i]); // test to print out bits
+        // printf("RD Bit: %c\n ", rdCode[i]); // test to print out bits
     }
 
     printf("\n");
@@ -153,8 +153,8 @@ int main()
 
     for (int j = 0; j < 5; j++)
     {
-        rdCodeTransfer[j] = instruction[j + 16]; //an intermedite fix for the RD
-        //printf("Transferred RD is: %c\n ", rdCodeTransfer[j]); // test to print out bits
+        rdCodeTransfer[j] = instruction[j + 16]; // an intermedite fix for the RD
+        // printf("Transferred RD is: %c\n ", rdCodeTransfer[j]); // test to print out bits
     }
 
     printf("\n");
@@ -163,14 +163,15 @@ int main()
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////-- Shift Amount-- ///////////////////////////////
-    //right after RD - 5 bits long
+    // right after RD - 5 bits long
 
     char shiftAmount[] = "11111";
 
-    for(int i = 0; i < 5; i++){
+    for (int i = 0; i < 5; i++)
+    {
 
         shiftAmount[i] = instruction[i + 21];
-       // printf("Shift Amount bit is: %c\n ", shiftAmount[i]); // test to print out bits
+        // printf("Shift Amount bit is: %c\n ", shiftAmount[i]); // test to print out bits
     }
 
     printf("\n");
@@ -208,6 +209,9 @@ int main()
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //////////////////////////////////////////--Immediate--/////////////////////////////////////////
+
+    /////////////////////////////////////////////////////////////////////////////////////////////
     // Determining Type of Instruction:
 
     // creating logical loops to determine type by opCode:
@@ -271,8 +275,8 @@ int main()
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
             printf("Rd: $%d\n", registers(rdCodeTransfer));
-            printf("Shamt: "); //need to work on this as well
-            printf("Funct: "); //need to work on this as well 
+            printf("Shamt: "); // need to work on this as well
+            printf("Funct: "); // need to work on this as well
         }
         else if (value_unsignAdd_check == 0) // 00000001000010011000100000100001 for test
         {
@@ -280,8 +284,8 @@ int main()
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
             printf("Rd: $%d\n", registers(rdCodeTransfer));
-            printf("Shamt: "); //need to work on this as well
-            printf("Funct: "); //need to work on this as well 
+            printf("Shamt: "); // need to work on this as well
+            printf("Funct: "); // need to work on this as well
         }
         else if (value_And_Check == 0) // 00000001000010011000100000100100 for test
         {
@@ -374,9 +378,136 @@ int main()
     else
     {
         // Function for I
-        // printf("This is an I-Type instruction!\n");
-        printf("Instruction Type : I\n");
+        printf("Instruction Type: I\n");
 
+        char Add_Immediate[] = "001000";
+        char Add_unsign_Immediate[] = "001001";
+        char And_Immediate[] = "001100";
+        char Branch_equal[] = "000100";
+        char Branch_Not_Equal[] = "000101";
+        char Load_Byte_Unsigned[] = "100100";
+        char Load_Halfword_Unsigned[] = "100101";
+        char Load_Linked[] = "110000";
+        char Load_Upper_Imm[] = "001111";
+        char Load_Word[] = "100011";
+        char Or_Imm[] = "001101";
+        char Less_Than_Imm[] = "001010";
+        char Less_Than_Imm_Unsign[] = "001011";
+        char Store_Byte[] = "101000";
+        char Store_Cond[] = "111000";
+        char Store_Halfword[] = "101001";
+        char Store_Word[] = "101011";
+
+        //========================================
+        int value_add_Imm_Check;
+        int value_unAdd_Check;
+        int value_and_Imm;
+        int value_branch_Equal;
+        int value_branch_Not_equal;
+        int value_Load_Byte_Unsign;
+        int value_Halfword_Unsign;
+        int value_Load_Linked;
+        int value_Load_Upper_Imm;
+        int value_Load_Word;
+        int value_Or_Imm;
+        int value_Less_Than_Imm;
+        int value_Less_Than_Unsign;
+        int value_Store_Byte;
+        int value_Store_Cond;
+        int value_Store_Halfword;
+        int value_Store_word;
+        //=======================================================================
+        value_add_Imm_Check = strcmp(opCode, Add_Immediate);
+        value_unAdd_Check = strcmp(opCode, Add_unsign_Immediate);
+        value_and_Imm = strcmp(opCode, And_Immediate);
+        value_branch_Equal = strcmp(opCode, Branch_equal);
+        value_branch_Not_equal = strcmp(opCode, Branch_Not_Equal);
+        value_Load_Byte_Unsign = strcmp(opCode, Load_Byte_Unsigned);
+        value_Halfword_Unsign = strcmp(opCode, Load_Halfword_Unsigned);
+        value_Load_Linked = strcmp(opCode, Load_Linked);
+        value_Load_Upper_Imm = strcmp(opCode, Load_Upper_Imm);
+        value_Load_Word = strcmp(opCode, Load_Word);
+        value_Or_Imm = strcmp(opCode, Or_Imm);
+        value_Less_Than_Imm = strcmp(opCode, Less_Than_Imm);
+        value_Less_Than_Unsign = strcmp(opCode, Less_Than_Imm_Unsign);
+        value_Store_Byte = strcmp(opCode, Store_Byte);
+        value_Store_Cond = strcmp(opCode, Store_Cond);
+        value_Store_Halfword = strcmp(opCode, Store_Halfword);
+        value_Store_word = strcmp(opCode, Store_Word);
+        //=======================================================================
+        if (value_add_Imm_Check == 0)
+        {
+
+            printf("The operation is Addi\n");
+        }
+        else if (value_unAdd_Check == 0)
+        {
+            printf("Operation: addiu\n");
+        }
+        else if (value_and_Imm == 0)
+        {
+            printf("Operation: andi\n");
+        }
+        else if (value_branch_Equal == 0)
+        {
+            printf("Operation: beq\n");
+        }
+        else if (value_branch_Not_equal == 0)
+        {
+            printf("Operation: bne\n");
+        }
+        else if (value_Load_Byte_Unsign == 0)
+        {
+            printf("Operation: ibu\n");
+        }
+        else if (value_Halfword_Unsign == 0)
+        {
+            printf("Operation: lhu\n");
+        }
+        else if (value_Load_Linked == 0)
+        {
+            printf("Operation: ll\n");
+        }
+        else if (value_Load_Upper_Imm == 0)
+        {
+            printf("Operation: lui\n");
+        }
+        else if (value_Load_Word == 0)
+        {
+            printf("Operation: lw\n");
+        }
+        else if (value_Or_Imm == 0)
+        {
+            printf("Operation: ori\n");
+        }
+        else if (value_Less_Than_Imm == 0)
+        {
+            printf("Operation: slti\n");
+        }
+        else if (value_Less_Than_Unsign == 0)
+        {
+            printf("Operation: sltiu\n");
+        }
+        else if (value_Store_Byte == 0)
+        {
+            printf("Operation: sb\n");
+        }
+        else if (value_Store_Cond == 0)
+        {
+            printf("Operation: sc\n");
+        }
+        else if (value_Store_Halfword == 0)
+        {
+            printf("Operation: sh\n");
+        }
+        else if (value_Store_word == 0)
+        {
+            printf("Operation: sw\n");
+        }
+        else
+        {
+            printf("This is an error! No operation found");
+        }
     }
 
     return 0; // ends main
@@ -386,81 +517,113 @@ int main()
 // a function exclusive for R Type Instructions:
 int registers(char binCode[])
 {
-    int reg; //to hold an actual integer to return
+    int reg; // to hold an actual integer to return
 
-    if(binCode == "00000"){
+    if (binCode == "00000")
+    {
 
         reg = 0;
-
-    }else if(binCode == "00001"){
-
-    }else if(binCode == "00010"){
-
-    }else if(binCode == "00011"){
-
-    }else if(binCode == "00100"){
-
-    }else if(binCode == "00101"){ //5
-
-    }else if(binCode == "00110"){
-
-    }else if(binCode == "00111"){
-
-    }else if(binCode == "01000"){
-
-    }else if(binCode == "01001"){
-
-    }else if(binCode == "01010"){ //10
-
-    }else if(binCode == "01011"){
-
-    }else if(binCode == "01100"){
-
-    }else if(binCode == "01101"){
-
-    }else if(binCode == "01110"){
-
-    }else if(binCode == "01111"){//15
-
-    }else if(binCode == "10000"){
-
-    }else if(binCode == "10001"){
-
-    }else if(binCode == "10010"){
-
-    }else if(binCode == "10011"){
-
-    }else if(binCode == "10100"){
-
-    }else if(binCode == "10101"){
-
-    }else if(binCode == "10110"){
-
-    }else if(binCode == "10111"){
-
-    }else if(binCode == "11000"){
-
-    }else if(binCode == "11001"){
-
-    }else if(binCode == "11010"){
-
-    }else if(binCode == "11011"){
-
-    }else if(binCode == "11100"){
-
-    }else if(binCode == "11101"){
-
-    }else if(binCode == "11110"){
-
-    }else if(binCode == "11111"){
-
-    }else{
+    }
+    else if (binCode == "00001")
+    {
+    }
+    else if (binCode == "00010")
+    {
+    }
+    else if (binCode == "00011")
+    {
+    }
+    else if (binCode == "00100")
+    {
+    }
+    else if (binCode == "00101")
+    { // 5
+    }
+    else if (binCode == "00110")
+    {
+    }
+    else if (binCode == "00111")
+    {
+    }
+    else if (binCode == "01000")
+    {
+    }
+    else if (binCode == "01001")
+    {
+    }
+    else if (binCode == "01010")
+    { // 10
+    }
+    else if (binCode == "01011")
+    {
+    }
+    else if (binCode == "01100")
+    {
+    }
+    else if (binCode == "01101")
+    {
+    }
+    else if (binCode == "01110")
+    {
+    }
+    else if (binCode == "01111")
+    { // 15
+    }
+    else if (binCode == "10000")
+    {
+    }
+    else if (binCode == "10001")
+    {
+    }
+    else if (binCode == "10010")
+    {
+    }
+    else if (binCode == "10011")
+    {
+    }
+    else if (binCode == "10100")
+    {
+    }
+    else if (binCode == "10101")
+    {
+    }
+    else if (binCode == "10110")
+    {
+    }
+    else if (binCode == "10111")
+    {
+    }
+    else if (binCode == "11000")
+    {
+    }
+    else if (binCode == "11001")
+    {
+    }
+    else if (binCode == "11010")
+    {
+    }
+    else if (binCode == "11011")
+    {
+    }
+    else if (binCode == "11100")
+    {
+    }
+    else if (binCode == "11101")
+    {
+    }
+    else if (binCode == "11110")
+    {
+    }
+    else if (binCode == "11111")
+    {
+    }
+    else
+    {
         printf("Error\n");
     }
 
-    return reg; //return the int number to be displayed
+    return reg; // return the int number to be displayed
 } // end of helper function
-
 
 /*
 Example of what output should look like (taken from PDF)
