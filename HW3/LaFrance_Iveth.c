@@ -25,8 +25,8 @@ int main()
     // // we need a bit string (character array) to carry the instruction:
     char instruction[32];
 
-    printf("Hello, welcome to our MIPS Decoder! \n");
-    printf("Please enter a 32 bit instruction: ");
+    //printf("Hello, welcome to our MIPS Decoder! \n");
+    //printf("Please enter a 32 bit instruction: ");
 
     // To follow lab guidelines:
     printf("Enter an instruction: \n");
@@ -300,7 +300,7 @@ int main()
 
         printf("Instruction Type : J\n");
         printf("Operation: j\n ");
-        printf("Immediate: %s\n", jumpImmediate);
+        printf("Immediate: %s\n", jumpImmediate); 
     }
     else if (value_J_Check2 == 0)
     {
