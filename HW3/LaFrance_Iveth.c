@@ -41,7 +41,7 @@ int main()
     for (int j = 0; j < 6; j++)
     {
         opCode[j] = instruction[j];
-        //printf("OpCode bit: %c\n ", opCode[j]); // test to print out bits
+        // printf("OpCode bit: %c\n ", opCode[j]); // test to print out bits
     }
 
     printf("\n");
@@ -77,11 +77,11 @@ int main()
 
         rsCode[i] = instruction[i];
 
-        //printf("RS Bit: %c\n ", rsCode[i]); // test to print out bits
+        // printf("RS Bit: %c\n ", rsCode[i]); // test to print out bits
     }
 
     printf("\n");
-    //printf("The Rs is: %s\n", rsCode + 6); // test to display the bits
+    // printf("The Rs is: %s\n", rsCode + 6); // test to display the bits
 
     // transferring bits to a new char array
     char rsCodeTransfer[] = "11111";
@@ -89,7 +89,7 @@ int main()
     for (int j = 0; j < 5; j++)
     {
         rsCodeTransfer[j] = rsCode[j + 6];
-        //printf("Transferred RS is: %c\n ", rsCodeTransfer[j]); // test to print out bits
+        // printf("Transferred RS is: %c\n ", rsCodeTransfer[j]); // test to print out bits
     }
 
     printf("\n");
@@ -110,11 +110,11 @@ int main()
 
         rtCode[i] = instruction[i];
 
-        printf("RT Bit: %c\n ", rtCode[i]); // test to print out bits
+        //printf("RT Bit: %c\n ", rtCode[i]); // test to print out bits
     }
 
     printf("\n");
-    //printf("The RT is: %s\n", rtCode + 6); // test to display the bits
+    // printf("The RT is: %s\n", rtCode + 6); // test to display the bits
 
     // transferring bits to a new char array
     char rtCodeTransfer[] = "11111";
@@ -122,7 +122,7 @@ int main()
     for (int j = 0; j < 5; j++)
     {
         rtCodeTransfer[j] = rtCode[j + 11];
-        printf("Transferred RT is: %c\n ", rtCodeTransfer[j]); // test to print out bits
+        //printf("Transferred RT is: %c\n ", rtCodeTransfer[j]); // test to print out bits
     }
 
     printf("\n");
@@ -134,7 +134,7 @@ int main()
     // This is a 5 bit field after the Rt:
 
     printf("\n");
-    char rdCode[5] = "11111";
+    char rdCode[5] = "";
 
     // grabbing thr function Code of the instruction
     for (int i = 16; i < 21; i++) // 5 bits:
@@ -143,28 +143,39 @@ int main()
 
         rdCode[i] = instruction[i];
 
-        printf("RD Bit: %c\n ", rdCode[i]); // test to print out bits
+        //printf("RD Bit: %c\n ", rdCode[i]); // test to print out bits
     }
 
     printf("\n");
-    //printf("The Rd is: %s\n", rdCode + 16); // test to display the bits
+    // printf("The Rd is: %s\n", rdCode + 16); // test to display the bits
 
     // transferring bits to a new char array
     char rdCodeTransfer[] = "11111";
 
     for (int j = 0; j < 5; j++)
     {
-        rdCodeTransfer[j] = rdCode[j + 16];
-
-        printf("Transferred RD is: %c\n ", rdCodeTransfer[j]); // test to print out bits
+        rdCodeTransfer[j] = instruction[j + 16]; //an intermedite fix for the RD
+        //printf("Transferred RD is: %c\n ", rdCodeTransfer[j]); // test to print out bits
     }
 
     printf("\n");
     printf("the Transferred RD is: %s\n", rdCodeTransfer); // test to display the transferred code
-    
+
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////-- Shift Amount-- ///////////////////////////////
+    //right after RD - 5 bits long
+
+    char shiftAmount[] = "11111";
+
+    for(int i = 0; i < 5; i++){
+
+        shiftAmount[i] = instruction[i + 21];
+       // printf("Shift Amount bit is: %c\n ", shiftAmount[i]); // test to print out bits
+    }
+
+    printf("\n");
+    printf("Shift Amount is: %s\n ", shiftAmount); // test to print out bits
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -178,11 +189,11 @@ int main()
 
         functCode[i] = instruction[i];
 
-        //printf("Function Code Bit: %c\n ", functCode[i]); // test to print out bits
+        // printf("Function Code Bit: %c\n ", functCode[i]); // test to print out bits
     }
 
     printf("\n");
-    //printf("the Function Code is: %s\n", functCode + 26); // test to display the bits
+    // printf("the Function Code is: %s\n", functCode + 26); // test to display the bits
 
     // transferring bits to a new char array
     char functCodeTransfer[] = "111111";
@@ -190,7 +201,7 @@ int main()
     for (int j = 0; j < 6; j++)
     {
         functCodeTransfer[j] = functCode[j + 26];
-        //printf("Transferred Function Code bit: %c\n ", functCodeTransfer[j]); // test to print out bits
+        // printf("Transferred Function Code bit: %c\n ", functCodeTransfer[j]); // test to print out bits
     }
 
     printf("\n");
