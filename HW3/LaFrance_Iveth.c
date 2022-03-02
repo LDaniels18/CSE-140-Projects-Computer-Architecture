@@ -207,7 +207,7 @@ int main()
             printf("Rt: $%d\n", registers(rtCodeTransfer));
             printf("Rd: $%d\n", registers(rdCodeTransfer));
             printf("Shamt: %d\n", registers(shiftAmount));
-            printf("Funct: %d\n", binToDec(functCodeTransfer)); // need to work on this as well
+            printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer)); // need to work on this as well
         }
         else if (value_unsignAdd_check == 0) // 00000001000010011000100000100001 for test
         {
@@ -216,7 +216,7 @@ int main()
             printf("Rt: $%d\n", registers(rtCodeTransfer));
             printf("Rd: $%d\n", registers(rdCodeTransfer));
             printf("Shamt: %d\n", registers(shiftAmount));
-            printf("Funct: %d\n", binToDec(functCodeTransfer)); // need to work on this as well
+            printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer)); // need to work on this as well
         }
         else if (value_And_Check == 0) // 00000001000010011000100000100100 for test
         {
@@ -225,7 +225,7 @@ int main()
             printf("Rt: $%d\n", registers(rtCodeTransfer));
             printf("Rd: $%d\n", registers(rdCodeTransfer));
             printf("Shamt: %d\n", registers(shiftAmount));
-            printf("Funct: %d\n", binToDec(functCodeTransfer));
+            printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer));
         }
         else if (value_JumpR_Check == 0) // 00000001000010011000100000001000 for test
         {
@@ -234,7 +234,7 @@ int main()
             printf("Rt: $%d\n", registers(rtCodeTransfer));
             printf("Rd: $%d\n", registers(rdCodeTransfer));
             printf("Shamt: %d\n", registers(shiftAmount));
-            printf("Funct: %d\n", binToDec(functCodeTransfer));
+            printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer));
         }
         else if (value_Nor_Check == 0) // 00000001000010011000100000100111 for test
         {
@@ -243,7 +243,7 @@ int main()
             printf("Rt: $%d\n", registers(rtCodeTransfer));
             printf("Rd: $%d\n", registers(rdCodeTransfer));
             printf("Shamt: %d\n", registers(shiftAmount));
-            printf("Funct: %d\n", binToDec(functCodeTransfer));
+            printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer));
         }
         else if (value_Or_Check == 0) // 00000001000010011000100000100101 for test
         {
@@ -252,7 +252,7 @@ int main()
             printf("Rt: $%d\n", registers(rtCodeTransfer));
             printf("Rd: $%d\n", registers(rdCodeTransfer));
             printf("Shamt: %d\n", registers(shiftAmount));
-            printf("Funct: %d\n", binToDec(functCodeTransfer));
+            printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer));
         }
         else if (value_SLT_Check == 0) // 00000001000010011000100000101010 for test
         {
@@ -261,7 +261,7 @@ int main()
             printf("Rt: $%d\n", registers(rtCodeTransfer));
             printf("Rd: $%d\n", registers(rdCodeTransfer));
             printf("Shamt: %d\n", registers(shiftAmount));
-            printf("Funct: %d\n", binToDec(functCodeTransfer));
+            printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer));
         }
         else if (value_SLTU_Check == 0) // 00000001000010011000100000101011 for test
         {
@@ -270,7 +270,7 @@ int main()
             printf("Rt: $%d\n", registers(rtCodeTransfer));
             printf("Rd: $%d\n", registers(rdCodeTransfer));
             printf("Shamt: %d\n", registers(shiftAmount));
-            printf("Funct: %d\n", binToDec(functCodeTransfer));
+            printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer));
         }
         else if (value_SLL_Check == 0) // 00000001000010011000100000000000 for test
         {
@@ -279,7 +279,7 @@ int main()
             printf("Rt: $%d\n", registers(rtCodeTransfer));
             printf("Rd: $%d\n", registers(rdCodeTransfer));
             printf("Shamt: %d\n", registers(shiftAmount));
-            printf("Funct: %d\n", binToDec(functCodeTransfer));
+            printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer));
         }
         else if (value_SRL_Check == 0) // 00000001000010011000100000000010 for test
         {
@@ -288,7 +288,7 @@ int main()
             printf("Rt: $%d\n", registers(rtCodeTransfer));
             printf("Rd: $%d\n", registers(rdCodeTransfer));
             printf("Shamt: %d\n", registers(shiftAmount));
-            printf("Funct: %d\n", binToDec(functCodeTransfer));
+            printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer));
         }
         else if (value_Subtract_Check == 0) // 00000001000010011000100000100010 for test
         {
@@ -297,7 +297,7 @@ int main()
             printf("Rt: $%d\n", registers(rtCodeTransfer));
             printf("Rd: $%d\n", registers(rdCodeTransfer));
             printf("Shamt: %d\n", registers(shiftAmount));
-            printf("Funct: %d\n", binToDec(functCodeTransfer));
+            printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer));
         }
         else if (value_SubU_Check == 0) // 00000001010000111011000000100011 for test
         {
@@ -306,7 +306,7 @@ int main()
             printf("Rt: $%d\n", registers(rtCodeTransfer));
             printf("Rd: $%d\n", registers(rdCodeTransfer));
             printf("Shamt: %d\n", registers(shiftAmount));      // need to work on this as well
-            printf("Funct: %d\n", binToDec(functCodeTransfer)); // need to work on this as well
+            printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer)); // need to work on this as well
         }
         else
         {
@@ -333,7 +333,7 @@ int main()
 
         printf("Instruction Type : J\n");
         printf("Operation: j\n ");
-        printf("Immediate: %d\n", binToDec(jumpImmediate));
+        printf("Immediate: %d (or 0x%x)\n", binToDec(jumpImmediate), binToDec(jumpImmediate));
         // printf("\n");
     }
     else if (value_J_Check2 == 0) // 00001100000000100000000000000000   --to test
@@ -354,7 +354,7 @@ int main()
 
         printf("Instruction Type : J\n");
         printf("Operation: jal\n");
-        printf("Immediate: %d\n", binToDec(jumpImmediate));
+        printf("Immediate: %d (or 0x%x)\n", binToDec(jumpImmediate), binToDec(jumpImmediate));
         // printf("\n");
     }
     // we can assume this since its not fitting the other criteria
@@ -437,119 +437,119 @@ int main()
             printf("The operation is Addi\n");
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Immediate: %d\n", binToDec(immediate));
+            printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_unAdd_Check == 0)
         {
             printf("Operation: addiu\n");
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Immediate: %d\n", binToDec(immediate));
+            printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_and_Imm == 0)
         {
             printf("Operation: andi\n");
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Immediate: %d\n", binToDec(immediate));
+            printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_branch_Equal == 0)
         {
             printf("Operation: beq\n");
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Immediate: %d\n", binToDec(immediate));
+            printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_branch_Not_equal == 0)
         {
             printf("Operation: bne\n");
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Immediate: %d\n", binToDec(immediate));
+            printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_Load_Byte_Unsign == 0)
         {
             printf("Operation: ibu\n");
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Immediate: %d\n", binToDec(immediate));
+            printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_Halfword_Unsign == 0) // 10010101010000110000000000101010  --to test
         {
             printf("Operation: lhu\n");
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Immediate: %s\n", immediate);
+            printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_Load_Linked == 0)
         {
             printf("Operation: ll\n");
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Immediate: %d\n", binToDec(immediate));
+            printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_Load_Upper_Imm == 0)
         {
             printf("Operation: lui\n");
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Immediate: %d\n", binToDec(immediate));
+            printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_Load_Word == 0)
         {
             printf("Operation: lw\n");
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Immediate: %d\n", binToDec(immediate));
+            printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_Or_Imm == 0)
         {
             printf("Operation: ori\n");
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Immediate: %d\n", binToDec(immediate));
+            printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_Less_Than_Imm == 0)
         {
             printf("Operation: slti\n");
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Immediate: %d\n", binToDec(immediate));
+            printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_Less_Than_Unsign == 0)
         {
             printf("Operation: sltiu\n");
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Immediate: %d\n", binToDec(immediate));
+            printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_Store_Byte == 0)
         {
             printf("Operation: sb\n");
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Immediate: %d\n", binToDec(immediate));
+            printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_Store_Cond == 0)
         {
             printf("Operation: sc\n");
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Immediate: %d\n", binToDec(immediate));
+            printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_Store_Halfword == 0)
         {
             printf("Operation: sh\n");
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Immediate: %d\n", binToDec(immediate));
+            printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_Store_word == 0)
         {
             printf("Operation: sw\n");
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Immediate: %d\n", binToDec(immediate));
+            printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else
         {
