@@ -51,16 +51,20 @@ int main()
     char R_Check[] = "000000";  // A General R Type opCode
     char J_Check1[] = "000010"; // J - in MIPS Reference Sheet
     char J_Check2[] = "000011"; // JAL - in MIPS Reference Sheet
+    char I_Check[] = ""; //added by Iveth 
 
     // We also need value holders for each of the comparisons
     int value_R_Check;
     int value_J_Check1;
     int value_J_Check2;
+    int value_I_Check; // added by Iveth
 
     // the comparison functions, 0 = true, 1 = false
     value_R_Check = strcmp(opCode, R_Check);
     value_J_Check1 = strcmp(opCode, J_Check1);
     value_J_Check2 = strcmp(opCode, J_Check2);
+
+    value_I_Check = strcmp(opCode, I_Check); //added by Iveth 
 
     /////////////////////////////////////////////////////////////////////////////////////////////
 
