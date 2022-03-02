@@ -220,9 +220,82 @@ int main()
     value_Store_Byte = strcmp(opCode,Store_Byte);
     value_Store_Cond = strcmp(opCode,Store_Cond);
     value_Store_Halfword = strcmp(opCode,Store_Halfword);
-     value_Store_word = strcmp(opCode,Store_Word);
+    value_Store_word = strcmp(opCode,Store_Word);
 //=================================================
+        if (value_add_Imm_Check == 0) 
+        {
 
+            printf("The operation is Addi\n");
+        }
+        else if (value_unAdd_Check == 0)
+        {
+            printf("Operation: addiu\n");
+        }
+        else if (value_and_Imm == 0) 
+        {
+            printf("Operation: andi\n");
+        }
+        else if (value_branch_Equal  == 0) 
+        {
+            printf("Operation: beq\n");
+        }
+        else if (value_branch_Not_equal == 0) 
+        {
+            printf("Operation: bne\n");
+        }
+        else if (value_Load_Byte_Unsign == 0) 
+        {
+            printf("Operation: ibu\n");
+        }
+        else if (value_Halfword_Unsign == 0) 
+        {
+            printf("Operation: lhu\n");
+        }
+        else if (value_Load_Linked  == 0) 
+        {
+            printf("Operation: ll\n");
+        }
+        else if (value_Load_Upper_Imm == 0) 
+        {
+            printf("Operation: lui\n");
+        }
+        else if (value_Load_Word  == 0) 
+        {
+            printf("Operation: lw\n");
+        }
+        else if (value_Or_Imm  == 0) 
+        {
+            printf("Operation: ori\n");
+        }
+        else if (value_Less_Than_Imm  == 0) 
+        {
+            printf("Operation: slti\n");
+        }
+        else if (value_Less_Than_Unsign == 0)
+        {
+            printf("Operation: sltiu\n");
+        }
+        else if (value_Store_Byte== 0) 
+        {
+            printf("Operation: sb\n");
+        }
+        else if (value_Store_Cond == 0) 
+        {
+            printf("Operation: sc\n");
+        }
+        else if (value_Store_Halfword == 0) 
+        {
+            printf("Operation: sh\n");
+        }
+        else if (value_Store_word == 0) 
+        {
+            printf("Operation: sw\n");
+        }
+        else
+        {
+            printf("This is an error! No operation found");
+        }
+    
 /*============================================================================================*/    
         // make string compare variable and function:
         int value_Add_Check;
