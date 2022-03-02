@@ -406,22 +406,37 @@ int main()
         else if (value_unAdd_Check == 0)
         {
             printf("Operation: addiu\n");
+            printf("Rs: $%d\n", registers(rsCodeTransfer));
+            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Immediate: %d\n", binToDec(immediate));
         }
         else if (value_and_Imm == 0)
         {
             printf("Operation: andi\n");
+            printf("Rs: $%d\n", registers(rsCodeTransfer));
+            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Immediate: %d\n", binToDec(immediate));
         }
         else if (value_branch_Equal == 0)
         {
             printf("Operation: beq\n");
+            printf("Rs: $%d\n", registers(rsCodeTransfer));
+            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Immediate: %d\n", binToDec(immediate));
         }
         else if (value_branch_Not_equal == 0)
         {
             printf("Operation: bne\n");
+            printf("Rs: $%d\n", registers(rsCodeTransfer));
+            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Immediate: %d\n", binToDec(immediate));
         }
         else if (value_Load_Byte_Unsign == 0)
         {
             printf("Operation: ibu\n");
+            printf("Rs: $%d\n", registers(rsCodeTransfer));
+            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Immediate: %d\n", binToDec(immediate));
         }
         else if (value_Halfword_Unsign == 0) // 10010101010000110000000000101010  --to test
         {
@@ -433,14 +448,23 @@ int main()
         else if (value_Load_Linked == 0)
         {
             printf("Operation: ll\n");
+            printf("Rs: $%d\n", registers(rsCodeTransfer));
+            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Immediate: %d\n", binToDec(immediate));
         }
         else if (value_Load_Upper_Imm == 0)
         {
             printf("Operation: lui\n");
+            printf("Rs: $%d\n", registers(rsCodeTransfer));
+            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Immediate: %d\n", binToDec(immediate));
         }
         else if (value_Load_Word == 0)
         {
             printf("Operation: lw\n");
+            printf("Rs: $%d\n", registers(rsCodeTransfer));
+            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Immediate: %d\n", binToDec(immediate));
         }
         else if (value_Or_Imm == 0)
         {
@@ -452,26 +476,44 @@ int main()
         else if (value_Less_Than_Imm == 0)
         {
             printf("Operation: slti\n");
+            printf("Rs: $%d\n", registers(rsCodeTransfer));
+            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Immediate: %d\n", binToDec(immediate));
         }
         else if (value_Less_Than_Unsign == 0)
         {
             printf("Operation: sltiu\n");
+            printf("Rs: $%d\n", registers(rsCodeTransfer));
+            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Immediate: %d\n", binToDec(immediate));
         }
         else if (value_Store_Byte == 0)
         {
             printf("Operation: sb\n");
+            printf("Rs: $%d\n", registers(rsCodeTransfer));
+            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Immediate: %d\n", binToDec(immediate));
         }
         else if (value_Store_Cond == 0)
         {
             printf("Operation: sc\n");
+            printf("Rs: $%d\n", registers(rsCodeTransfer));
+            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Immediate: %d\n", binToDec(immediate));
         }
         else if (value_Store_Halfword == 0)
         {
             printf("Operation: sh\n");
+            printf("Rs: $%d\n", registers(rsCodeTransfer));
+            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Immediate: %d\n", binToDec(immediate));
         }
         else if (value_Store_word == 0)
         {
             printf("Operation: sw\n");
+            printf("Rs: $%d\n", registers(rsCodeTransfer));
+            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Immediate: %d\n", binToDec(immediate));
         }
         else
         {
@@ -612,12 +654,16 @@ int registers(char binCode[5])
     }
     else if (bin_value_5 == 0)
     { // 5
+        reg = 5;
     }
     else if (bin_value_6 == 0)
     {
+        reg = 6;
     }
     else if (bin_value_7 == 0)
     {
+
+        reg = 7;
     }
     else if (bin_value_8 == 0)
     {
@@ -633,18 +679,23 @@ int registers(char binCode[5])
     }
     else if (bin_value_11 == 0)
     {
+        reg =11;
     }
     else if (bin_value_12 == 0)
     {
+        reg = 12;
     }
     else if (bin_value_13 == 0)
     {
+        reg = 13;
     }
     else if (bin_value_14 == 0)
     {
+        reg = 14;
     }
     else if (bin_value_15 == 0)
     { // 15
+    reg = 15;
     }
     else if (bin_value_16 == 0)
     {
@@ -660,12 +711,15 @@ int registers(char binCode[5])
     }
     else if (bin_value_19 == 0)
     {
+        reg = 19;
     }
     else if (bin_value_20 == 0)
     {
+        reg = 20;
     }
     else if (bin_value_21 == 0)
     {
+        reg = 21;
     }
     else if (bin_value_22 == 0)
     {
@@ -673,30 +727,40 @@ int registers(char binCode[5])
     }
     else if (bin_value_23 == 0)
     {
+        reg = 23;
     }
     else if (bin_value_24 == 0)
     {
+        reg = 24;
     }
     else if (bin_value_25 == 0)
     {
+        reg = 25;
     }
+
     else if (bin_value_26 == 0)
     {
+        reg = 26;
     }
     else if (bin_value_27 == 0)
     {
+        reg = 27;
     }
     else if (bin_value_28 == 0)
     {
+        reg = 28;
     }
     else if (bin_value_29 == 0)
     {
+        reg = 29;
     }
     else if (bin_value_30 == 0)
     {
+        reg = 30;
     }
     else if (bin_value_31 == 0)
     {
+        reg = 31;
     }
     else
     {
@@ -718,7 +782,7 @@ int binToDec(char binCode[])
         int count_of_zeros = 0;
         for (int i = 0; i < strlen(binCode) - 1; i++) //we do not account for the last bit of the binary code here....
         {
-           // printf("the binary code is: %c\n", binCode[i]);
+            //printf("the binary code is: %c\n", binCode[i]);
 
             int decimal = 1;
 
