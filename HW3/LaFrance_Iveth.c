@@ -64,36 +64,6 @@ int main()
 
     /////////////////////////////////////////////////////////////////////////////////////////////
 
-    //////////////////////////////////////////--Function Code --/////////////////////////////////////////////////////
-    // we need to detirmine the correct operation based off the function code (last 6 bits 0-5):
-    char functCode[6] = "111111";
-    // grabbing thr function Code of the instruction
-    for (int i = 26; i < 32; i++)
-    {
-        // printf("Instruction Code Bit: %c\n ", instruction[i]); //test to see instruction bits
-
-        functCode[i] = instruction[i];
-
-        //printf("Function Code Bit: %c\n ", functCode[i]); // test to print out bits
-    }
-
-    printf("\n");
-    //printf("the Function Code is: %s\n", functCode + 26); // test to display the bits
-
-    // transferring bits to a new char array
-    char functCodeTransfer[] = "111111";
-
-    for (int j = 0; j < 6; j++)
-    {
-        functCodeTransfer[j] = functCode[j + 26];
-        //printf("Transferred Function Code bit: %c\n ", functCodeTransfer[j]); // test to print out bits
-    }
-
-    printf("\n");
-    printf("The Transferred Function Code is: %s\n", functCodeTransfer); // test to display the transferred code
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-
     ////////////////////////////////////////-- Source Register-- ///////////////////////////////
     // This is a 5 bit field after the OpCode:
 
@@ -127,17 +97,106 @@ int main()
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
-    ////////////////////////////////////////-- Destination Register-- ///////////////////////////////
+    ////////////////////////////////////////-- Target Register-- ///////////////////////////////
+    // This is a 5 bit field after the Rs:
+
+    printf("\n");
+    char rtCode[5] = "11111";
+
+    // grabbing thr function Code of the instruction
+    for (int i = 11; i < 16; i++) // 5 bits:
+    {
+        // printf("Instruction Code Bit: %c\n ", instruction[i]); //test to see instruction bits
+
+        rtCode[i] = instruction[i];
+
+        printf("RT Bit: %c\n ", rtCode[i]); // test to print out bits
+    }
+
+    printf("\n");
+    //printf("The RT is: %s\n", rtCode + 6); // test to display the bits
+
+    // transferring bits to a new char array
+    char rtCodeTransfer[] = "11111";
+
+    for (int j = 0; j < 5; j++)
+    {
+        rtCodeTransfer[j] = rtCode[j + 11];
+        printf("Transferred RT is: %c\n ", rtCodeTransfer[j]); // test to print out bits
+    }
+
+    printf("\n");
+    printf("the Transferred RT is: %s\n", rtCodeTransfer); // test to display the transferred code
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
-    ////////////////////////////////////////-- Target Register-- ///////////////////////////////
+    ////////////////////////////////////////-- Destination Register-- ///////////////////////////////
+    // This is a 5 bit field after the Rt:
 
+    printf("\n");
+    char rdCode[5] = "11111";
+
+    // grabbing thr function Code of the instruction
+    for (int i = 16; i < 21; i++) // 5 bits:
+    {
+        // printf("Instruction Code Bit: %c\n ", instruction[i]); //test to see instruction bits
+
+        rdCode[i] = instruction[i];
+
+        printf("RD Bit: %c\n ", rdCode[i]); // test to print out bits
+    }
+
+    printf("\n");
+    //printf("The Rd is: %s\n", rdCode + 16); // test to display the bits
+
+    // transferring bits to a new char array
+    char rdCodeTransfer[] = "11111";
+
+    for (int j = 0; j < 5; j++)
+    {
+        rdCodeTransfer[j] = rdCode[j + 16];
+
+        printf("Transferred RD is: %c\n ", rdCodeTransfer[j]); // test to print out bits
+    }
+
+    printf("\n");
+    printf("the Transferred RD is: %s\n", rdCodeTransfer); // test to display the transferred code
+    
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////-- Shift Amount-- ///////////////////////////////
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //////////////////////////////////////////--Function Code --/////////////////////////////////////////////////////
+    // we need to detirmine the correct operation based off the function code (last 6 bits 0-5):
+    char functCode[6] = "111111";
+    // grabbing thr function Code of the instruction
+    for (int i = 26; i < 32; i++)
+    {
+        // printf("Instruction Code Bit: %c\n ", instruction[i]); //test to see instruction bits
+
+        functCode[i] = instruction[i];
+
+        //printf("Function Code Bit: %c\n ", functCode[i]); // test to print out bits
+    }
+
+    printf("\n");
+    //printf("the Function Code is: %s\n", functCode + 26); // test to display the bits
+
+    // transferring bits to a new char array
+    char functCodeTransfer[] = "111111";
+
+    for (int j = 0; j < 6; j++)
+    {
+        functCodeTransfer[j] = functCode[j + 26];
+        //printf("Transferred Function Code bit: %c\n ", functCodeTransfer[j]); // test to print out bits
+    }
+
+    printf("\n");
+    printf("The Transferred Function Code is: %s\n", functCodeTransfer); // test to display the transferred code
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Determining Type of Instruction:
 
