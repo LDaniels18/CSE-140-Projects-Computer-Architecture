@@ -27,12 +27,16 @@ int main()
 
     printf("Hello, welcome to our MIPS Decoder! \n");
     printf("Please enter a 32 bit instruction: ");
+
+    //To follow lab guidelines:
+    printf("Enter an instruction: \n");
     // printf("\n");
 
     scanf("%s", instruction); // looks for input and assigns it to the variable
 
+    printf("\n");
     // test to check if the instruction was recorded
-    printf("Your 32 bit instruction was: %s\n", instruction);
+    //printf("Your 32 bit instruction was: %s\n", instruction);
 
     ///////////////////////////////////////--Operation Code--/////////////////////////////////////
     // we need to first check the first 6 bits of an instruction to determine its type:
@@ -43,8 +47,8 @@ int main()
         // printf("OpCode bit: %c\n ", opCode[j]); // test to print out bits
     }
 
-    printf("\n");
-    printf("the opCode is: %s\n", opCode); // test to display the bits
+    //printf("\n");
+    //printf("the opCode is: %s\n", opCode); // test to display the bits
 
     // to compare strings we need to create strings to compare to:
     char R_Check[] = "000000";  // A General R Type opCode
@@ -65,24 +69,6 @@ int main()
 
     ////////////////////////////////////////-- Source Register-- ///////////////////////////////
     // This is a 5 bit field after the OpCode:
-
-    // printf("\n");
-    // char rsCode[5] = "11111";
-
-    // // grabbing thr function Code of the instruction
-    // for (int i = 6; i < 11; i++) // 5 bits:
-    // {
-    //     // printf("Instruction Code Bit: %c\n ", instruction[i]); //test to see instruction bits
-
-    //     rsCode[i] = instruction[i];
-
-    //     // printf("RS Bit: %c\n ", rsCode[i]); // test to print out bits
-    // }
-
-    printf("\n");
-    // printf("The Rs is: %s\n", rsCode + 6); // test to display the bits
-
-    // transferring bits to a new char array
     char rsCodeTransfer[] = "11111";
 
     for (int j = 0; j < 5; j++)
@@ -91,31 +77,13 @@ int main()
         // printf("Transferred RS is: %c\n ", rsCodeTransfer[j]); // test to print out bits
     }
 
-    printf("\n");
-    printf("the Transferred RS is: %s\n", rsCodeTransfer); // test to display the transferred code
+   // printf("\n");
+   // printf("the Transferred RS is: %s\n", rsCodeTransfer); // test to display the transferred code
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////-- Target Register-- ///////////////////////////////
     // This is a 5 bit field after the Rs:
-
-    // printf("\n");
-    // char rtCode[5] = "11111";
-
-    // // grabbing thr function Code of the instruction
-    // for (int i = 11; i < 16; i++) // 5 bits:
-    // {
-    //     // printf("Instruction Code Bit: %c\n ", instruction[i]); //test to see instruction bits
-
-    //     rtCode[i] = instruction[i];
-
-    //     // printf("RT Bit: %c\n ", rtCode[i]); // test to print out bits
-    // }
-
-    printf("\n");
-    // printf("The RT is: %s\n", rtCode + 6); // test to display the bits
-
-    // transferring bits to a new char array
     char rtCodeTransfer[] = "11111";
 
     for (int j = 0; j < 5; j++)
@@ -124,31 +92,13 @@ int main()
         // printf("Transferred RT is: %c\n ", rtCodeTransfer[j]); // test to print out bits
     }
 
-    printf("\n");
-    printf("the Transferred RT is: %s\n", rtCodeTransfer); // test to display the transferred code
+   // printf("\n");
+   // printf("the Transferred RT is: %s\n", rtCodeTransfer); // test to display the transferred code
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////-- Destination Register-- ///////////////////////////////
     // This is a 5 bit field after the Rt:
-
-    // printf("\n");
-    // char rdCode[5] = "";
-
-    // // grabbing thr function Code of the instruction
-    // for (int i = 16; i < 21; i++) // 5 bits:
-    // {
-    //     // printf("Instruction Code Bit: %c\n ", instruction[i]); //test to see instruction bits
-
-    //     rdCode[i] = instruction[i];
-
-    //     // printf("RD Bit: %c\n ", rdCode[i]); // test to print out bits
-    // }
-
-    printf("\n");
-    // printf("The Rd is: %s\n", rdCode + 16); // test to display the bits
-
-    // transferring bits to a new char array
     char rdCodeTransfer[] = "11111";
 
     for (int j = 0; j < 5; j++)
@@ -157,14 +107,13 @@ int main()
         // printf("Transferred RD is: %c\n ", rdCodeTransfer[j]); // test to print out bits
     }
 
-    printf("\n");
-    printf("the Transferred RD is: %s\n", rdCodeTransfer); // test to display the transferred code
+   // printf("\n");
+   // printf("the Transferred RD is: %s\n", rdCodeTransfer); // test to display the transferred code
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////-- Shift Amount-- ///////////////////////////////
     // right after RD - 5 bits long
-
     char shiftAmount[] = "11111";
 
     for (int i = 0; i < 5; i++)
@@ -174,28 +123,13 @@ int main()
         // printf("Shift Amount bit is: %c\n ", shiftAmount[i]); // test to print out bits
     }
 
-    printf("\n");
-    printf("Shift Amount is: %s\n ", shiftAmount); // test to print out bits
+   // printf("\n");
+   // printf("Shift Amount is: %s\n ", shiftAmount); // test to print out bits
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
     //////////////////////////////////////////--Function Code --/////////////////////////////////////////////////////
     // we need to detirmine the correct operation based off the function code (last 6 bits 0-5):
-    // char functCode[6] = "111111";
-    // // grabbing thr function Code of the instruction
-    // for (int i = 26; i < 32; i++)
-    // {
-    //     // printf("Instruction Code Bit: %c\n ", instruction[i]); //test to see instruction bits
-
-    //     functCode[i] = instruction[i];
-
-    //     // printf("Function Code Bit: %c\n ", functCode[i]); // test to print out bits
-    // }
-
-    printf("\n");
-    // printf("the Function Code is: %s\n", functCode + 26); // test to display the bits
-
-    // transferring bits to a new char array
     char functCodeTransfer[] = "111111";
 
     for (int j = 0; j < 6; j++)
@@ -204,16 +138,41 @@ int main()
         // printf("Transferred Function Code bit: %c\n ", functCodeTransfer[j]); // test to print out bits
     }
 
-    printf("\n");
-    printf("The Transferred Function Code is: %s\n", functCodeTransfer); // test to display the transferred code
+    //printf("\n");
+   // printf("The Transferred Function Code is: %s\n", functCodeTransfer); // test to display the transferred code
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //////////////////////////////////////////--Immediate--/////////////////////////////////////////
+    //////////////////////////////////////////--Jump Immediate (Address - Type J)--/////////////////////////////////////////
+    //a field for a total of 26 bits
+    char jumpImmediate[27] = "11111111111111111111111111"; // this is a general setting for the opCode (to not leave blank)... will be set by the for loop below:
+    for (int j = 0; j < 28; j++)
+    {
+        jumpImmediate[j] = instruction[j + 6];
+        // printf("Immediate bit: %c\n ", immediate[j]); // test to print out bits
+    }
+
+   // printf("\n");
+   // printf("the Jump Immediate is: %s\n", jumpImmediate); // test to display the bits
+
+    // enter math to obtain the value of the immediate:
+    //  printf("Immediate: %d\n", ); //test to print out a value
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //////////////////////////////////////////--Immediate (Type I)--/////////////////////////////////////////
+
+    char immediate[16] = "1111111111111111"; // this is a general setting for the opCode (to not leave blank)... will be set by the for loop below:
+    for (int j = 0; j < 17; j++)
+    {
+        immediate[j] = instruction[j + 16];
+        // printf("Immediate bit: %c\n ", immediate[j]); // test to print out bits
+    }
+
+   // printf("\n");
+   // printf("the Immediate is: %s\n", immediate); // test to display the bits
 
     /////////////////////////////////////////////////////////////////////////////////////////////
     // Determining Type of Instruction:
-
     // creating logical loops to determine type by opCode:
 
     if (value_R_Check == 0) //  only R types are == 000000
@@ -271,12 +230,12 @@ int main()
         if (value_Add_Check == 0) // 00000001000010011000100000100000 for test
         {
 
-            printf("The operation is Add\n");
+            printf("Operation: and\n");
             printf("Rs: $%d\n", registers(rsCodeTransfer));
             printf("Rt: $%d\n", registers(rtCodeTransfer));
             printf("Rd: $%d\n", registers(rdCodeTransfer));
-            printf("Shamt: \n"); // need to work on this as well
-            printf("Funct: \n"); // need to work on this as well
+            printf("Shamt: %d\n", registers(shiftAmount)); // need to work on this as well
+            printf("Funct: %s\n", functCodeTransfer); // need to work on this as well
         }
         else if (value_unsignAdd_check == 0) // 00000001000010011000100000100001 for test
         {
@@ -338,41 +297,19 @@ int main()
 
         // printf("This is an J-Type instruction!\n");
         // begin displaying output:
+
         printf("Instruction Type : J\n");
         printf("Operation: j\n ");
-
-        char immediate[27] = "11111111111111111111111111"; // this is a general setting for the opCode (to not leave blank)... will be set by the for loop below:
-        for (int j = 6; j < 31; j++)
-        {
-            immediate[j] = instruction[j];
-            printf("Immediate bit: %c\n ", immediate[j]); // test to print out bits
-        }
-
-        printf("\n");
-        printf("the Immediate is: %s\n", immediate + 6); // test to display the bits
-
-        // enter math to obtain the value of the immediate:
-        //  printf("Immediate: %d\n", ); //test to print out a value
+        printf("Immediate: %s\n", jumpImmediate);
     }
     else if (value_J_Check2 == 0)
     {
         // printf("This is an J-Type instruction!\n");
         // begin displaying output:
+
         printf("Instruction Type : J\n");
         printf("Operation: jal\n ");
-
-        char immediate[27] = "11111111111111111111111111"; // this is a general setting for the opCode (to not leave blank)... will be set by the for loop below:
-        for (int j = 6; j < 32; j++)
-        {
-            immediate[j] = instruction[j];
-            printf("Immediate bit: %c\n ", immediate[j]); // test to print out bits
-        }
-
-        printf("\n");
-        printf("the Immediate is: %s\n", immediate + 6); // test to display the bits
-
-        // enter math to obtain the value of the immediate:
-        // printf("Immediate: %d\n", immediate); //test to print out a value
+        printf("Immediate: %s\n", jumpImmediate);
     }
     // we can assume this since its not fitting the other criteria
     else
@@ -439,6 +376,9 @@ int main()
         {
 
             printf("The operation is Addi\n");
+            printf("Rs: $%d\n", registers(rsCodeTransfer));
+            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Immediate: %s\n", immediate);
         }
         else if (value_unAdd_Check == 0)
         {
@@ -479,6 +419,9 @@ int main()
         else if (value_Or_Imm == 0)
         {
             printf("Operation: ori\n");
+            printf("Rs: $%d\n", registers(rsCodeTransfer));
+            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Immediate: %s\n", immediate);
         }
         else if (value_Less_Than_Imm == 0)
         {
@@ -517,109 +460,109 @@ int main()
 // a function exclusive for R Type Instructions:
 int registers(char binCode[5])
 {
-    printf("bin code is: %s\n", binCode);
+    //printf("bin code is: %s\n", binCode);
 
     int reg; // to hold an actual integer to return
 
-        char bin_0[] = "00000";
-        char bin_1[] = "00001";
-        char bin_2[] = "00010";
-        char bin_3[] = "00011";
-        char bin_4[] = "00100";
-        char bin_5[] = "00101";
-        char bin_6[] = "00110";
-        char bin_7[] = "00111";
-        char bin_8[] = "01000";
-        char bin_9[] = "01001";
-        char bin_10[] = "01010";
-        char bin_11[] = "01011";
-        char bin_12[] = "01100";
-        char bin_13[] = "01101";
-        char bin_14[] = "01110";
-        char bin_15[] = "01111";
-        char bin_16[] = "10000";
-        char bin_17[] = "10001";
-        char bin_18[] = "10010";
-        char bin_19[] = "10011";
-        char bin_20[] = "10100";
-        char bin_21[] = "10101";
-        char bin_22[] = "10110";
-        char bin_23[] = "10111";
-        char bin_24[] = "11000";
-        char bin_25[] = "11001";
-        char bin_26[] = "11010";
-        char bin_27[] = "11011";
-        char bin_28[] = "11100";
-        char bin_29[] = "11101";
-        char bin_30[] = "11110";
-        char bin_31[] = "11111";
-        
-        // make string compare variable and function:
-        int bin_value_0;
-        int bin_value_1;
-        int bin_value_2;
-        int bin_value_3;
-        int bin_value_4;
-        int bin_value_5;
-        int bin_value_6;
-        int bin_value_7;
-        int bin_value_8;
-        int bin_value_9;
-        int bin_value_10;
-        int bin_value_11;
-        int bin_value_12;
-        int bin_value_13;
-        int bin_value_14;
-        int bin_value_15;
-        int bin_value_16;
-        int bin_value_17;
-        int bin_value_18;
-        int bin_value_19;
-        int bin_value_20;
-        int bin_value_21;
-        int bin_value_22;
-        int bin_value_23;
-        int bin_value_24;
-        int bin_value_25;
-        int bin_value_26;
-        int bin_value_27;
-        int bin_value_28;
-        int bin_value_29;
-        int bin_value_30;
-        int bin_value_31;
+    char bin_0[] = "00000";
+    char bin_1[] = "00001";
+    char bin_2[] = "00010";
+    char bin_3[] = "00011";
+    char bin_4[] = "00100";
+    char bin_5[] = "00101";
+    char bin_6[] = "00110";
+    char bin_7[] = "00111";
+    char bin_8[] = "01000";
+    char bin_9[] = "01001";
+    char bin_10[] = "01010";
+    char bin_11[] = "01011";
+    char bin_12[] = "01100";
+    char bin_13[] = "01101";
+    char bin_14[] = "01110";
+    char bin_15[] = "01111";
+    char bin_16[] = "10000";
+    char bin_17[] = "10001";
+    char bin_18[] = "10010";
+    char bin_19[] = "10011";
+    char bin_20[] = "10100";
+    char bin_21[] = "10101";
+    char bin_22[] = "10110";
+    char bin_23[] = "10111";
+    char bin_24[] = "11000";
+    char bin_25[] = "11001";
+    char bin_26[] = "11010";
+    char bin_27[] = "11011";
+    char bin_28[] = "11100";
+    char bin_29[] = "11101";
+    char bin_30[] = "11110";
+    char bin_31[] = "11111";
 
-        bin_value_0 = strcmp(binCode, bin_0);
-        bin_value_1 = strcmp(binCode, bin_1);
-        bin_value_2 = strcmp(binCode, bin_2);
-        bin_value_3 = strcmp(binCode, bin_3);
-        bin_value_4 = strcmp(binCode, bin_4);
-         bin_value_5 = strcmp(binCode, bin_5);
-        bin_value_6 = strcmp(binCode, bin_6);
-        bin_value_7 = strcmp(binCode, bin_7);
-        bin_value_8 = strcmp(binCode, bin_8);
-        bin_value_9 = strcmp(binCode, bin_9);
-         bin_value_10 = strcmp(binCode, bin_10);
-        bin_value_11 = strcmp(binCode, bin_11);
-        bin_value_12 = strcmp(binCode, bin_12);
-        bin_value_13 = strcmp(binCode, bin_13);
-        bin_value_14 = strcmp(binCode, bin_14);
-         bin_value_15 = strcmp(binCode, bin_15);
-        bin_value_16 = strcmp(binCode, bin_16);
-        bin_value_17 = strcmp(binCode, bin_17);
-        bin_value_18 = strcmp(binCode, bin_18);
-        bin_value_19 = strcmp(binCode, bin_19);
-        bin_value_20 = strcmp(binCode, bin_20);
-        bin_value_21 = strcmp(binCode, bin_21);
-        bin_value_22 = strcmp(binCode, bin_22);
-        bin_value_23 = strcmp(binCode, bin_23);
-        bin_value_24 = strcmp(binCode, bin_24);
-         bin_value_25 = strcmp(binCode, bin_25);
-        bin_value_26 = strcmp(binCode, bin_26);
-        bin_value_27 = strcmp(binCode, bin_27);
-        bin_value_28 = strcmp(binCode, bin_28);
-        bin_value_29 = strcmp(binCode, bin_29);
-        bin_value_30 = strcmp(binCode, bin_30);
-        bin_value_31 = strcmp(binCode, bin_31);
+    // make string compare variable and function:
+    int bin_value_0;
+    int bin_value_1;
+    int bin_value_2;
+    int bin_value_3;
+    int bin_value_4;
+    int bin_value_5;
+    int bin_value_6;
+    int bin_value_7;
+    int bin_value_8;
+    int bin_value_9;
+    int bin_value_10;
+    int bin_value_11;
+    int bin_value_12;
+    int bin_value_13;
+    int bin_value_14;
+    int bin_value_15;
+    int bin_value_16;
+    int bin_value_17;
+    int bin_value_18;
+    int bin_value_19;
+    int bin_value_20;
+    int bin_value_21;
+    int bin_value_22;
+    int bin_value_23;
+    int bin_value_24;
+    int bin_value_25;
+    int bin_value_26;
+    int bin_value_27;
+    int bin_value_28;
+    int bin_value_29;
+    int bin_value_30;
+    int bin_value_31;
+
+    bin_value_0 = strcmp(binCode, bin_0);
+    bin_value_1 = strcmp(binCode, bin_1);
+    bin_value_2 = strcmp(binCode, bin_2);
+    bin_value_3 = strcmp(binCode, bin_3);
+    bin_value_4 = strcmp(binCode, bin_4);
+    bin_value_5 = strcmp(binCode, bin_5);
+    bin_value_6 = strcmp(binCode, bin_6);
+    bin_value_7 = strcmp(binCode, bin_7);
+    bin_value_8 = strcmp(binCode, bin_8);
+    bin_value_9 = strcmp(binCode, bin_9);
+    bin_value_10 = strcmp(binCode, bin_10);
+    bin_value_11 = strcmp(binCode, bin_11);
+    bin_value_12 = strcmp(binCode, bin_12);
+    bin_value_13 = strcmp(binCode, bin_13);
+    bin_value_14 = strcmp(binCode, bin_14);
+    bin_value_15 = strcmp(binCode, bin_15);
+    bin_value_16 = strcmp(binCode, bin_16);
+    bin_value_17 = strcmp(binCode, bin_17);
+    bin_value_18 = strcmp(binCode, bin_18);
+    bin_value_19 = strcmp(binCode, bin_19);
+    bin_value_20 = strcmp(binCode, bin_20);
+    bin_value_21 = strcmp(binCode, bin_21);
+    bin_value_22 = strcmp(binCode, bin_22);
+    bin_value_23 = strcmp(binCode, bin_23);
+    bin_value_24 = strcmp(binCode, bin_24);
+    bin_value_25 = strcmp(binCode, bin_25);
+    bin_value_26 = strcmp(binCode, bin_26);
+    bin_value_27 = strcmp(binCode, bin_27);
+    bin_value_28 = strcmp(binCode, bin_28);
+    bin_value_29 = strcmp(binCode, bin_29);
+    bin_value_30 = strcmp(binCode, bin_30);
+    bin_value_31 = strcmp(binCode, bin_31);
 
     if (bin_value_0 == 0)
     {
@@ -724,7 +667,7 @@ int registers(char binCode[5])
     }
     else
     {
-        //printf("Error\n");
+        // printf("Error\n");
     }
 
     return reg; // return the int number to be displayed
@@ -747,4 +690,4 @@ Funct: 32
 
 // combine together and use switch
 // for every single fieldo do switch case
-//
+//00110101000010011000100000100011 - example for I
