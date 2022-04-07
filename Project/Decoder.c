@@ -7,6 +7,7 @@
 // int main(){
 //     return 0;
 // }
+
 void Decode(char instruction[32]){
 
     printf("Decoding the Instruction...\n");
@@ -789,7 +790,7 @@ int binToDec(char binCode[])
     {
         int base = strlen(binCode) - 1; // the base of 2 to be multiplied, we start of -1 because we dont account for the last bit here
         int sum = 0;
-        int count_of_zeros = 0;
+        //int count_of_zeros = 0;
         for (int i = 0; i < strlen(binCode) - 1; i++) // we do not account for the last bit of the binary code here....
         {
             // printf("the binary code is: %c\n", binCode[i]);
@@ -834,6 +835,8 @@ int binToDec(char binCode[])
 
         return sum; // same as saying break after the for loop, return the sum as an int
     }
+
+    return 0; //so the compiler doesnt shoot an "non-return" warning
 }
 
 /*

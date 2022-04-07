@@ -39,12 +39,13 @@ char CPU_Process();
 
 int main()
 {
-    char instruction_catcher;
+    //char instruction_catcher;
 
     printf("Welcome to our Single Cycle MIPS CPU!\n");
     // char instruction_catch; //will catch the results after fetch() is called (will be considered int in output)
 
     printf("Preparing to fectch the 32 bit instruction....\n");
+    printf("\n");
     CPU_Process();
 
     return 0; //ending the program
@@ -72,6 +73,7 @@ char CPU_Process()
     }            // end of if
 
     printf("Instruction Detected... now fetching!\n");
+    printf("\n");
 
     // to read the file, line by line and add the contents to our carry variable
     while (fgets(instruction, MAX_LENGTH, file_accessor))
@@ -84,6 +86,7 @@ char CPU_Process()
 
         // to print the instruction bit by bit:
         printf("Your 32 bit instruction was: %s\n", instruction);
+        printf("\n");
 
     } // end of while
 
