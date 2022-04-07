@@ -3,10 +3,11 @@
 #include <stdlib.h>
 #include "Decoder.h"
 
-int main(){
-    return 0;
-}
-void Decode(char instruction){
+//do not need main if we have one already....
+// int main(){
+//     return 0;
+// }
+void Decode(char instruction[32]){
 
     printf("Decoding the Instruction...\n");
     ///////////////////////////////////////--Operation Code--/////////////////////////////////////
@@ -291,7 +292,7 @@ void Decode(char instruction){
 
         //////////////////////////////////////////--Jump Immediate (Address - Type J)--/////////////////////////////////////////
         // a field for a total of 26 bits
-        char jumpImmediate[26] = "11111111111111111111111111"; // this is a general setting for the opCode (to not leave blank)... will be set by the for loop below:
+        char jumpImmediate[] = "11111111111111111111111111"; // this is a general setting for the opCode (to not leave blank)... will be set by the for loop below:
         for (int j = 0; j < 27; j++)
         {
             jumpImmediate[j] = instruction[j + 6];
@@ -312,7 +313,7 @@ void Decode(char instruction){
 
         //////////////////////////////////////////--Jump Immediate (Address - Type J)--/////////////////////////////////////////
         // a field for a total of 26 bits
-        char jumpImmediate[26] = "11111111111111111111111111"; // this is a general setting for the opCode (to not leave blank)... will be set by the for loop below:
+        char jumpImmediate[] = "11111111111111111111111111"; // this is a general setting for the opCode (to not leave blank)... will be set by the for loop below:
         for (int j = 0; j < 27; j++)
         {
             jumpImmediate[j] = instruction[j + 6];
@@ -333,7 +334,7 @@ void Decode(char instruction){
     {
 
         //////////////////////////////////////////--Immediate (Type I)--/////////////////////////////////////////
-        char immediate[16] = "1111111111111111"; // this is a general setting for the opCode (to not leave blank)... will be set by the for loop below:
+        char immediate[] = "1111111111111111"; // this is a general setting for the opCode (to not leave blank)... will be set by the for loop below:
         for (int j = 0; j < 17; j++)
         {
             immediate[j] = instruction[j + 16];

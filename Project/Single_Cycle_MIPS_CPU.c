@@ -34,7 +34,7 @@ int PC = 0; // Starting Instruction
 // never changing filename (obviously change when you recieve a finalized file):
 const char *filename = "1_ins.txt";
 
-char Fetch();
+char CPU_Process();
 //void Decode(char instruction);
 
 int main()
@@ -45,16 +45,13 @@ int main()
     // char instruction_catch; //will catch the results after fetch() is called (will be considered int in output)
 
     printf("Preparing to fectch the 32 bit instruction....\n");
-    instruction_catcher = Fetch();
+    CPU_Process();
 
-    printf("Preparing to Decode the Instruction...\n");
-    Decode(instruction_catcher);
-
-    return 0;
+    return 0; //ending the program
 
 } // end of main function
 
-char Fetch()
+char CPU_Process()
 {
     // // we need a bit string (character array) to carry the instruction:
 
@@ -79,6 +76,9 @@ char Fetch()
     // to read the file, line by line and add the contents to our carry variable
     while (fgets(instruction, MAX_LENGTH, file_accessor))
     {
+        //indicating that instruction was fetched:
+         printf("Instruction Fetched!\n");
+
         // to get rid of the newline (for each line):
         instruction[strcspn(instruction, "\n")] = 0;
 
@@ -87,8 +87,12 @@ char Fetch()
 
     } // end of while
 
-    printf("Instruction Fetched!\n");
-    fclose(file_accessor); // closing the read file (will need to be controlled by the)
+   
+    fclose(file_accessor); // closing the read file (will need to be controlled by the PC)
+
+    //Running Decoder from Fetch:
+    printf("Preparing to Decode the Instruction...\n");
+    Decode(instruction);
 
     return *instruction; // returning the value of instruction which is also going to be a int when used... need to fix to become a string
 
