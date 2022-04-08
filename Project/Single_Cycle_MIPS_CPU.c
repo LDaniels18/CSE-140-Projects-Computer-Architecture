@@ -56,7 +56,7 @@ void CPU_Process()
     printf("Preparing to fectch the 32 bit instruction....\n");
     printf("\n");
 
-    fetch(PC);
+    fetch();
 
 } // end of CPU Process Function
 
