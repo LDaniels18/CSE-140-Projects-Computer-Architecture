@@ -16,8 +16,8 @@ all:output #the entire program to be compiled: output refers to the output file 
 # First Version: April 7th 2022:
 
 #same as saying $gcc Single_Cycle_MIPS_CPU.c Decoder.c -o output
-output:Single_Cycle_MIPS_CPU.o Decoder.o
-	$(CC)Single_Cycle_MIPS_CPU.o Decoder.o -o output
+output:Single_Cycle_MIPS_CPU.o Decoder.o Execute.o
+	$(CC)Single_Cycle_MIPS_CPU.o Decoder.o Execute.o -o output
 	
 #individual parts to be compiled:
 Single_Cycle_MIPS_CPU.o:Single_Cycle_MIPS_CPU.c
@@ -25,6 +25,9 @@ Single_Cycle_MIPS_CPU.o:Single_Cycle_MIPS_CPU.c
 
 Decoder.o:Decoder.c
 	$(CC)$(CFLAGS) Decoder.c
+
+Execute.o:Execute.c
+	$(CC)$(CFLAGS) Execute.c
 
 
 # Second Version: April 7th 2022

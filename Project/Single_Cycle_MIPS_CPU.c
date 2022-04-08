@@ -26,6 +26,9 @@ For the Fetch Function (While Loop Process): https://stackoverflow.com/questions
 #include <string.h>
 #include <stdlib.h>
 #include "Decoder.h"
+#include "Execute.h"
+
+
 #define MAX_LENGTH 256 // using a length variable to help with reading the line of text
 
 // global variables:
