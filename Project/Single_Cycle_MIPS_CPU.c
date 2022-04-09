@@ -28,14 +28,14 @@ For the Fetch Function (While Loop Process): https://stackoverflow.com/questions
 #include "Decoder.h"
 #include "Execute.h"
 
-
 #define MAX_LENGTH 256 // using a length variable to help with reading the line of text
 
 // global variables:
 int PC = 0;                                        // Starting Instruction
 char *instruction_counter[MAX_LENGTH][MAX_LENGTH]; // to act as a container pointing to an instruction
 // char *instruction[MAX_LENGTH];                     // a universal pointer for instructions
-int i = 0; // starting location in the instruction counter:
+int i = 0;                 // starting location in the instruction counter:
+int instruction_index = 0; // the instruction_index to be added by 4 everytime;
 
 // never changing filename (obviously change when you recieve a finalized file):
 const char *filename = "sample_ins.txt";
@@ -97,23 +97,38 @@ int fetch()
         // to get rid of the newline (for each line):
         instruction[strcspn(instruction, "\n")] = 0;
 
-        instruction_counter[i][32] = instruction; // the instruction gets loaded at a particular location 4 spaces from one another or PC(4)
+        instruction_counter[instruction_index][32] = instruction; // the instruction gets loaded at a particular location 4 spaces from one another or PC(4)
+
+        printf("\n");
+        printf("Loading instruction onto table....\n");
 
         // to print the instruction bit by bit -- tests:
         // printf("Your 32 bit instruction was: %s\n", instruction_counter[i][32]);
         // printf("\n");
         // printf("Instruction counter position: %d\n", i);
-        
-        printf("\n");
-        printf("Decoding the Instruction.....");
-        Decode(instruction_counter[PC][32]);
 
-        i = i + 4;   // updating the index by 4 to place it in the instruction counter
-        PC = PC + 4; // always update the PC everytime you read an instruction
+        // the first instruction to always be decoded be decoded:
+        // printf("\n");
+        // printf("Decoding the Instruction.....");
+        // Decode(instruction_counter[PC][32]);
+
+        instruction_index = instruction_index + 4; // updating the instruction_index by 4 to place it in the instruction counter
+        i = i + 1;                                 // Relates to the instruction that was just fetched
+        PC = 4 * i;                                // points to the current instruction
+        int next_PC = PC + 4;                      // always update the PC everytime you read an instruction
+
+        printf("\n");
+        printf("Instruction loaded!\n");
 
     } // end of while
 
     fclose(file_accessor); // closing the read file (will need to be controlled by the PC)
 
-    return 0; //ending the instruction
+    
+    //a quick test to see i can decode from a set place
+    // printf("\n");
+    // printf("Decoding the Instruction.....");
+    // Decode(instruction_counter[PC][32]);
+
+    return 0; // ending the instruction
 } // end of fetch
