@@ -36,6 +36,7 @@ char *instruction_counter[MAX_LENGTH][MAX_LENGTH]; // to act as a container poin
 // char *instruction[MAX_LENGTH];                     // a universal pointer for instructions
 int i = 0;                 // starting location in the instruction counter:
 int instruction_index = 0; // the instruction_index to be added by 4 everytime;
+int cycles;
 
 // never changing filename (obviously change when you recieve a finalized file):
 const char *filename = "sample_ins.txt";
@@ -48,7 +49,7 @@ int main()
     printf("Welcome to our Single Cycle MIPS CPU!\n");
     // char instruction_catch; //will catch the results after fetch() is called (will be considered int in output)
 
-    CPU_Process();
+    CPU_Process(); //start the CPU
 
     return 0; // ending the program
 
@@ -108,9 +109,9 @@ int fetch()
         // printf("Instruction counter position: %d\n", i);
 
         // the first instruction to always be decoded be decoded:
-        // printf("\n");
-        // printf("Decoding the Instruction.....");
-        // Decode(instruction_counter[PC][32]);
+        printf("\n");
+        printf("Decoding the Instruction.....");
+        Decode(instruction_counter[PC][32]);
 
         instruction_index = instruction_index + 4; // updating the instruction_index by 4 to place it in the instruction counter
         i = i + 1;                                 // Relates to the instruction that was just fetched
