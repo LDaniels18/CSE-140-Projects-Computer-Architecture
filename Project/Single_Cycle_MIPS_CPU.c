@@ -55,7 +55,7 @@ int main()
     printf("Welcome to our Single Cycle MIPS CPU!\n");
     // char instruction_catch; //will catch the results after fetch() is called (will be considered int in output)
 
-    CPU_Process();
+    CPU_Process(); //start the CPU
 
     return 0; // ending the program
 
