@@ -30,7 +30,7 @@ For the Fetch Function (While Loop Process): https://stackoverflow.com/questions
 
 #define MAX_LENGTH 256 // using a length variable to help with reading the line of text
 
-// global variables:
+// Global variables:
 int PC = 0;                                        // Starting Instruction
 char *instruction_counter[MAX_LENGTH][MAX_LENGTH]; // to act as a container pointing to an instruction
 unsigned char current_instruction[MAX_LENGTH];     // a universal pointer for instructions
@@ -39,47 +39,24 @@ int instruction_index = 4;                         // representing the index in 
 
 ///////////////////////////////////////////////////////////////////////
 
-// never changing filename (obviously change when you recieve a finalized file):
+// Never changing filename (obviously change when you recieve a finalized file):
 const char *filename = "sample_ins.txt";
 
 //////////////////////////////////////////////////////////////////////
 
-// functions declarations:
-void CPU_Process(); // to act as the main CPU function
-char fetch();       // to fetch instructions for the PC counter
+// Functions declarations: 
+void CPU_Process(char instruction[32]); // to act as the main CPU function
+int fetch();                           // to fetch instructions for the PC counter
 
 //////////////////////////////////////////////////////////////////////
 
 int main()
 {
-    printf("Welcome to our Single Cycle MIPS CPU!\n");
-    // char instruction_catch; //will catch the results after fetch() is called (will be considered int in output)
-
-    CPU_Process(); //start the CPU
-
-    return 0; // ending the program
-
-} // end of main function
-
-void CPU_Process()
-{
-    // unsigned char current_instruction =
-
-    printf("Preparing to fectch the 32 bit instruction....\n");
     printf("\n");
+    printf("////////////////////////////////// -- Main -- ///////////////////////////////////");
+    printf("Welcome to our Single Cycle MIPS CPU!\n");
 
-    // current_instruction = fetch();
-    fetch();
-
-    // printf("\n");
-    // printf("Decoding the Instruction.....");
-    // Decode(instruction_counter[12][32]);
-
-} // end of CPU Process Function
-
-// A function to both fetch and decode a given instruction:
-char fetch()
-{
+    ///////////////// -- Grabbing Instructions -- ///////////////////////////////////////////////////////
     // we need a bit string (character array) to carry the instruction:
     char instruction[MAX_LENGTH]; // to carry the new 32 bit instruction
 
@@ -98,7 +75,6 @@ char fetch()
     }            // end of if
     else
     {
-
         printf("Instruction(s) Detected... now fetching!\n");
         printf("\n");
 
@@ -120,40 +96,73 @@ char fetch()
             printf("\n");
             printf("Instruction List Index position: %d\n", instruction_index);
 
-            // printf("\n");
-            // printf("Decoding the Instruction.....");
-            // Decode(instruction_counter[PC][32]);
+            ////////////////////// --starting the CPU -- //////////////////////////
+            printf("\n");
+            printf("Passing the instruction and starting...\n");
+            CPU_Process(instruction_counter[instruction_index][32]);
+            ///////////////////////////////////////////////////////////////////////
 
-            ////////// -- increments -- ///////////
+            ///////////////////// -- increment index -- ///////////////////////////
             instruction_index = instruction_index + 4; // because we need to allow for 4 bytes per instruction
 
-            i++; // representing the instruction (everytime we grab an instruction we must update i by 1 so the PC counter can point to it)
-            printf("printing the number of the instruction we are looking at:  %d\n", i);
+            // i++; // representing the instruction (everytime we grab an instruction we must update i by 1 so the PC counter can point to it)
+            // printf("printing the number of the instruction we are looking at:  %d\n", i);
 
-            PC = 4 * i; // always update the PC everytime you read an instruction
-            printf("printing the PC char:  %d\n", PC);
+            // PC = 4 * i; // always update the PC everytime you read an instruction
+            // printf("printing the PC char:  %d\n", PC);
 
-            int next_PC = PC + 4;
-            printf("printing the next_pc: %d\n", next_PC);
+            // int next_PC = PC + 4;
+            // printf("printing the next_pc: %d\n", next_PC);
 
+            // printf("\n");
+
+            //////////////////////////////////////////////////////////////////////
             printf("\n");
         } // end of while
 
         fclose(file_accessor); // closing the read file (will need to be controlled by the PC)
     }
-    printf("Printing the Instruction Index: %d\n", instruction_index);
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    return 0; // ending the program
 
-    for (int j = 4; j < instruction_index; j = j + 4)
-    {
-        printf("Printing j: %d\n", j);
-        printf("Printing contents of the instruction list: %s\n", instruction_counter[j][32]);
-    }
+} // end of main function
+
+void CPU_Process(char instruction[32])
+{
     printf("\n");
-    printf("Printing some random instruction: %s\n", instruction_counter[4][32]);
-    // 00000001000010011000100000100000
+    printf("////////////////////////////////// -- CPU Process -- ///////////////////////////////////\n");
+    printf("Preparing to fetch PC values the 32 bit instruction....\n");
+    fetch();
+    printf("\n");
+
+    printf("\n");
+    Decode(instruction);
+
+    printf("\n");
+    printf("Now executing the given instruction....\n");
+
+
+} // end of CPU Process Function
+
+// A function to both fetch and decode a given instruction:
+int fetch()
+{
+    printf("\n");
+    printf("////////////////////////////////// -- Fetch -- /////////////////////////////////////\n");
+    printf("welcome to fetch!!\n");
+
+    i++; // representing the instruction (everytime we grab an instruction we must update i by 1 so the PC counter can point to it)
+    printf("printing the number of the instruction we are looking at:  %d\n", i);
+
+    PC = 4 * i; // always update the PC everytime you read an instruction
+    printf("printing the PC char:  %d\n", PC);
+
+    int next_PC = PC + 4;
+    printf("printing the next_pc: %d\n", next_PC);
 
     return 0; // ending the instruction
 } // end of fetch
+
 
 
 ///////////////////// ---first ver of code --///////////////////

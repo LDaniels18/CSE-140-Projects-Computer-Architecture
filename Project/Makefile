@@ -15,11 +15,19 @@ all:output #the entire program to be compiled: output refers to the output file 
 
 # First Version: April 7th 2022:
 
-#same as saying $gcc Single_Cycle_MIPS_CPU.c Decoder.c -o output
+#same as saying $gcc Single_Cycle_MIPS_CPU.c Decoder.c -o output (current Version)
 output:Single_Cycle_MIPS_CPU.o Decoder.o Execute.o
 	$(CC)Single_Cycle_MIPS_CPU.o Decoder.o Execute.o -o output
-	
-#individual parts to be compiled:
+
+#Test output for old file:
+# output:old_single_cycle.o Decoder.o Execute.o
+# 	$(CC)old_single_cycle.o Decoder.o Execute.o -o output
+
+#to test the old file:
+# old_single_cycle.o:old_single_cycle.c
+# 	$(CC)$(CFLAGS) old_single_cycle.c
+
+#individual parts to be compiled (current version):
 Single_Cycle_MIPS_CPU.o:Single_Cycle_MIPS_CPU.c
 	$(CC)$(CFLAGS) Single_Cycle_MIPS_CPU.c
 

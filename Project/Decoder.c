@@ -9,8 +9,10 @@
 // }
 
 void Decode(char instruction[32]){
-
-    //printf("Decoding the Instruction...\n");
+    
+    printf("\n");
+    printf("/////////////////////////// -- Decoder -- //////////////////////////////////\n");
+    printf("Decoding the Instruction...\n");
     ///////////////////////////////////////--Operation Code--/////////////////////////////////////
     // we need to first check the first 6 bits of an instruction to determine its type:
     char opCode[] = "111111"; // this is a general setting for the opCode (to not leave blank)... will be set by the for loop below:

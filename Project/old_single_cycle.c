@@ -97,7 +97,7 @@ int main()
     //printing the text
     for(i=0; i<3; i++) {
         for(j=0; j<32; j++) {
-            printf("%c",instr_table[i][j]); //printing the strings 
+            printf("Instruction:%c",instr_table[i][j]); //printing the strings 
             
         }
     }
@@ -105,7 +105,12 @@ int main()
     //} //end of else
     //fclose(file_accessor);
 
-    //printf("Some instruction: %c\n", instr_table[2][32]);
+    for (int k= 0;k < 32; k++)
+    {
+         printf("Some instruction: %c\n", instr_table[2][k]);
+    }
+    
+   
     /////////////////////////////////////////////////////////////
 
     CPU_Process(); //start the CPU
@@ -121,7 +126,7 @@ void CPU_Process()
     printf("\n");
 
     // current_instruction = fetch();
-    fetch();
+    //fetch();
 
     // printf("\n");
     // printf("Decoding the Instruction.....");
