@@ -10,7 +10,14 @@
 
 //Global Variables:
 int registerFile[32] = {0}; //RegisterFile initialized to 0
-int aluOp[4] = {0}; //ALU Operation binary code
+char aluOp[4]; //ALU Operation binary code
+/*
+        --schema for the ALU OP (Does not need to be very sepcific)
+            aluOp[0] = "00"; //Load Word Instruction
+            aluOp[1] = "01"; //Store Word Instruction
+            aluOp[2] = "11"; //Primarily I Type
+            aluOp[3] = "10"; //Primarily R Type
+*/
 
 int DecodeAndExecute(char instruction[32]){
 
@@ -210,15 +217,16 @@ int DecodeAndExecute(char instruction[32]){
             printf("///////////////////////////// -- Execute -- ///////////////////////////////////\n");
             //Adding work for ALU and then to execute:
 
-            aluOp[0] = 0;
-            aluOp[1] = 0;
-            aluOp[2] = 1;
-            aluOp[3] = 0;
+            printf("Determining the ALU Operation....\n");
+            strcpy(aluOp, "10");
+            printf("ALU OP Code is: %s\n", aluOp);
+            printf("\n");
 
             //Assigning RD Register based off ALU OP:
-
+            printf("Preparing to Execute this R-Type Instruction........\n");
             rdValue = rsValue + rtValue;
             RegisterValuestoRegisterFiles(rdCodeTransfer,rdValue);
+            printf("Executing the Instruction...\n");
 
             printf("Register Destination: $ %d",binToDec(rdCodeTransfer));
             printf(", RD Register Value: %d", rdValue);
@@ -241,6 +249,22 @@ int DecodeAndExecute(char instruction[32]){
             printf("Rd: $%d\n", registerfile(rdCodeTransfer));
             printf("Shamt: %d\n", registerfile(shiftAmount));
             printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer));
+
+            printf("///////////////////////////// -- Execute -- ///////////////////////////////////\n");
+            //Adding work for ALU and then to execute:
+
+            printf("Determining the ALU OPeration....\n");
+            strcpy(aluOp, "10");
+            printf("ALU OP Code is: %s\n", aluOp);
+
+            //Assigning RD Register based off ALU OP:
+            printf("Preparing to Execute this R-Type Instruction........\n");
+            rdValue = rsValue & rtValue;
+            RegisterValuestoRegisterFiles(rdCodeTransfer,rdValue);
+            printf("Executing the Instruction...\n");
+
+            printf("Register Destination: $ %d",binToDec(rdCodeTransfer));
+            printf(", RD Register Value: %d", rdValue);
         }
         else if (value_JumpR_Check == 0) // 00000001000010011000100000001000 for test
         {
@@ -313,6 +337,22 @@ int DecodeAndExecute(char instruction[32]){
             printf("Rd: $%d\n", registerfile(rdCodeTransfer));
             printf("Shamt: %d\n", registerfile(shiftAmount));
             printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer));
+
+            printf("///////////////////////////// -- Execute -- ///////////////////////////////////\n");
+            //Adding work for ALU and then to execute:
+
+            printf("Determining the ALU OPeration....\n");
+            strcpy(aluOp, "10");
+            printf("ALU OP Code is: %s\n", aluOp);
+
+            //Assigning RD Register based off ALU OP:
+            printf("Preparing to Execute this R-Type Instruction........\n");
+            rdValue = rsValue - rtValue;
+            RegisterValuestoRegisterFiles(rdCodeTransfer,rdValue);
+            printf("Executing the Instruction...\n");
+
+            printf("Register Destination: $ %d",binToDec(rdCodeTransfer));
+            printf(", RD Register Value: %d", rdValue);
         }
         else if (value_SubU_Check == 0) // 00000001010000111011000000100011 for test
         {
