@@ -38,10 +38,9 @@ char *instruction_counter[MAX_LENGTH][MAX_LENGTH]; // to act as a container poin
 unsigned char current_instruction[MAX_LENGTH];     // a universal pointer for instructions
 int i = 0;                                         // representing the instruction in the array:
 int instruction_index = 4;                         // representing the index in the instruction counter
-
+int totalClockCycles = 0;
 
 int d_mem[32] = { 0 }; //D Memory File 
-int alu_op[4] = {0}; //ALU Operation binary code
 
 ///////////////////////////////////////////////////////////////////////
 
@@ -143,16 +142,18 @@ void CPU_Process(char instruction[32])
 {
     printf("\n");
     printf("////////////////////////////////// -- CPU Process -- ///////////////////////////////////\n");
-    printf("Single Cycle CPU has started with 32 bit instruction: %s", instruction);
+    printf("Single Cycle CPU has started with 32 bit instruction: %s\n", instruction);
     
+    printf("Preparing to Update PC, and Display Instruction counters ....");
     fetch();
-    //printf("\n");
+   
+    printf("Preparing to Decode the Instruction....");
+    DecodeAndExecute(instruction);
 
     printf("\n");
-    Decode(instruction);
-
-    printf("\n");
-    printf("Now executing the given instruction....\n");
+    totalClockCycles = totalClockCycles + 1; //Instruction is done so increament clock
+    printf("Total Clock Cycles: %d\n", totalClockCycles);
+    printf("End of Instruction Operation....");
 
 
 } // end of CPU Process Function

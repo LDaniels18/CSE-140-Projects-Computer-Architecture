@@ -10,9 +10,17 @@
 
 //Global Variables:
 int registerFile[32] = {0}; //RegisterFile initialized to 0
+int aluOp[4] = {0}; //ALU Operation binary code
 
-void Decode(char instruction[32]){
+int DecodeAndExecute(char instruction[32]){
+
+    //to hold integers representing the Register values - using MIPS nomenclature:
+
+    int rsValue = 0;
+    int rdValue = 0;
+    int rtValue = 0;
     
+    //Begining the Decoding Process:
     printf("\n");
     printf("/////////////////////////// -- Decoder -- //////////////////////////////////\n");
     printf("Decoding the Instruction...\n");
@@ -56,7 +64,7 @@ void Decode(char instruction[32]){
     }
 
     // printf("\n");
-     printf("the Transferred RS is: %s\n", rsCodeTransfer); // test to display the transferred code
+     printf("the RS is: %s\n", rsCodeTransfer); // test to display the transferred code
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -71,7 +79,7 @@ void Decode(char instruction[32]){
     }
 
     // printf("\n");
-     printf("the Transferred RT is: %s\n", rtCodeTransfer); // test to display the transferred code
+     printf("the RT is: %s\n", rtCodeTransfer); // test to display the transferred code
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -86,7 +94,7 @@ void Decode(char instruction[32]){
     }
 
     // printf("\n");
-     printf("the Transferred RD is: %s\n", rdCodeTransfer); // test to display the transferred code
+     printf("the RD is: %s\n", rdCodeTransfer); // test to display the transferred code
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -102,7 +110,7 @@ void Decode(char instruction[32]){
     }
 
     // printf("\n");
-     printf("Shift Amount is: %s\n ", shiftAmount); // test to print out bits
+     printf("Shift Amount is: %s\n", shiftAmount); // test to print out bits
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -117,13 +125,25 @@ void Decode(char instruction[32]){
     }
 
     // printf("\n");
-     printf("The Transferred Function Code is: %s\n", functCodeTransfer); // test to display the transferred code
+    printf("Function Code is: %s\n", functCodeTransfer); // test to display the transferred code
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    printf("\n");
+    //Assigning the RS and RT values:
+    printf("Finding RS and RT Values.... \n");
+
+    rsValue = binToDec(rsCodeTransfer);
+    printf("Rs Value = %d\n", rsValue);
+
+    rtValue = binToDec(rtCodeTransfer);
+    printf("Rt value = %d\n", rtValue);
+
+    printf("\n");
+    printf("Displaying Decoded Parts....");
 
     // Determining Type of Instruction:
     // creating logical loops to determine type by opCode:
-
     if (value_R_Check == 0) //  only R types are == 000000
     {
 
@@ -186,6 +206,23 @@ void Decode(char instruction[32]){
             printf("Rd: $%d\n", registerfile(rdCodeTransfer));
             printf("Shamt: %d\n", registerfile(shiftAmount));
             printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer)); // need to work on this as well
+
+            printf("///////////////////////////// -- Execute -- ///////////////////////////////////\n");
+            //Adding work for ALU and then to execute:
+
+            aluOp[0] = 0;
+            aluOp[1] = 0;
+            aluOp[2] = 1;
+            aluOp[3] = 0;
+
+            //Assigning RD Register based off ALU OP:
+
+            rdValue = rsValue + rtValue;
+            RegisterValuestoRegisterFiles(rdCodeTransfer,rdValue);
+
+            printf("Register Destination: $ %d",binToDec(rdCodeTransfer));
+            printf(", RD Register Value: %d", rdValue);
+
         }
         else if (value_unsignAdd_check == 0) // 00000001000010011000100000100001 for test
         {
@@ -437,6 +474,9 @@ void Decode(char instruction[32]){
             printf("Rs: $%d\n", registerfile(rsCodeTransfer));
             printf("Rt: $%d\n", registerfile(rtCodeTransfer));
             printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
+            
+            //Performing Memory work for this Instruction:
+
         }
         else if (value_branch_Not_equal == 0)
         {
@@ -536,15 +576,16 @@ void Decode(char instruction[32]){
         }
     }
 
-    //return 0; // ends function
+    return 0; // ends function
     
 }// end of decode function
 
 // a function to get the integer of used register:
 int registerfile(char binCode[5])
 {   
-    printf("/////////////////// -- Within Register Function -- //////////////////\n");
-     printf("Binary Code currently looked at is: %s\n", binCode);
+    //to test:
+    //printf("/////////////////// -- Within Register Function -- //////////////////\n");
+    //printf("Binary Code currently looked at is: %s\n", binCode);
 
     int reg; // to hold an actual integer to return
 
@@ -851,8 +892,9 @@ int binToDec(char binCode[])
 
 int RegisterValuestoRegisterFiles(char binCode[5], int value){
 
-    printf("/////////////////// -- Within Value to Register File Function -- //////////////////\n");
-     printf("Binary Code currently looked at is: %s\n", binCode);
+    //test
+    //printf("/////////////////// -- Within Value to Register File Function -- //////////////////\n");
+    //printf("Binary Code currently looked at is: %s\n", binCode);
 
     //each char array represents a real register in MIPS 
     char bin_0[] = "00000";
@@ -972,127 +1014,129 @@ int RegisterValuestoRegisterFiles(char binCode[5], int value){
     }
     else if ($v1 == 0)
     {
-        reg = 3;
+        registerFile[3] = value;
     }
     else if ($a0 == 0)
     {
-        reg = 4;
+        registerFile[4] = value;
     }
     else if ($a1 == 0)
     { // 5
-        reg = 5;
+        registerFile[5] = value;
     }
     else if ($a2 == 0)
     {
-        reg = 6;
+        registerFile[6] = value;
     }
     else if ($a3 == 0)
     {
 
-        reg = 7;
+        registerFile[7] = value;
     }
     else if ($t0 == 0)
     {
-        reg = 8;
+        registerFile[8] = value;
     }
     else if ($t1 == 0)
     {
-        reg = 9;
+        registerFile[9] = value;
     }
     else if ($t2 == 0)
     { // 10
-        reg = 10;
+        registerFile[10] = value;
     }
     else if ($t3 == 0)
     {
-        reg = 11;
+        registerFile[11] = value;
     }
     else if ($t4 == 0)
     {
-        reg = 12;
+        registerFile[12] = value;
     }
     else if ($t5 == 0)
     {
-        reg = 13;
+        registerFile[13] = value;
     }
     else if ($t6 == 0)
     {
-        reg = 14;
+        registerFile[14] = value;
     }
     else if ($t7 == 0)
     { // 15
-        reg = 15;
+        registerFile[15] = value;
     }
     else if ($s0 == 0)
     {
-        reg = 16;
+        registerFile[16] = value;
     }
     else if ($s1 == 0)
     {
-        reg = 17;
+        registerFile[17] = value;
     }
     else if ($s2 == 0)
     {
-        reg = 18;
+        registerFile[18] = value;
     }
     else if ($s3 == 0)
     {
-        reg = 19;
+        registerFile[19] = value;
     }
     else if ($s4 == 0)
     {
-        reg = 20;
+        registerFile[20] = value;
     }
     else if ($s5 == 0)
     {
-        reg = 21;
+        registerFile[21] = value;
     }
     else if ($s6 == 0)
     {
-        reg = 22;
+        registerFile[22] = value;
     }
     else if ($s7 == 0)
     {
-        reg = 23;
+        registerFile[23] = value;
     }
     else if ($t8 == 0)
     {
-        reg = 24;
+        registerFile[24] = value;
     }
     else if ($t9 == 0)
     {
-        reg = 25;
+        registerFile[25] = value;
     }
 
     else if ($k0 == 0)
     {
-        reg = 26;
+        registerFile[26] = value;
     }
     else if ($k1 == 0)
     {
-        reg = 27;
+        registerFile[27] = value;
     }
     else if ($gp == 0)
     {
-        reg = 28;
+        registerFile[28] = value;
     }
     else if ($sp == 0)
     {
-        reg = 29;
+        registerFile[29] = value;
     }
     else if ($fp == 0)
     {
-        reg = 30;
+        registerFile[30] = value;
     }
     else if ($ra == 0)
     {
-        reg = 31;
+        registerFile[31] = value;
     }
     else
     {
         printf("Error - No RegisterFile Accessed\n");
         exit(1);
     }
+
+    return 0;
 }
 
 /*
