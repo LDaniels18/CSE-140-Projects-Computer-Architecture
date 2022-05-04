@@ -8,6 +8,9 @@
 //     return 0;
 // }
 
+//Global Variables:
+int registerFile[32] = {0}; //RegisterFile initialized to 0
+
 void Decode(char instruction[32]){
     
     printf("\n");
@@ -23,7 +26,7 @@ void Decode(char instruction[32]){
     }
 
     // printf("\n");
-    // printf("the opCode is: %s\n", opCode); // test to display the bits
+     printf("the opCode is: %s\n", opCode); // test to display the bits
 
     // to compare strings we need to create strings to compare to:
     char R_Check[] = "000000";  // A General R Type opCode
@@ -53,7 +56,7 @@ void Decode(char instruction[32]){
     }
 
     // printf("\n");
-    // printf("the Transferred RS is: %s\n", rsCodeTransfer); // test to display the transferred code
+     printf("the Transferred RS is: %s\n", rsCodeTransfer); // test to display the transferred code
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -68,7 +71,7 @@ void Decode(char instruction[32]){
     }
 
     // printf("\n");
-    // printf("the Transferred RT is: %s\n", rtCodeTransfer); // test to display the transferred code
+     printf("the Transferred RT is: %s\n", rtCodeTransfer); // test to display the transferred code
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -83,7 +86,7 @@ void Decode(char instruction[32]){
     }
 
     // printf("\n");
-    // printf("the Transferred RD is: %s\n", rdCodeTransfer); // test to display the transferred code
+     printf("the Transferred RD is: %s\n", rdCodeTransfer); // test to display the transferred code
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -99,7 +102,7 @@ void Decode(char instruction[32]){
     }
 
     // printf("\n");
-    // printf("Shift Amount is: %s\n ", shiftAmount); // test to print out bits
+     printf("Shift Amount is: %s\n ", shiftAmount); // test to print out bits
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -114,7 +117,7 @@ void Decode(char instruction[32]){
     }
 
     // printf("\n");
-    // printf("The Transferred Function Code is: %s\n", functCodeTransfer); // test to display the transferred code
+     printf("The Transferred Function Code is: %s\n", functCodeTransfer); // test to display the transferred code
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -128,7 +131,7 @@ void Decode(char instruction[32]){
         // printf("This is an R-Type instruction!\n");
         printf("\nInstruction Type : R\n");
 
-        // registers(instruction); // passing the char array to the helper functions
+        // registerfile(instruction); // passing the char array to the helper functions
 
         // create various function codes to compare instructions (R-Types):
         char Add_Check[] = "100000";
@@ -178,109 +181,109 @@ void Decode(char instruction[32]){
         {
 
             printf("Operation: and\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Rd: $%d\n", registers(rdCodeTransfer));
-            printf("Shamt: %d\n", registers(shiftAmount));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
+            printf("Rd: $%d\n", registerfile(rdCodeTransfer));
+            printf("Shamt: %d\n", registerfile(shiftAmount));
             printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer)); // need to work on this as well
         }
         else if (value_unsignAdd_check == 0) // 00000001000010011000100000100001 for test
         {
             printf("Operation: addu\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Rd: $%d\n", registers(rdCodeTransfer));
-            printf("Shamt: %d\n", registers(shiftAmount));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
+            printf("Rd: $%d\n", registerfile(rdCodeTransfer));
+            printf("Shamt: %d\n", registerfile(shiftAmount));
             printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer)); // need to work on this as well
         }
         else if (value_And_Check == 0) // 00000001000010011000100000100100 for test
         {
             printf("Operation: and\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Rd: $%d\n", registers(rdCodeTransfer));
-            printf("Shamt: %d\n", registers(shiftAmount));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
+            printf("Rd: $%d\n", registerfile(rdCodeTransfer));
+            printf("Shamt: %d\n", registerfile(shiftAmount));
             printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer));
         }
         else if (value_JumpR_Check == 0) // 00000001000010011000100000001000 for test
         {
             printf("Operation: jr\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Rd: $%d\n", registers(rdCodeTransfer));
-            printf("Shamt: %d\n", registers(shiftAmount));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
+            printf("Rd: $%d\n", registerfile(rdCodeTransfer));
+            printf("Shamt: %d\n", registerfile(shiftAmount));
             printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer));
         }
         else if (value_Nor_Check == 0) // 00000001000010011000100000100111 for test
         {
             printf("Operation: nor\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Rd: $%d\n", registers(rdCodeTransfer));
-            printf("Shamt: %d\n", registers(shiftAmount));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
+            printf("Rd: $%d\n", registerfile(rdCodeTransfer));
+            printf("Shamt: %d\n", registerfile(shiftAmount));
             printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer));
         }
         else if (value_Or_Check == 0) // 00000001000010011000100000100101 for test
         {
             printf("Operation: or\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Rd: $%d\n", registers(rdCodeTransfer));
-            printf("Shamt: %d\n", registers(shiftAmount));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
+            printf("Rd: $%d\n", registerfile(rdCodeTransfer));
+            printf("Shamt: %d\n", registerfile(shiftAmount));
             printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer));
         }
         else if (value_SLT_Check == 0) // 00000001000010011000100000101010 for test
         {
             printf("Operation: slt\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Rd: $%d\n", registers(rdCodeTransfer));
-            printf("Shamt: %d\n", registers(shiftAmount));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
+            printf("Rd: $%d\n", registerfile(rdCodeTransfer));
+            printf("Shamt: %d\n", registerfile(shiftAmount));
             printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer));
         }
         else if (value_SLTU_Check == 0) // 00000001000010011000100000101011 for test
         {
             printf("Operation: sltu\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Rd: $%d\n", registers(rdCodeTransfer));
-            printf("Shamt: %d\n", registers(shiftAmount));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
+            printf("Rd: $%d\n", registerfile(rdCodeTransfer));
+            printf("Shamt: %d\n", registerfile(shiftAmount));
             printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer));
         }
         else if (value_SLL_Check == 0) // 00000001000010011000100000000000 for test
         {
             printf("Operation: sll\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Rd: $%d\n", registers(rdCodeTransfer));
-            printf("Shamt: %d\n", registers(shiftAmount));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
+            printf("Rd: $%d\n", registerfile(rdCodeTransfer));
+            printf("Shamt: %d\n", registerfile(shiftAmount));
             printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer));
         }
         else if (value_SRL_Check == 0) // 00000001000010011000100000000010 for test
         {
             printf("Operation: srl\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Rd: $%d\n", registers(rdCodeTransfer));
-            printf("Shamt: %d\n", registers(shiftAmount));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
+            printf("Rd: $%d\n", registerfile(rdCodeTransfer));
+            printf("Shamt: %d\n", registerfile(shiftAmount));
             printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer));
         }
         else if (value_Subtract_Check == 0) // 00000001000010011000100000100010 for test
         {
             printf("Operation: sub\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Rd: $%d\n", registers(rdCodeTransfer));
-            printf("Shamt: %d\n", registers(shiftAmount));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
+            printf("Rd: $%d\n", registerfile(rdCodeTransfer));
+            printf("Shamt: %d\n", registerfile(shiftAmount));
             printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer));
         }
         else if (value_SubU_Check == 0) // 00000001010000111011000000100011 for test
         {
             printf("Operation: subu\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
-            printf("Rd: $%d\n", registers(rdCodeTransfer));
-            printf("Shamt: %d\n", registers(shiftAmount));      // need to work on this as well
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
+            printf("Rd: $%d\n", registerfile(rdCodeTransfer));
+            printf("Shamt: %d\n", registerfile(shiftAmount));      // need to work on this as well
             printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer)); // need to work on this as well
         }
         else
@@ -324,7 +327,7 @@ void Decode(char instruction[32]){
         }
 
         // printf("\n");
-        // printf("the Jump Immediate is: %s\n", jumpImmediate); // test to display the bits
+         printf("the Jump Immediate is: %s\n", jumpImmediate); // test to display the bits
         /////////////////////////////////////////////////////////////////////////////////////////////////////
 
         printf("Instruction Type : J\n");
@@ -345,7 +348,7 @@ void Decode(char instruction[32]){
         }
 
         // printf("\n");
-        // printf("the Immediate is: %s\n", immediate); // test to display the bits
+         printf("the Immediate is: %s\n", immediate); // test to display the bits
         //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // Function for I
@@ -410,120 +413,120 @@ void Decode(char instruction[32]){
         {
 
             printf("The operation is Addi\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
             printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_unAdd_Check == 0)
         {
             printf("Operation: addiu\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
             printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_and_Imm == 0)
         {
             printf("Operation: andi\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
             printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_branch_Equal == 0)
         {
             printf("Operation: beq\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
             printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_branch_Not_equal == 0)
         {
             printf("Operation: bne\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
             printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_Load_Byte_Unsign == 0)
         {
             printf("Operation: ibu\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
             printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_Halfword_Unsign == 0) // 10010101010000110000000000101010  --to test
         {
             printf("Operation: lhu\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
             printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_Load_Linked == 0)
         {
             printf("Operation: ll\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
             printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_Load_Upper_Imm == 0)
         {
             printf("Operation: lui\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
             printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_Load_Word == 0)
         {
             printf("Operation: lw\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
             printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_Or_Imm == 0)
         {
             printf("Operation: ori\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
             printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_Less_Than_Imm == 0)
         {
             printf("Operation: slti\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
             printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_Less_Than_Unsign == 0)
         {
             printf("Operation: sltiu\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
             printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_Store_Byte == 0)
         {
             printf("Operation: sb\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
             printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_Store_Cond == 0)
         {
             printf("Operation: sc\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
             printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_Store_Halfword == 0)
         {
             printf("Operation: sh\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
             printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else if (value_Store_word == 0)
         {
             printf("Operation: sw\n");
-            printf("Rs: $%d\n", registers(rsCodeTransfer));
-            printf("Rt: $%d\n", registers(rtCodeTransfer));
+            printf("Rs: $%d\n", registerfile(rsCodeTransfer));
+            printf("Rt: $%d\n", registerfile(rtCodeTransfer));
             printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
         }
         else
@@ -538,12 +541,14 @@ void Decode(char instruction[32]){
 }// end of decode function
 
 // a function to get the integer of used register:
-int registers(char binCode[5])
-{
-    // printf("bin code is: %s\n", binCode);
+int registerfile(char binCode[5])
+{   
+    printf("/////////////////// -- Within Register Function -- //////////////////\n");
+     printf("Binary Code currently looked at is: %s\n", binCode);
 
     int reg; // to hold an actual integer to return
 
+    //each char array represents a real register in MIPS 
     char bin_0[] = "00000";
     char bin_1[] = "00001";
     char bin_2[] = "00010";
@@ -577,207 +582,210 @@ int registers(char binCode[5])
     char bin_30[] = "11110";
     char bin_31[] = "11111";
 
-    // make string compare variable and function:
-    int bin_value_0;
-    int bin_value_1;
-    int bin_value_2;
-    int bin_value_3;
-    int bin_value_4;
-    int bin_value_5;
-    int bin_value_6;
-    int bin_value_7;
-    int bin_value_8;
-    int bin_value_9;
-    int bin_value_10;
-    int bin_value_11;
-    int bin_value_12;
-    int bin_value_13;
-    int bin_value_14;
-    int bin_value_15;
-    int bin_value_16;
-    int bin_value_17;
-    int bin_value_18;
-    int bin_value_19;
-    int bin_value_20;
-    int bin_value_21;
-    int bin_value_22;
-    int bin_value_23;
-    int bin_value_24;
-    int bin_value_25;
-    int bin_value_26;
-    int bin_value_27;
-    int bin_value_28;
-    int bin_value_29;
-    int bin_value_30;
-    int bin_value_31;
+    //Register Files:
 
-    bin_value_0 = strcmp(binCode, bin_0);
-    bin_value_1 = strcmp(binCode, bin_1);
-    bin_value_2 = strcmp(binCode, bin_2);
-    bin_value_3 = strcmp(binCode, bin_3);
-    bin_value_4 = strcmp(binCode, bin_4);
-    bin_value_5 = strcmp(binCode, bin_5);
-    bin_value_6 = strcmp(binCode, bin_6);
-    bin_value_7 = strcmp(binCode, bin_7);
-    bin_value_8 = strcmp(binCode, bin_8);
-    bin_value_9 = strcmp(binCode, bin_9);
-    bin_value_10 = strcmp(binCode, bin_10);
-    bin_value_11 = strcmp(binCode, bin_11);
-    bin_value_12 = strcmp(binCode, bin_12);
-    bin_value_13 = strcmp(binCode, bin_13);
-    bin_value_14 = strcmp(binCode, bin_14);
-    bin_value_15 = strcmp(binCode, bin_15);
-    bin_value_16 = strcmp(binCode, bin_16);
-    bin_value_17 = strcmp(binCode, bin_17);
-    bin_value_18 = strcmp(binCode, bin_18);
-    bin_value_19 = strcmp(binCode, bin_19);
-    bin_value_20 = strcmp(binCode, bin_20);
-    bin_value_21 = strcmp(binCode, bin_21);
-    bin_value_22 = strcmp(binCode, bin_22);
-    bin_value_23 = strcmp(binCode, bin_23);
-    bin_value_24 = strcmp(binCode, bin_24);
-    bin_value_25 = strcmp(binCode, bin_25);
-    bin_value_26 = strcmp(binCode, bin_26);
-    bin_value_27 = strcmp(binCode, bin_27);
-    bin_value_28 = strcmp(binCode, bin_28);
-    bin_value_29 = strcmp(binCode, bin_29);
-    bin_value_30 = strcmp(binCode, bin_30);
-    bin_value_31 = strcmp(binCode, bin_31);
+    int $zero; 
+    int $at;
+    int $v0;
+    int $v1;
+    int $a0;
+    int $a1;
+    int $a2;
+    int $a3;
+    int $t0;
+    int $t1;
+    int $t2;
+    int $t3;
+    int $t4;
+    int $t5;
+    int $t6;
+    int $t7;
+    int $s0;
+    int $s1;
+    int $s2;
+    int $s3;
+    int $s4;
+    int $s5;
+    int $s6;
+    int $s7;
+    int $t8;
+    int $t9;
+    int $k0;
+    int $k1;
+    int $gp;
+    int $sp;
+    int $fp;
+    int $ra;
 
-    if (bin_value_0 == 0)
+    //comparing two binary values to then place the int 1 or 0 into corresponding RegFile:
+
+    $zero = strcmp(binCode, bin_0);
+    $at = strcmp(binCode, bin_1);
+    $v0 = strcmp(binCode, bin_2);
+    $v1 = strcmp(binCode, bin_3);
+    $a0 = strcmp(binCode, bin_4);
+    $a1 = strcmp(binCode, bin_5);
+    $a2 = strcmp(binCode, bin_6);
+    $a3 = strcmp(binCode, bin_7);
+    $t0 = strcmp(binCode, bin_8);
+    $t1 = strcmp(binCode, bin_9);
+    $t2 = strcmp(binCode, bin_10);
+    $t3 = strcmp(binCode, bin_11);
+    $t4 = strcmp(binCode, bin_12);
+    $t5 = strcmp(binCode, bin_13);
+    $t6 = strcmp(binCode, bin_14);
+    $t7 = strcmp(binCode, bin_15);
+    $s0 = strcmp(binCode, bin_16);
+    $s1 = strcmp(binCode, bin_17);
+    $s2 = strcmp(binCode, bin_18);
+    $s3 = strcmp(binCode, bin_19);
+    $s4 = strcmp(binCode, bin_20);
+    $s5 = strcmp(binCode, bin_21);
+    $s6 = strcmp(binCode, bin_22);
+    $s7 = strcmp(binCode, bin_23);
+    $t8 = strcmp(binCode, bin_24);
+    $t9 = strcmp(binCode, bin_25);
+    $k0 = strcmp(binCode, bin_26);
+    $k1 = strcmp(binCode, bin_27);
+    $gp = strcmp(binCode, bin_28);
+    $sp = strcmp(binCode, bin_29);
+    $fp = strcmp(binCode, bin_30);
+    $ra = strcmp(binCode, bin_31);
+
+    if ($zero == 0)
     {
-
         reg = 0;
     }
-    else if (bin_value_1 == 0)
+    else if ($at == 0)
     {
         reg = 1;
     }
-    else if (bin_value_2 == 0)
+    else if ($v0 == 0)
     {
+        reg = 2;
     }
-    else if (bin_value_3 == 0)
+    else if ($v1 == 0)
     {
         reg = 3;
     }
-    else if (bin_value_4 == 0)
+    else if ($a0 == 0)
     {
         reg = 4;
     }
-    else if (bin_value_5 == 0)
+    else if ($a1 == 0)
     { // 5
         reg = 5;
     }
-    else if (bin_value_6 == 0)
+    else if ($a2 == 0)
     {
         reg = 6;
     }
-    else if (bin_value_7 == 0)
+    else if ($a3 == 0)
     {
 
         reg = 7;
     }
-    else if (bin_value_8 == 0)
+    else if ($t0 == 0)
     {
         reg = 8;
     }
-    else if (bin_value_9 == 0)
+    else if ($t1 == 0)
     {
         reg = 9;
     }
-    else if (bin_value_10 == 0)
+    else if ($t2 == 0)
     { // 10
         reg = 10;
     }
-    else if (bin_value_11 == 0)
+    else if ($t3 == 0)
     {
         reg = 11;
     }
-    else if (bin_value_12 == 0)
+    else if ($t4 == 0)
     {
         reg = 12;
     }
-    else if (bin_value_13 == 0)
+    else if ($t5 == 0)
     {
         reg = 13;
     }
-    else if (bin_value_14 == 0)
+    else if ($t6 == 0)
     {
         reg = 14;
     }
-    else if (bin_value_15 == 0)
+    else if ($t7 == 0)
     { // 15
         reg = 15;
     }
-    else if (bin_value_16 == 0)
+    else if ($s0 == 0)
     {
         reg = 16;
     }
-    else if (bin_value_17 == 0)
+    else if ($s1 == 0)
     {
         reg = 17;
     }
-    else if (bin_value_18 == 0)
+    else if ($s2 == 0)
     {
         reg = 18;
     }
-    else if (bin_value_19 == 0)
+    else if ($s3 == 0)
     {
         reg = 19;
     }
-    else if (bin_value_20 == 0)
+    else if ($s4 == 0)
     {
         reg = 20;
     }
-    else if (bin_value_21 == 0)
+    else if ($s5 == 0)
     {
         reg = 21;
     }
-    else if (bin_value_22 == 0)
+    else if ($s6 == 0)
     {
         reg = 22;
     }
-    else if (bin_value_23 == 0)
+    else if ($s7 == 0)
     {
         reg = 23;
     }
-    else if (bin_value_24 == 0)
+    else if ($t8 == 0)
     {
         reg = 24;
     }
-    else if (bin_value_25 == 0)
+    else if ($t9 == 0)
     {
         reg = 25;
     }
 
-    else if (bin_value_26 == 0)
+    else if ($k0 == 0)
     {
         reg = 26;
     }
-    else if (bin_value_27 == 0)
+    else if ($k1 == 0)
     {
         reg = 27;
     }
-    else if (bin_value_28 == 0)
+    else if ($gp == 0)
     {
         reg = 28;
     }
-    else if (bin_value_29 == 0)
+    else if ($sp == 0)
     {
         reg = 29;
     }
-    else if (bin_value_30 == 0)
+    else if ($fp == 0)
     {
         reg = 30;
     }
-    else if (bin_value_31 == 0)
+    else if ($ra == 0)
     {
         reg = 31;
     }
     else
     {
-        // printf("Error\n");
-        return 0;
+        printf("Error - No RegisterFile Accessed\n");
+        exit(1);
     }
 
     return reg; // return the int number to be displayed
@@ -839,6 +847,252 @@ int binToDec(char binCode[])
     }
 
     return 0; //so the compiler doesnt shoot an "non-return" warning
+}
+
+int RegisterValuestoRegisterFiles(char binCode[5], int value){
+
+    printf("/////////////////// -- Within Value to Register File Function -- //////////////////\n");
+     printf("Binary Code currently looked at is: %s\n", binCode);
+
+    //each char array represents a real register in MIPS 
+    char bin_0[] = "00000";
+    char bin_1[] = "00001";
+    char bin_2[] = "00010";
+    char bin_3[] = "00011";
+    char bin_4[] = "00100";
+    char bin_5[] = "00101";
+    char bin_6[] = "00110";
+    char bin_7[] = "00111";
+    char bin_8[] = "01000";
+    char bin_9[] = "01001";
+    char bin_10[] = "01010";
+    char bin_11[] = "01011";
+    char bin_12[] = "01100";
+    char bin_13[] = "01101";
+    char bin_14[] = "01110";
+    char bin_15[] = "01111";
+    char bin_16[] = "10000";
+    char bin_17[] = "10001";
+    char bin_18[] = "10010";
+    char bin_19[] = "10011";
+    char bin_20[] = "10100";
+    char bin_21[] = "10101";
+    char bin_22[] = "10110";
+    char bin_23[] = "10111";
+    char bin_24[] = "11000";
+    char bin_25[] = "11001";
+    char bin_26[] = "11010";
+    char bin_27[] = "11011";
+    char bin_28[] = "11100";
+    char bin_29[] = "11101";
+    char bin_30[] = "11110";
+    char bin_31[] = "11111";
+
+    //Register Files:
+
+    int $zero; 
+    int $at;
+    int $v0;
+    int $v1;
+    int $a0;
+    int $a1;
+    int $a2;
+    int $a3;
+    int $t0;
+    int $t1;
+    int $t2;
+    int $t3;
+    int $t4;
+    int $t5;
+    int $t6;
+    int $t7;
+    int $s0;
+    int $s1;
+    int $s2;
+    int $s3;
+    int $s4;
+    int $s5;
+    int $s6;
+    int $s7;
+    int $t8;
+    int $t9;
+    int $k0;
+    int $k1;
+    int $gp;
+    int $sp;
+    int $fp;
+    int $ra;
+
+    //comparing two binary values to then place the int 1 or 0 into corresponding RegFile:
+
+    $zero = strcmp(binCode, bin_0);
+    $at = strcmp(binCode, bin_1);
+    $v0 = strcmp(binCode, bin_2);
+    $v1 = strcmp(binCode, bin_3);
+    $a0 = strcmp(binCode, bin_4);
+    $a1 = strcmp(binCode, bin_5);
+    $a2 = strcmp(binCode, bin_6);
+    $a3 = strcmp(binCode, bin_7);
+    $t0 = strcmp(binCode, bin_8);
+    $t1 = strcmp(binCode, bin_9);
+    $t2 = strcmp(binCode, bin_10);
+    $t3 = strcmp(binCode, bin_11);
+    $t4 = strcmp(binCode, bin_12);
+    $t5 = strcmp(binCode, bin_13);
+    $t6 = strcmp(binCode, bin_14);
+    $t7 = strcmp(binCode, bin_15);
+    $s0 = strcmp(binCode, bin_16);
+    $s1 = strcmp(binCode, bin_17);
+    $s2 = strcmp(binCode, bin_18);
+    $s3 = strcmp(binCode, bin_19);
+    $s4 = strcmp(binCode, bin_20);
+    $s5 = strcmp(binCode, bin_21);
+    $s6 = strcmp(binCode, bin_22);
+    $s7 = strcmp(binCode, bin_23);
+    $t8 = strcmp(binCode, bin_24);
+    $t9 = strcmp(binCode, bin_25);
+    $k0 = strcmp(binCode, bin_26);
+    $k1 = strcmp(binCode, bin_27);
+    $gp = strcmp(binCode, bin_28);
+    $sp = strcmp(binCode, bin_29);
+    $fp = strcmp(binCode, bin_30);
+    $ra = strcmp(binCode, bin_31);
+
+    if ($zero == 0)
+    {
+        registerFile[0] = value;
+    }
+    else if ($at == 0)
+    {
+        registerFile[1] = value;
+    }
+    else if ($v0 == 0)
+    {
+        registerFile[2] = value;
+    }
+    else if ($v1 == 0)
+    {
+        reg = 3;
+    }
+    else if ($a0 == 0)
+    {
+        reg = 4;
+    }
+    else if ($a1 == 0)
+    { // 5
+        reg = 5;
+    }
+    else if ($a2 == 0)
+    {
+        reg = 6;
+    }
+    else if ($a3 == 0)
+    {
+
+        reg = 7;
+    }
+    else if ($t0 == 0)
+    {
+        reg = 8;
+    }
+    else if ($t1 == 0)
+    {
+        reg = 9;
+    }
+    else if ($t2 == 0)
+    { // 10
+        reg = 10;
+    }
+    else if ($t3 == 0)
+    {
+        reg = 11;
+    }
+    else if ($t4 == 0)
+    {
+        reg = 12;
+    }
+    else if ($t5 == 0)
+    {
+        reg = 13;
+    }
+    else if ($t6 == 0)
+    {
+        reg = 14;
+    }
+    else if ($t7 == 0)
+    { // 15
+        reg = 15;
+    }
+    else if ($s0 == 0)
+    {
+        reg = 16;
+    }
+    else if ($s1 == 0)
+    {
+        reg = 17;
+    }
+    else if ($s2 == 0)
+    {
+        reg = 18;
+    }
+    else if ($s3 == 0)
+    {
+        reg = 19;
+    }
+    else if ($s4 == 0)
+    {
+        reg = 20;
+    }
+    else if ($s5 == 0)
+    {
+        reg = 21;
+    }
+    else if ($s6 == 0)
+    {
+        reg = 22;
+    }
+    else if ($s7 == 0)
+    {
+        reg = 23;
+    }
+    else if ($t8 == 0)
+    {
+        reg = 24;
+    }
+    else if ($t9 == 0)
+    {
+        reg = 25;
+    }
+
+    else if ($k0 == 0)
+    {
+        reg = 26;
+    }
+    else if ($k1 == 0)
+    {
+        reg = 27;
+    }
+    else if ($gp == 0)
+    {
+        reg = 28;
+    }
+    else if ($sp == 0)
+    {
+        reg = 29;
+    }
+    else if ($fp == 0)
+    {
+        reg = 30;
+    }
+    else if ($ra == 0)
+    {
+        reg = 31;
+    }
+    else
+    {
+        printf("Error - No RegisterFile Accessed\n");
+        exit(1);
+    }
 }
 
 /*

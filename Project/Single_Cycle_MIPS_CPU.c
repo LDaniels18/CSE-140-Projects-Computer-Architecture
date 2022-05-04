@@ -19,6 +19,7 @@ use: ./LaFrance_Iveth (always use after compiling to see output, run the executa
 /*
 Any Used Resources to be Cited:
 For the Fetch Function (While Loop Process): https://stackoverflow.com/questions/3501338/c-read-file-line-by-line
+For Bitwize Operations (in Decode): https://www.scaler.com/topics/c/bitwise-operators-in-c/
 
 */
 
@@ -27,6 +28,7 @@ For the Fetch Function (While Loop Process): https://stackoverflow.com/questions
 #include <stdlib.h>
 #include "Decoder.h"
 #include "Execute.h"
+#undef mips 
 
 #define MAX_LENGTH 256 // using a length variable to help with reading the line of text
 
@@ -37,10 +39,14 @@ unsigned char current_instruction[MAX_LENGTH];     // a universal pointer for in
 int i = 0;                                         // representing the instruction in the array:
 int instruction_index = 4;                         // representing the index in the instruction counter
 
+
+int d_mem[32] = { 0 }; //D Memory File 
+int alu_op[4] = {0}; //ALU Operation binary code
+
 ///////////////////////////////////////////////////////////////////////
 
 // Never changing filename (obviously change when you recieve a finalized file):
-const char *filename = "sample_ins.txt";
+const char *filename = "1_ins.txt";
 
 //////////////////////////////////////////////////////////////////////
 
@@ -60,7 +66,7 @@ int main()
     // we need a bit string (character array) to carry the instruction:
     char instruction[MAX_LENGTH]; // to carry the new 32 bit instruction
 
-    printf("Fetching the Instruction...\n");
+    printf("Reading the Text File.... c\n");
 
     // creating an File Pointer object:
     FILE *file_accessor; // object
@@ -75,7 +81,7 @@ int main()
     }            // end of if
     else
     {
-        printf("Instruction(s) Detected... now fetching!\n");
+        printf("Instruction(s) Detected... now laoding onto Table!\n");
         printf("\n");
 
         // to read the file, line by line and add the contents to our carry variable
@@ -84,7 +90,7 @@ int main()
 
             // indicating that instruction was fetched:
             printf("\n");
-            printf("Instruction Fetched!\n");
+            printf("Instruction Loaded!\n");
 
             // to get rid of the newline (for each line):
             instruction[strcspn(instruction, "\n")] = 0;
@@ -92,13 +98,13 @@ int main()
             instruction_counter[instruction_index][32] = instruction; // the instruction gets loaded at a particular location 4 spaces from one another or PC(4)
 
             // to print the instruction bit by bit -- tests:
-            printf("Your 32 bit instruction was: %s\n", instruction_counter[instruction_index][32]);
-            printf("\n");
-            printf("Instruction List Index position: %d\n", instruction_index);
+            // printf("Your 32 bit instruction was: %s\n", instruction_counter[instruction_index][32]);
+            // printf("\n");
+            // printf("Instruction List Index position: %d\n", instruction_index);
 
             ////////////////////// --starting the CPU -- //////////////////////////
             printf("\n");
-            printf("Passing the instruction and starting...\n");
+            printf("Passing the instruction and starting CPU...\n");
             CPU_Process(instruction_counter[instruction_index][32]);
             ///////////////////////////////////////////////////////////////////////
 
@@ -127,13 +133,20 @@ int main()
 
 } // end of main function
 
+/*Important Notes to consider:
+We only need to be able to run instructions:
+LW, SW, ADD, SUB, AND, OR, SLT, NOR, BEQ, J
+To get at least 80 points on the project.....
+*/
+
 void CPU_Process(char instruction[32])
 {
     printf("\n");
     printf("////////////////////////////////// -- CPU Process -- ///////////////////////////////////\n");
-    printf("Preparing to fetch PC values the 32 bit instruction....\n");
+    printf("Single Cycle CPU has started with 32 bit instruction: %s", instruction);
+    
     fetch();
-    printf("\n");
+    //printf("\n");
 
     printf("\n");
     Decode(instruction);
@@ -149,20 +162,19 @@ int fetch()
 {
     printf("\n");
     printf("////////////////////////////////// -- Fetch -- /////////////////////////////////////\n");
-    printf("welcome to fetch!!\n");
+    //printf("Welcome to fetch!!\n");
 
     i++; // representing the instruction (everytime we grab an instruction we must update i by 1 so the PC counter can point to it)
-    printf("printing the number of the instruction we are looking at:  %d\n", i);
+    printf("Current Instruction:  %d\n", i);
 
     PC = 4 * i; // always update the PC everytime you read an instruction
-    printf("printing the PC char:  %d\n", PC);
+    printf("PC Pointing to Index:  %d\n", PC);
 
     int next_PC = PC + 4;
-    printf("printing the next_pc: %d\n", next_PC);
+    printf("Updating the Next PC index: %d\n", next_PC);
 
     return 0; // ending the instruction
 } // end of fetch
-
 
 
 ///////////////////// ---first ver of code --///////////////////
