@@ -140,7 +140,18 @@ int DecodeAndExecute(char instruction[32]){
     printf("Function Code is: %s\n", functCodeTransfer); // test to display the transferred code
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    
+
+    //////////////////////////////////////////--Immediate (Type I)--/////////////////////////////////////////
+        char immediate[16] = "1111111111111111"; // this is a general setting for the opCode (to not leave blank)... will be set by the for loop below:
+        for (int j = 0; j < 17; j++)
+        {
+            immediate[j] = instruction[j + 16];
+            // printf("Immediate bit: %c\n ", immediate[j]); // test to print out bits
+        }
+
+        // printf("\n");
+        // printf("Immediate: %s\n", immediate); // test to display the bits
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////
     printf("\n");
     //Assigning the RS and RT values:
     printf("Finding RS and RT Values.... \n");
@@ -152,7 +163,7 @@ int DecodeAndExecute(char instruction[32]){
     printf("Rt value = %d\n", rtValue);
 
     printf("\n");
-    printf("Displaying Decoded Parts....");
+    printf("Displaying Decoded Parts....\n");
 
     // Determining Type of Instruction:
     // creating logical loops to determine type by opCode:
@@ -486,17 +497,6 @@ int DecodeAndExecute(char instruction[32]){
     else
     {
 
-        //////////////////////////////////////////--Immediate (Type I)--/////////////////////////////////////////
-        char immediate[] = "1111111111111111"; // this is a general setting for the opCode (to not leave blank)... will be set by the for loop below:
-        for (int j = 0; j < 17; j++)
-        {
-            immediate[j] = instruction[j + 16];
-            // printf("Immediate bit: %c\n ", immediate[j]); // test to print out bits
-        }
-
-        // printf("\n");
-         printf("the Immediate is: %s\n", immediate); // test to display the bits
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // Function for I
         printf("Instruction Type: I\n");
@@ -646,13 +646,19 @@ int DecodeAndExecute(char instruction[32]){
             
             //needing to immediately assign a value found from memory:
             valueFromMemory = Memory(rsValue);
+            printf("Value from memory:%d\n", valueFromMemory); //test
 
             //grabbing the new register and assigning ut to the rt register:
-            rtValue = RegisterValuestoRegisterFiles(rtCodeTransfer,valueFromMemory);
+            char *RTValue;
+            //strcpy(RTValue, RegisterValuestoRegisterFiles(rtCodeTransfer,valueFromMemory));
+            ///// --- need to work on this
+            RTValue = RegisterValuestoRegisterFiles(rtCodeTransfer,valueFromMemory);
+            printf("Value of RTVALUE: %s\n", RTValue);
+            //////////////////////////////////////
             printf("Executing the Instruction...\n");
 
-            printf("Target Register: $ %d", binToDec(rtCodeTransfer));
-            printf(", Value loaded: %d", rsValue);
+            printf("Target Register: $%d", binToDec(RTValue));
+            printf(", Value loaded: %d", valueFromMemory);
         }
         else if (value_Or_Imm == 0)
         {
@@ -1049,11 +1055,11 @@ int binToDec(char binCode[])
     return 0; //so the compiler doesnt shoot an "non-return" warning
 }
 
-int RegisterValuestoRegisterFiles(char binCode[5], int value){
+char RegisterValuestoRegisterFiles(char binCode[5], int value){
 
     //test
-    //printf("/////////////////// -- Within Value to Register File Function -- //////////////////\n");
-    //printf("Binary Code currently looked at is: %s\n", binCode);
+    printf("/////////////////// -- Within Value to Register File Function -- //////////////////\n");
+    printf("Binary Code currently looked at is: %s\n", binCode);
 
     //each char array represents a real register in MIPS 
     char bin_0[] = "00000";
@@ -1159,135 +1165,169 @@ int RegisterValuestoRegisterFiles(char binCode[5], int value){
     $fp = strcmp(binCode, bin_30);
     $ra = strcmp(binCode, bin_31);
 
-    if ($zero == 0)
+    if ($zero == 0 || value == 0)
     {
+       
         registerFile[0] = value;
+        return $zero;
     }
     else if ($at == 0)
     {
         registerFile[1] = value;
+        return $at;
     }
     else if ($v0 == 0)
     {
         registerFile[2] = value;
+        return $v0;
     }
     else if ($v1 == 0)
     {
         registerFile[3] = value;
+        return $v1;
     }
     else if ($a0 == 0)
     {
         registerFile[4] = value;
+        return $a0;
+
     }
     else if ($a1 == 0)
     { // 5
         registerFile[5] = value;
+        return $a1;
     }
     else if ($a2 == 0)
     {
         registerFile[6] = value;
+        return $a2;
     }
     else if ($a3 == 0)
     {
 
         registerFile[7] = value;
+        return $a3;
     }
     else if ($t0 == 0)
     {
         registerFile[8] = value;
+        return $t0;
     }
     else if ($t1 == 0)
     {
-         registerFile[9] = value;
+        registerFile[9] = value;
+        return $t1;
     }
     else if ($t2 == 0)
     { // 10
-        registerFile[10] = value;
+       registerFile[10] = value;
+       return $t2;
     }
     else if ($t3 == 0)
     {
         registerFile[11] = value;
+        return $t3;
     }
     else if ($t4 == 0)
     {
         registerFile[12] = value;
+        return $t4;
     }
-    else if ($t5 == 0)
+    else if ($t5 == 0 || value == 13)
     {
         registerFile[13] = value;
+        return $t5;
     }
     else if ($t6 == 0)
     {
         registerFile[14] = value;
+        return $t6;
     }
     else if ($t7 == 0)
     { // 15
         registerFile[15] = value;
+        return $t7;
     }
     else if ($s0 == 0)
     {
         registerFile[16] = value;
+        return $s0;
     }
     else if ($s1 == 0)
     {
         registerFile[17] = value;
+        return $s1;
     }
     else if ($s2 == 0)
     {
         registerFile[18] = value;
+        return $s2;
     }
     else if ($s3 == 0)
     {
         registerFile[19] = value;
+        return $s3;
     }
     else if ($s4 == 0)
     {
         registerFile[20] = value;
+        return $s4;
     }
     else if ($s5 == 0)
     {
         registerFile[21] = value;
+        return $s5;
     }
     else if ($s6 == 0)
     {
         registerFile[22] = value;
+        return $s6;
     }
     else if ($s7 == 0)
     {
         registerFile[23] = value;
+        return $s7;
     }
     else if ($t8 == 0)
     {
         registerFile[24] = value;
+        return $t8;
     }
     else if ($t9 == 0)
     {
         registerFile[25] = value;
+        return $t9;
     }
 
     else if ($k0 == 0)
     {
         registerFile[26] = value;
+        return $k0;
     }
     else if ($k1 == 0)
     {
         registerFile[27] = value;
+        return $k1;
     }
     else if ($gp == 0)
     {
         registerFile[28] = value;
+        return $gp;
     }
     else if ($sp == 0)
     {
         registerFile[29] = value;
+        return $sp;
     }
     else if ($fp == 0)
     {
         registerFile[30] = value;
+        return $fp;
     }
     else if ($ra == 0)
     {
         registerFile[31] = value;
+        return $ra;
     }
     else
     {
@@ -1301,14 +1341,17 @@ int RegisterValuestoRegisterFiles(char binCode[5], int value){
 int Memory(int address){
 
     //we can return some int number directly from the memory array;
-    return d_mem[address];
+
+    printf("Loading the address from memory...\n");
+    return d_mem[address] = address;
 }
 
 int WriteBack(int address, int value){
     //assigning the value directly to memory;
     d_mem[address] = value;
     printf("////////////////////////////// -- Write Back -- ///////////////////////////\n");
-    printf("Addres is: %d and value is: %d\n", address,value);
+    printf("Address is: 0x%x and value is: %d\n", address, value);
+    printf("\n");
     return 0;
 }
 

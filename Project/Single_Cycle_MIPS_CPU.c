@@ -41,7 +41,7 @@ int totalClockCycles = 0;
 ///////////////////////////////////////////////////////////////////////
 
 // Never changing filename (obviously change when you recieve a finalized file):
-const char *filename = "1_ins.txt";
+const char *filename = "sample_part1.txt";
 
 //////////////////////////////////////////////////////////////////////
 
@@ -54,7 +54,7 @@ int fetch();                           // to fetch instructions for the PC count
 int main()
 {
     printf("\n");
-    printf("////////////////////////////////// -- Main -- ///////////////////////////////////");
+    printf("////////////////////////////////// -- Main -- ///////////////////////////////////\n");
     printf("Welcome to our Single Cycle MIPS CPU!\n");
 
     ///////////////// -- Grabbing Instructions -- ///////////////////////////////////////////////////////
@@ -77,14 +77,12 @@ int main()
     else
     {
         printf("Instruction(s) Detected... now laoding onto Table!\n");
-        printf("\n");
 
         // to read the file, line by line and add the contents to our carry variable
         while (fgets(instruction, MAX_LENGTH, file_accessor))
         { // going to the line
 
             // indicating that instruction was fetched:
-            printf("\n");
             printf("Instruction Loaded!\n");
 
             // to get rid of the newline (for each line):
@@ -98,7 +96,6 @@ int main()
             // printf("Instruction List Index position: %d\n", instruction_index);
 
             ////////////////////// --starting the CPU -- //////////////////////////
-            printf("\n");
             printf("Passing the instruction and starting CPU...\n");
             CPU_Process(instruction_counter[instruction_index][32]);
             ///////////////////////////////////////////////////////////////////////
@@ -149,8 +146,8 @@ void CPU_Process(char instruction[32])
     printf("\n");
     totalClockCycles = totalClockCycles + 1; //Instruction is done so increament clock
     printf("Total Clock Cycles: %d\n", totalClockCycles);
-    printf("End of Instruction Operation....");
-
+    printf("End of Instruction Operation....\n");
+    printf("///////////////////////////////////////////// -- END -- ////////////////////////////////////////////////////\n");
 
 } // end of CPU Process Function
 
