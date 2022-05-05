@@ -37,6 +37,7 @@ unsigned char current_instruction[MAX_LENGTH];     // a universal pointer for in
 int i = 0;                                         // representing the instruction in the array:
 int instruction_index = 4;                         // representing the index in the instruction counter
 int totalClockCycles = 0;
+int pc_val = 0;
 
 ///////////////////////////////////////////////////////////////////////
 
@@ -141,7 +142,7 @@ void CPU_Process(char instruction[32])
     fetch();
    
     printf("Preparing to Decode the Instruction....");
-    DecodeAndExecute(instruction);
+    DecodeAndExecute(instruction, pc_val);
 
     printf("\n");
     totalClockCycles = totalClockCycles + 1; //Instruction is done so increament clock
@@ -163,11 +164,12 @@ int fetch()
 
     PC = 4 * i; // always update the PC everytime you read an instruction
     printf("PC Pointing to Index:  %d\n", PC);
+    pc_val = PC;
 
     int next_PC = PC + 4;
     printf("Updating the Next PC index: %d\n", next_PC);
 
-    return 0; // ending the instruction
+    return pc_val; // ending the instruction
 
 } // end of fetch
 
