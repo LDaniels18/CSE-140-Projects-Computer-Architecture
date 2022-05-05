@@ -38,8 +38,6 @@ int i = 0;                                         // representing the instructi
 int instruction_index = 4;                         // representing the index in the instruction counter
 int totalClockCycles = 0;
 
-int d_mem[32] = { 0 }; //D Memory File 
-
 ///////////////////////////////////////////////////////////////////////
 
 // Never changing filename (obviously change when you recieve a finalized file):
@@ -173,6 +171,7 @@ int fetch()
     printf("Updating the Next PC index: %d\n", next_PC);
 
     return 0; // ending the instruction
+
 } // end of fetch
 
 

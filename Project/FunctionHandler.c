@@ -11,6 +11,9 @@
 //Global Variables:
 int registerFile[32] = {0}; //RegisterFile initialized to 0
 char aluOp[4]; //ALU Operation binary code
+int d_mem[32] = { 0 }; //D MemoryFile -- represents memory of 32 bits
+int alu_zero = 0;
+
 /*
         --schema for the ALU OP (Does not need to be very sepcific)
             aluOp[0] = "00"; //Load Word Instruction
@@ -22,10 +25,12 @@ char aluOp[4]; //ALU Operation binary code
 int DecodeAndExecute(char instruction[32]){
 
     //to hold integers representing the Register values - using MIPS nomenclature:
-
     int rsValue = 0;
     int rdValue = 0;
     int rtValue = 0;
+
+    // variable to hole the value from memory:
+    int valueFromMemory;
     
     //Begining the Decoding Process:
     printf("\n");
@@ -624,6 +629,30 @@ int DecodeAndExecute(char instruction[32]){
             printf("Rs: $%d\n", registerfile(rsCodeTransfer));
             printf("Rt: $%d\n", registerfile(rtCodeTransfer));
             printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
+
+            printf("///////////////////////////// -- Execute -- ///////////////////////////////////\n");
+            //Adding work for ALU and then to execute:
+
+            printf("Determining the ALU Operation....\n");
+            strcpy(aluOp, "11");
+            printf("ALU OP Code is: %s\n", aluOp);
+            printf("\n");
+
+            //Assigning RT Register based off ALU OP:
+            printf("Preparing to Execute this I-Type Instruction........\n");
+
+            printf("Now assigning a value from memory memory....\n");
+            rsValue = rsValue + binToDec(immediate)/4;
+            
+            //needing to immediately assign a value found from memory:
+            valueFromMemory = Memory(rsValue);
+
+            //grabbing the new register and assigning ut to the rt register:
+            rtValue = RegisterValuestoRegisterFiles(rtCodeTransfer,valueFromMemory);
+            printf("Executing the Instruction...\n");
+
+            printf("Target Register: $ %d", binToDec(rtCodeTransfer));
+            printf(", Value loaded: %d", rsValue);
         }
         else if (value_Or_Imm == 0)
         {
@@ -673,6 +702,31 @@ int DecodeAndExecute(char instruction[32]){
             printf("Rs: $%d\n", registerfile(rsCodeTransfer));
             printf("Rt: $%d\n", registerfile(rtCodeTransfer));
             printf("Immediate: %d (or 0x%x)\n", binToDec(immediate), binToDec(immediate));
+
+            printf("///////////////////////////// -- Execute -- ///////////////////////////////////\n");
+            //Adding work for ALU and then to execute:
+
+            printf("Determining the ALU Operation....\n");
+            strcpy(aluOp, "11");
+            printf("ALU OP Code is: %s\n", aluOp);
+            printf("\n");
+
+            //Assigning RT Register based off ALU OP:
+            printf("Preparing to Execute this I-Type Instruction........\n");
+
+            printf("Now writing a value onto memory....\n");
+            rsValue = rsValue + binToDec(immediate)/4;
+            
+            // //needing to immediately assign a value found from memory:
+            // valueFromMemory = Memory(rsValue);
+
+            //Writing the value onto memory:
+            WriteBack(rtValue, rsValue);
+
+            printf("Executing the Instruction...\n");
+
+            printf("Target Register: $ %d", binToDec(rtCodeTransfer));
+            printf(", Value loaded: %d", rsValue);
         }
         else
         {
@@ -1144,7 +1198,7 @@ int RegisterValuestoRegisterFiles(char binCode[5], int value){
     }
     else if ($t1 == 0)
     {
-        registerFile[9] = value;
+         registerFile[9] = value;
     }
     else if ($t2 == 0)
     { // 10
@@ -1241,6 +1295,20 @@ int RegisterValuestoRegisterFiles(char binCode[5], int value){
         exit(1);
     }
 
+    return 0;
+}
+
+int Memory(int address){
+
+    //we can return some int number directly from the memory array;
+    return d_mem[address];
+}
+
+int WriteBack(int address, int value){
+    //assigning the value directly to memory;
+    d_mem[address] = value;
+    printf("////////////////////////////// -- Write Back -- ///////////////////////////\n");
+    printf("Addres is: %d and value is: %d\n", address,value);
     return 0;
 }
 
