@@ -1,5 +1,5 @@
-#ifndef DECODER_H_   /* Include guard */
-#define DECODER_H_
+#ifndef FUNCTIONHANDLER_H_   /* Include guard */
+#define FUNCTIONHANDLER_H_
 
 //int foo(int x);  /* An example function declaration */
 

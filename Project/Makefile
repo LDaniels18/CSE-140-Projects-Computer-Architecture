@@ -15,9 +15,9 @@ all:output #the entire program to be compiled: output refers to the output file 
 
 # First Version: April 7th 2022:
 
-#same as saying $gcc Single_Cycle_MIPS_CPU.c Decoder.c -o output (current Version)
-output:Single_Cycle_MIPS_CPU.o Decoder.o Execute.o
-	$(CC)Single_Cycle_MIPS_CPU.o Decoder.o Execute.o -o output
+#Adding FunctionHandler
+# output:Single_Cycle_MIPS_CPU.o Decoder.o Execute.o
+# 	$(CC)Single_Cycle_MIPS_CPU.o Decoder.o Execute.o -o output
 
 #Test output for old file:
 # output:old_single_cycle.o Decoder.o Execute.o
@@ -27,12 +27,16 @@ output:Single_Cycle_MIPS_CPU.o Decoder.o Execute.o
 # old_single_cycle.o:old_single_cycle.c
 # 	$(CC)$(CFLAGS) old_single_cycle.c
 
+#same as saying $gcc Single_Cycle_MIPS_CPU.c Decoder.c -o output (current Version)
+output:Single_Cycle_MIPS_CPU.o FunctionHandler.o Execute.o
+	$(CC)Single_Cycle_MIPS_CPU.o FunctionHandler.o Execute.o -o output
+
 #individual parts to be compiled (current version):
 Single_Cycle_MIPS_CPU.o:Single_Cycle_MIPS_CPU.c
 	$(CC)$(CFLAGS) Single_Cycle_MIPS_CPU.c
 
-Decoder.o:Decoder.c
-	$(CC)$(CFLAGS) Decoder.c
+FunctionHandler.o:FunctionHandler.c
+	$(CC)$(CFLAGS) FunctionHandler.c
 
 Execute.o:Execute.c
 	$(CC)$(CFLAGS) Execute.c

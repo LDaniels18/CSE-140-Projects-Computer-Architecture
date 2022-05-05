@@ -26,9 +26,7 @@ For Bitwize Operations (in Decode): https://www.scaler.com/topics/c/bitwise-oper
 #include <stdio.h> //a standard C library that includes the print function
 #include <string.h>
 #include <stdlib.h>
-#include "Decoder.h"
-#include "Execute.h"
-#undef mips 
+#include "FunctionHandler.h"
 
 #define MAX_LENGTH 256 // using a length variable to help with reading the line of text
 
@@ -65,7 +63,7 @@ int main()
     // we need a bit string (character array) to carry the instruction:
     char instruction[MAX_LENGTH]; // to carry the new 32 bit instruction
 
-    printf("Reading the Text File.... c\n");
+    printf("Reading the Text File....\n");
 
     // creating an File Pointer object:
     FILE *file_accessor; // object

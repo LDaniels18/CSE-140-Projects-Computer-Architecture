@@ -1,7 +1,7 @@
 #include <stdio.h> //a standard C library that includes the print function
 #include <string.h>
 #include <stdlib.h>
-#include "Decoder.h"
+#include "FunctionHandler.h"
 
 //do not need main if we have one already....
 // int main(){
@@ -283,6 +283,25 @@ int DecodeAndExecute(char instruction[32]){
             printf("Rd: $%d\n", registerfile(rdCodeTransfer));
             printf("Shamt: %d\n", registerfile(shiftAmount));
             printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer));
+
+            printf("///////////////////////////// -- Execute -- ///////////////////////////////////\n");
+            //Adding work for ALU and then to execute:
+
+            printf("Determining the ALU Operation....\n");
+            strcpy(aluOp, "10");
+            printf("ALU OP Code is: %s\n", aluOp);
+            printf("\n");
+
+            //Assigning RD Register based off ALU OP:
+            printf("Preparing to Execute this R-Type Instruction........\n");
+            //specific to nor:
+            rdValue = rsValue | rtValue;
+            rdValue = ~rdValue;
+            RegisterValuestoRegisterFiles(rdCodeTransfer,rdValue);
+            printf("Executing the Instruction...\n");
+
+            printf("Register Destination: $ %d",binToDec(rdCodeTransfer));
+            printf(", RD Register Value: %d", rdValue);
         }
         else if (value_Or_Check == 0) // 00000001000010011000100000100101 for test
         {
@@ -292,6 +311,23 @@ int DecodeAndExecute(char instruction[32]){
             printf("Rd: $%d\n", registerfile(rdCodeTransfer));
             printf("Shamt: %d\n", registerfile(shiftAmount));
             printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer));
+
+            printf("///////////////////////////// -- Execute -- ///////////////////////////////////\n");
+            //Adding work for ALU and then to execute:
+
+            printf("Determining the ALU Operation....\n");
+            strcpy(aluOp, "10");
+            printf("ALU OP Code is: %s\n", aluOp);
+            printf("\n");
+
+            //Assigning RD Register based off ALU OP:
+            printf("Preparing to Execute this R-Type Instruction........\n");
+            rdValue = rsValue | rtValue;
+            RegisterValuestoRegisterFiles(rdCodeTransfer,rdValue);
+            printf("Executing the Instruction...\n");
+
+            printf("Register Destination: $ %d",binToDec(rdCodeTransfer));
+            printf(", RD Register Value: %d", rdValue);
         }
         else if (value_SLT_Check == 0) // 00000001000010011000100000101010 for test
         {
@@ -301,6 +337,35 @@ int DecodeAndExecute(char instruction[32]){
             printf("Rd: $%d\n", registerfile(rdCodeTransfer));
             printf("Shamt: %d\n", registerfile(shiftAmount));
             printf("Funct: %d (or 0x%x)\n", binToDec(functCodeTransfer), binToDec(functCodeTransfer));
+
+            printf("///////////////////////////// -- Execute -- ///////////////////////////////////\n");
+            //Adding work for ALU and then to execute:
+
+            printf("Determining the ALU Operation....\n");
+            strcpy(aluOp, "10");
+            printf("ALU OP Code is: %s\n", aluOp);
+            printf("\n");
+
+            //Assigning RD Register based off ALU OP:
+            printf("Preparing to Execute this R-Type Instruction........\n");
+            printf("Executing the Instruction...\n");
+
+            //we need to compare Rd to Rs (values)
+            if(rsValue < rtValue){
+
+                rdValue = 1;
+                RegisterValuestoRegisterFiles(rdCodeTransfer,rdValue);
+                printf("Register Destination: $ %d",binToDec(rdCodeTransfer));
+                printf(", RD Register Value: %d", rdValue);
+
+            }else{
+
+                rdValue = 0;
+                RegisterValuestoRegisterFiles(rdCodeTransfer,rdValue);
+                printf("Register Destination: $ %d",binToDec(rdCodeTransfer));
+                printf(", RD Register Value: %d", rdValue);
+
+            }
         }
         else if (value_SLTU_Check == 0) // 00000001000010011000100000101011 for test
         {
