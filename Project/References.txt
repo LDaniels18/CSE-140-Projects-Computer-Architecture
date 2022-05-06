@@ -1,0 +1,30 @@
+Links to References used:
+
+https://www.cs.tufts.edu/comp/140/lectures/Day_3/mips_summary.pdf - For help in MIPS instruction Objectives
+
+Help to read text from a file:
+https://stackoverflow.com/questions/3463426/in-c-how-should-i-read-a-text-file-and-print-all-strings
+https://www.tutorialspoint.com/write-a-c-program-to-read-a-data-from-file-and-display
+https://stackoverflow.com/questions/42253733/reading-in-a-text-file-into-a-2d-array-in-c
+
+Help on how to change binary to integer in c:
+https://stackoverflow.com/questions/2343099/convert-binary-format-string-to-int-in-c -- I actually entered my own creation to convert binary chars to strings as an answer to this solution (posted 5/6/22)
+
+
+For the Instruction Fetch Process (While Loop Process): https://stackoverflow.com/questions/3501338/c-read-file-line-by-line
+For Bitwize Operations (in DecodeAndExecute): https://www.scaler.com/topics/c/bitwise-operators-in-c/
+
+To create a header file in c: https://stackoverflow.com/questions/7109964/creating-your-own-header-file-in-c
+
+To create a makefile: https://cs.colby.edu/maxwell/courses/tutorials/maketutor/ & https://www3.nd.edu/~zxu2/acms60212-40212/Makefile.pdf
+
+C Array Help:
+https://www.studymite.com/blog/storing-values-and-printing-arrays-in-c/
+https://stackoverflow.com/questions/28104130/how-to-store-values-in-array-at-a-specific-location-in-c-program
+https://www.programiz.com/c-programming/c-arrays
+
+Loop Help:
+https://www.geeksforgeeks.org/loops-in-c-and-cpp/
+https://www.tutorialspoint.com/cprogramming/c_loops.htm
+
+All other resources referred to in terms of specifics can be found in the CSE 140 Class lectures....

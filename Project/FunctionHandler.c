@@ -3,10 +3,11 @@
 #include <stdlib.h>
 #include "FunctionHandler.h"
 
-// do not need main if we have one already....
-//  int main(){
-//      return 0;
-//  }
+/*
+This File includes all functions necessary to run, decode and run memory processes for the Single Cycle MIPS CPU
+This File contains our original HW3 (MIPS Decoder File, which can be found in the Unused Files Folder) and other
+code written by LaFrance and Iveth for the CSE 140 Final Project
+*/
 
 // Global Variables:
 int registerFile[32] = {0}; // RegisterFile initialized to 0
@@ -15,7 +16,7 @@ int d_mem[32] = {0};        // D MemoryFile -- represents memory of 32 bits
 int alu_zero = 0;           // if the alu operation is a complete zero
 int label = 0;              // place to branch to
 int jumpAddress = 0;        // a place to jump to
-// char jump_target[26]; //place to jump to
+// char jump_target[26];     //place to jump to
 
 /*
         --schema for the ALU OP (Does not need to be very sepcific)
@@ -304,11 +305,9 @@ int DecodeAndExecute(char instruction[32], int pc_val)
             printf("ALU OP Code is: %s\n", aluOp);
 
             // Assigning RD Register based off ALU OP:
-            printf("Preparing to Execute this I-Type Instruction........\n");
+            printf("Preparing to Execute this R-Type Instruction........\n");
 
             jumpAddress = RegGet("11111");
-
-
         }
         else if (value_Nor_Check == 0) // 00000001000010011000100000100111 for test
         {
@@ -531,9 +530,8 @@ int DecodeAndExecute(char instruction[32], int pc_val)
         printf("Instruction Type : J\n");
         printf("Operation: jal\n");
         printf("Immediate: %d (or 0x%x)\n", binToDec(jump_target), binToDec(jump_target));
-        
 
-     printf("///////////////////////////// -- Execute -- ///////////////////////////////////\n");
+        printf("///////////////////////////// -- Execute -- ///////////////////////////////////\n");
         // Adding work for ALU and then to execute:
 
         printf("Determining the ALU OPeration....\n");
@@ -552,9 +550,9 @@ int DecodeAndExecute(char instruction[32], int pc_val)
         printf("The PC is now pointing to the address of the label + 4: 0x%x\n", pc_val);
         printf("\n");
 
-        //needing to update the $ra register with pc_val
+        // needing to update the $ra register with pc_val
         printf("Updating the $ra register with the new PC value....\n");
-        RegWrite("11111",pc_val);
+        RegWrite("11111", pc_val);
     }
     // we can assume this since its not fitting the other criteria
     else
@@ -832,7 +830,7 @@ int DecodeAndExecute(char instruction[32], int pc_val)
 int registerfile(char binCode[5])
 {
     // to test:
-    // printf("/////////////////// -- Within Register Function -- //////////////////\n");
+    // printf("/////////////////// -- Within Register File Function -- //////////////////\n");
     // printf("Binary Code currently looked at is: %s\n", binCode);
 
     int reg; // to hold an actual integer to return
@@ -1080,6 +1078,7 @@ int registerfile(char binCode[5])
     return reg; // return the int number to be displayed
 } // end of helper function
 
+// Function used to change binary character strings to integers
 int binToDec(char binCode[])
 {
 
@@ -1138,11 +1137,12 @@ int binToDec(char binCode[])
     return 0; // so the compiler doesnt shoot an "non-return" warning
 }
 
+// Function used to write an int value to a register File
 char RegWrite(char binCode[5], int value)
 {
 
     // test
-    printf("/////////////////// -- Within Value to Register File Function -- //////////////////\n");
+    printf("/////////////////// -- Within Value to Register Write Function -- //////////////////\n");
     printf("Binary Code currently looked at is: %s\n", binCode);
 
     // each char array represents a real register in MIPS
@@ -1255,88 +1255,88 @@ char RegWrite(char binCode[5], int value)
     {
 
         registerFile[0] = value;
-        return $zero;
+        // return $zero;
     }
     else if ($at == 0)
     {
         registerFile[1] = value;
-        return $at;
+        // return $at;
     }
     else if ($v0 == 0)
     {
         registerFile[2] = value;
-        return $v0;
+        // return $v0;
     }
     else if ($v1 == 0)
     {
         registerFile[3] = value;
-        return $v1;
+        // return $v1;
     }
     else if ($a0 == 0)
     {
         registerFile[4] = value;
-        return $a0;
+        // return $a0;
     }
     else if ($a1 == 0)
     { // 5
         registerFile[5] = value;
-        return $a1;
+        // return $a1;
     }
     else if ($a2 == 0)
     {
         registerFile[6] = value;
-        return $a2;
+        // return $a2;
     }
     else if ($a3 == 0)
     {
 
         registerFile[7] = value;
-        return $a3;
+        // return $a3;
     }
     else if ($t0 == 0)
     {
         registerFile[8] = value;
-        return $t0;
+        // return $t0;
     }
     else if ($t1 == 0)
     {
         registerFile[9] = value;
-        return $t1;
+        // return $t1;
     }
     else if ($t2 == 0)
     { // 10
         registerFile[10] = value;
-        return $t2;
+        // return $t2;
     }
     else if ($t3 == 0)
     {
         registerFile[11] = value;
-        return $t3;
+        // return $t3;
     }
     else if ($t4 == 0)
     {
         registerFile[12] = value;
-        return $t4;
+        // return $t4;
     }
     else if ($t5 == 0 || value == 13)
     {
         registerFile[13] = value;
-        return $t5;
+        // return $t5;
     }
     else if ($t6 == 0)
     {
         registerFile[14] = value;
-        return $t6;
+        // return $t6;
     }
     else if ($t7 == 0)
     { // 15
         registerFile[15] = value;
-       // return $t7;
+        // return $t7;
     }
     else if ($s0 == 0)
     {
         registerFile[16] = value;
-       // return $s0;
+        // return $s0;
     }
     else if ($s1 == 0)
     {
@@ -1346,73 +1346,73 @@ char RegWrite(char binCode[5], int value)
     else if ($s2 == 0)
     {
         registerFile[18] = value;
-      //  return $s2;
+        //  return $s2;
     }
     else if ($s3 == 0)
     {
         registerFile[19] = value;
-        //return $s3;
+        // return $s3;
     }
     else if ($s4 == 0)
     {
         registerFile[20] = value;
-        //return $s4;
+        // return $s4;
     }
     else if ($s5 == 0)
     {
         registerFile[21] = value;
-       // return $s5;
+        // return $s5;
     }
     else if ($s6 == 0)
     {
         registerFile[22] = value;
-       // return $s6;
+        // return $s6;
     }
     else if ($s7 == 0)
     {
         registerFile[23] = value;
-       // return $s7;
+        // return $s7;
     }
     else if ($t8 == 0)
     {
         registerFile[24] = value;
-        //return $t8;
+        // return $t8;
     }
     else if ($t9 == 0)
     {
         registerFile[25] = value;
-        //return $t9;
+        // return $t9;
     }
 
     else if ($k0 == 0)
     {
         registerFile[26] = value;
-       // return $k0;
+        // return $k0;
     }
     else if ($k1 == 0)
     {
         registerFile[27] = value;
-        //return $k1;
+        // return $k1;
     }
     else if ($gp == 0)
     {
         registerFile[28] = value;
-        ///return $gp;
+        /// return $gp;
     }
     else if ($sp == 0)
     {
         registerFile[29] = value;
-        //return $sp;
+        // return $sp;
     }
     else if ($fp == 0)
     {
         registerFile[30] = value;
-        //return $fp;
+        // return $fp;
     }
     else if ($ra == 0)
     {
         registerFile[31] = value;
-        //return $ra;
+        // return $ra;
     }
     else
     {
@@ -1423,15 +1423,15 @@ char RegWrite(char binCode[5], int value)
     return 0;
 }
 
+// Function to return an address from memory:
 int Memory(int address)
 {
-
     // we can return some int number directly from the memory array;
-
     printf("Loading the address from memory...\n");
     return d_mem[address] = address;
 }
 
+// Function to write back a value onto memory:
 int WriteBack(int address, int value)
 {
     // assigning the value directly to memory;
@@ -1442,589 +1442,26 @@ int WriteBack(int address, int value)
     return 0;
 }
 
-int registerfile(char binCode[5])
-{
-    // to test:
-    // printf("/////////////////// -- Within Register Function -- //////////////////\n");
-    // printf("Binary Code currently looked at is: %s\n", binCode);
-
-    int reg; // to hold an actual integer to return
-
-    // each char array represents a real register in MIPS
-    char bin_0[] = "00000";
-    char bin_1[] = "00001";
-    char bin_2[] = "00010";
-    char bin_3[] = "00011";
-    char bin_4[] = "00100";
-    char bin_5[] = "00101";
-    char bin_6[] = "00110";
-    char bin_7[] = "00111";
-    char bin_8[] = "01000";
-    char bin_9[] = "01001";
-    char bin_10[] = "01010";
-    char bin_11[] = "01011";
-    char bin_12[] = "01100";
-    char bin_13[] = "01101";
-    char bin_14[] = "01110";
-    char bin_15[] = "01111";
-    char bin_16[] = "10000";
-    char bin_17[] = "10001";
-    char bin_18[] = "10010";
-    char bin_19[] = "10011";
-    char bin_20[] = "10100";
-    char bin_21[] = "10101";
-    char bin_22[] = "10110";
-    char bin_23[] = "10111";
-    char bin_24[] = "11000";
-    char bin_25[] = "11001";
-    char bin_26[] = "11010";
-    char bin_27[] = "11011";
-    char bin_28[] = "11100";
-    char bin_29[] = "11101";
-    char bin_30[] = "11110";
-    char bin_31[] = "11111";
-
-    // Register Files:
-
-    int $zero;
-    int $at;
-    int $v0;
-    int $v1;
-    int $a0;
-    int $a1;
-    int $a2;
-    int $a3;
-    int $t0;
-    int $t1;
-    int $t2;
-    int $t3;
-    int $t4;
-    int $t5;
-    int $t6;
-    int $t7;
-    int $s0;
-    int $s1;
-    int $s2;
-    int $s3;
-    int $s4;
-    int $s5;
-    int $s6;
-    int $s7;
-    int $t8;
-    int $t9;
-    int $k0;
-    int $k1;
-    int $gp;
-    int $sp;
-    int $fp;
-    int $ra;
-
-    // comparing two binary values to then place the int 1 or 0 into corresponding RegFile:
-
-    $zero = strcmp(binCode, bin_0);
-    $at = strcmp(binCode, bin_1);
-    $v0 = strcmp(binCode, bin_2);
-    $v1 = strcmp(binCode, bin_3);
-    $a0 = strcmp(binCode, bin_4);
-    $a1 = strcmp(binCode, bin_5);
-    $a2 = strcmp(binCode, bin_6);
-    $a3 = strcmp(binCode, bin_7);
-    $t0 = strcmp(binCode, bin_8);
-    $t1 = strcmp(binCode, bin_9);
-    $t2 = strcmp(binCode, bin_10);
-    $t3 = strcmp(binCode, bin_11);
-    $t4 = strcmp(binCode, bin_12);
-    $t5 = strcmp(binCode, bin_13);
-    $t6 = strcmp(binCode, bin_14);
-    $t7 = strcmp(binCode, bin_15);
-    $s0 = strcmp(binCode, bin_16);
-    $s1 = strcmp(binCode, bin_17);
-    $s2 = strcmp(binCode, bin_18);
-    $s3 = strcmp(binCode, bin_19);
-    $s4 = strcmp(binCode, bin_20);
-    $s5 = strcmp(binCode, bin_21);
-    $s6 = strcmp(binCode, bin_22);
-    $s7 = strcmp(binCode, bin_23);
-    $t8 = strcmp(binCode, bin_24);
-    $t9 = strcmp(binCode, bin_25);
-    $k0 = strcmp(binCode, bin_26);
-    $k1 = strcmp(binCode, bin_27);
-    $gp = strcmp(binCode, bin_28);
-    $sp = strcmp(binCode, bin_29);
-    $fp = strcmp(binCode, bin_30);
-    $ra = strcmp(binCode, bin_31);
-
-    if ($zero == 0)
-    {
-        reg = 0;
-    }
-    else if ($at == 0)
-    {
-        reg = 1;
-    }
-    else if ($v0 == 0)
-    {
-        reg = 2;
-    }
-    else if ($v1 == 0)
-    {
-        reg = 3;
-    }
-    else if ($a0 == 0)
-    {
-        reg = 4;
-    }
-    else if ($a1 == 0)
-    { // 5
-        reg = 5;
-    }
-    else if ($a2 == 0)
-    {
-        reg = 6;
-    }
-    else if ($a3 == 0)
-    {
-
-        reg = 7;
-    }
-    else if ($t0 == 0)
-    {
-        reg = 8;
-    }
-    else if ($t1 == 0)
-    {
-        reg = 9;
-    }
-    else if ($t2 == 0)
-    { // 10
-        reg = 10;
-    }
-    else if ($t3 == 0)
-    {
-        reg = 11;
-    }
-    else if ($t4 == 0)
-    {
-        reg = 12;
-    }
-    else if ($t5 == 0)
-    {
-        reg = 13;
-    }
-    else if ($t6 == 0)
-    {
-        reg = 14;
-    }
-    else if ($t7 == 0)
-    { // 15
-        reg = 15;
-    }
-    else if ($s0 == 0)
-    {
-        reg = 16;
-    }
-    else if ($s1 == 0)
-    {
-        reg = 17;
-    }
-    else if ($s2 == 0)
-    {
-        reg = 18;
-    }
-    else if ($s3 == 0)
-    {
-        reg = 19;
-    }
-    else if ($s4 == 0)
-    {
-        reg = 20;
-    }
-    else if ($s5 == 0)
-    {
-        reg = 21;
-    }
-    else if ($s6 == 0)
-    {
-        reg = 22;
-    }
-    else if ($s7 == 0)
-    {
-        reg = 23;
-    }
-    else if ($t8 == 0)
-    {
-        reg = 24;
-    }
-    else if ($t9 == 0)
-    {
-        reg = 25;
-    }
-
-    else if ($k0 == 0)
-    {
-        reg = 26;
-    }
-    else if ($k1 == 0)
-    {
-        reg = 27;
-    }
-    else if ($gp == 0)
-    {
-        reg = 28;
-    }
-    else if ($sp == 0)
-    {
-        reg = 29;
-    }
-    else if ($fp == 0)
-    {
-        reg = 30;
-    }
-    else if ($ra == 0)
-    {
-        reg = 31;
-    }
-    else
-    {
-        printf("Error - No RegisterFile Accessed\n");
-        exit(1);
-    }
-
-    return reg; // return the int number to be displayed
-} // end of helper function
-
-int binToDec(char binCode[])
-{
-
-    // printf("the binary code is: %s\n", binCode);
-
-    while (binCode != NULL)
-    {
-        int base = strlen(binCode) - 1; // the base of 2 to be multiplied, we start of -1 because we dont account for the last bit here
-        int sum = 0;
-        // int count_of_zeros = 0;
-        for (int i = 0; i < strlen(binCode) - 1; i++) // we do not account for the last bit of the binary code here....
-        {
-            // printf("the binary code is: %c\n", binCode[i]);
-
-            int decimal = 1;
-
-            if (binCode[i] == '1')
-            {
-                for (int j = 0; j < base; j++) // we want to just multiply the number of true bits (not including the 1)
-                {
-
-                    decimal = decimal * 2;
-                    // printf("the decimal is: %d\n", decimal);
-                }
-                // printf("(outside for)the decimal is: %d\n", decimal);
-
-                base = base - 1; // subtract base by 1 since we are moving down the string by 1
-            }
-            else // we encounter a zero
-            {
-                base = base - 1; // subtract a base multiple everytime we encounter a zero...
-                continue;        // carry on with the code
-            }
-
-            sum += decimal;
-            // printf("the sum is: %d\n", decimal); --test
-
-            // base = base - count_of_zeros; // starting from the left (higher power) to the end (lowest power or 1)
-        }
-
-        for (int j = strlen(binCode) - 1; j < strlen(binCode) + 1; j++)
-        { // accounting for the endian bit that is always 1
-
-            // printf("the last bit is: %c\n ", binCode[j]); --test
-
-            if (binCode[j] == '1')
-            {
-
-                sum += 1; // add 1 to the sum total
-            }
-        }
-
-        return sum; // same as saying break after the for loop, return the sum as an int
-    }
-
-    return 0; // so the compiler doesnt shoot an "non-return" warning
-}
-
+// Function that gets the value from a register -- same as RegWrite for simplicity sake:
 int RegGet(char binCode[5])
 {
 
     // test
-    printf("/////////////////// -- Within Value to Register File Function -- //////////////////\n");
-    printf("Binary Code currently looked at is: %s\n", binCode);
+    // printf("/////////////////// -- Within RegGet Function -- //////////////////\n");
+    // printf("Binary Code currently looked at is: %s\n", binCode);
 
-    // each char array represents a real register in MIPS
-    char bin_0[] = "00000";
-    char bin_1[] = "00001";
-    char bin_2[] = "00010";
-    char bin_3[] = "00011";
-    char bin_4[] = "00100";
-    char bin_5[] = "00101";
-    char bin_6[] = "00110";
-    char bin_7[] = "00111";
-    char bin_8[] = "01000";
-    char bin_9[] = "01001";
-    char bin_10[] = "01010";
-    char bin_11[] = "01011";
-    char bin_12[] = "01100";
-    char bin_13[] = "01101";
-    char bin_14[] = "01110";
-    char bin_15[] = "01111";
-    char bin_16[] = "10000";
-    char bin_17[] = "10001";
-    char bin_18[] = "10010";
-    char bin_19[] = "10011";
-    char bin_20[] = "10100";
-    char bin_21[] = "10101";
-    char bin_22[] = "10110";
-    char bin_23[] = "10111";
-    char bin_24[] = "11000";
-    char bin_25[] = "11001";
-    char bin_26[] = "11010";
-    char bin_27[] = "11011";
-    char bin_28[] = "11100";
-    char bin_29[] = "11101";
-    char bin_30[] = "11110";
     char bin_31[] = "11111";
 
-    // Register Files:
-
-    int $zero;
-    int $at;
-    int $v0;
-    int $v1;
-    int $a0;
-    int $a1;
-    int $a2;
-    int $a3;
-    int $t0;
-    int $t1;
-    int $t2;
-    int $t3;
-    int $t4;
-    int $t5;
-    int $t6;
-    int $t7;
-    int $s0;
-    int $s1;
-    int $s2;
-    int $s3;
-    int $s4;
-    int $s5;
-    int $s6;
-    int $s7;
-    int $t8;
-    int $t9;
-    int $k0;
-    int $k1;
-    int $gp;
-    int $sp;
-    int $fp;
+    // Register File:
     int $ra;
 
     // comparing two binary values to then place the int 1 or 0 into corresponding RegFile:
 
-    $zero = strcmp(binCode, bin_0);
-    $at = strcmp(binCode, bin_1);
-    $v0 = strcmp(binCode, bin_2);
-    $v1 = strcmp(binCode, bin_3);
-    $a0 = strcmp(binCode, bin_4);
-    $a1 = strcmp(binCode, bin_5);
-    $a2 = strcmp(binCode, bin_6);
-    $a3 = strcmp(binCode, bin_7);
-    $t0 = strcmp(binCode, bin_8);
-    $t1 = strcmp(binCode, bin_9);
-    $t2 = strcmp(binCode, bin_10);
-    $t3 = strcmp(binCode, bin_11);
-    $t4 = strcmp(binCode, bin_12);
-    $t5 = strcmp(binCode, bin_13);
-    $t6 = strcmp(binCode, bin_14);
-    $t7 = strcmp(binCode, bin_15);
-    $s0 = strcmp(binCode, bin_16);
-    $s1 = strcmp(binCode, bin_17);
-    $s2 = strcmp(binCode, bin_18);
-    $s3 = strcmp(binCode, bin_19);
-    $s4 = strcmp(binCode, bin_20);
-    $s5 = strcmp(binCode, bin_21);
-    $s6 = strcmp(binCode, bin_22);
-    $s7 = strcmp(binCode, bin_23);
-    $t8 = strcmp(binCode, bin_24);
-    $t9 = strcmp(binCode, bin_25);
-    $k0 = strcmp(binCode, bin_26);
-    $k1 = strcmp(binCode, bin_27);
-    $gp = strcmp(binCode, bin_28);
-    $sp = strcmp(binCode, bin_29);
-    $fp = strcmp(binCode, bin_30);
     $ra = strcmp(binCode, bin_31);
 
-    // Decided to not return anything to the recieving variable, C is weird about returning characters:
-
-    // if ($zero == 0 || value == 0)
-    // {
-
-    //     registerFile[0] = value;
-    //     return $zero;
-    // }
-    // else if ($at == 0)
-    // {
-    //     registerFile[1] = value;
-    //     return $at;
-    // }
-    // else if ($v0 == 0)
-    // {
-    //     registerFile[2] = value;
-    //     return $v0;
-    // }
-    // else if ($v1 == 0)
-    // {
-    //     registerFile[3] = value;
-    //     return $v1;
-    // }
-    // else if ($a0 == 0)
-    // {
-    //     registerFile[4] = value;
-    //     return $a0;
-    // }
-    // else if ($a1 == 0)
-    // { // 5
-    //     registerFile[5] = value;
-    //     return $a1;
-    // }
-    // else if ($a2 == 0)
-    // {
-    //     registerFile[6] = value;
-    //     return $a2;
-    // }
-    // else if ($a3 == 0)
-    // {
-
-    //     registerFile[7] = value;
-    //     return $a3;
-    // }
-    // else if ($t0 == 0)
-    // {
-    //     registerFile[8] = value;
-    //     return $t0;
-    // }
-    // else if ($t1 == 0)
-    // {
-    //     registerFile[9] = value;
-    //     return $t1;
-    // }
-    // else if ($t2 == 0)
-    // { // 10
-    //     registerFile[10] = value;
-    //     return $t2;
-    // }
-    // else if ($t3 == 0)
-    // {
-    //     registerFile[11] = value;
-    //     return $t3;
-    // }
-    // else if ($t4 == 0)
-    // {
-    //     registerFile[12] = value;
-    //     return $t4;
-    // }
-    // else if ($t5 == 0 || value == 13)
-    // {
-    //     registerFile[13] = value;
-    //     return $t5;
-    // }
-    // else if ($t6 == 0)
-    // {
-    //     registerFile[14] = value;
-    //     return $t6;
-    // }
-    // else if ($t7 == 0)
-    // { // 15
-    //     registerFile[15] = value;
-    //     return $t7;
-    // }
-    // else if ($s0 == 0)
-    // {
-    //     registerFile[16] = value;
-    //     return $s0;
-    // }
-    // else if ($s1 == 0)
-    // {
-    //     registerFile[17] = value;
-    //     return $s1;
-    // }
-    // else if ($s2 == 0)
-    // {
-    //     registerFile[18] = value;
-    //     return $s2;
-    // }
-    // else if ($s3 == 0)
-    // {
-    //     registerFile[19] = value;
-    //     return $s3;
-    // }
-    // else if ($s4 == 0)
-    // {
-    //     registerFile[20] = value;
-    //     return $s4;
-    // }
-    // else if ($s5 == 0)
-    // {
-    //     registerFile[21] = value;
-    //     return $s5;
-    // }
-    // else if ($s6 == 0)
-    // {
-    //     registerFile[22] = value;
-    //     return $s6;
-    // }
-    // else if ($s7 == 0)
-    // {
-    //     registerFile[23] = value;
-    //     return $s7;
-    // }
-    // else if ($t8 == 0)
-    // {
-    //     registerFile[24] = value;
-    //     return $t8;
-    // }
-    // else if ($t9 == 0)
-    // {
-    //     registerFile[25] = value;
-    //     return $t9;
-    // }
-
-    // else if ($k0 == 0)
-    // {
-    //     registerFile[26] = value;
-    //     return $k0;
-    // }
-    // else if ($k1 == 0)
-    // {
-    //     registerFile[27] = value;
-    //     return $k1;
-    // }
-    // else if ($gp == 0)
-    // {
-    //     registerFile[28] = value;
-    //     return $gp;
-    // }
-    // else if ($sp == 0)
-    // {
-    //     registerFile[29] = value;
-    //     return $sp;
-    // }
-    // else if ($fp == 0)
-    // {
-    //     registerFile[30] = value;
-    //     return $fp;
-    // }
     if ($ra == 0)
     {
-       // registerFile[31] = value;
+        // registerFile[31] = value;
         return registerFile[31];
     }
     else

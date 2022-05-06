@@ -5,22 +5,19 @@
 
 /*
 Work Distribution:
+Iveth: Handled R type instuction and General Assistance in creating the main CPU File
+LaFrance: Handled I and J type instruction as well as assistance in building the Function Handler
+Both partners were equally distributed work
 */
 
 /*
+OLD INSTRUCTIONS (refer to README)
 instructions if using linux... to run you have to compile using gcc
 use: gcc LaFrance_Iveth.c --this compiles the program (only use if you dont want to name an executable file)
 next we have to create an executable file to show output:
 use: gcc LaFrance_Iveth.c -o LaFrance_Iveth (this is prefered and make sure to use everytime you add or delete code)
 finally we have to run the program using the executable file which we name after "-o")
 use: ./LaFrance_Iveth (always use after compiling to see output, run the executable file that contains output)
-*/
-
-/*
-Any Used Resources to be Cited:
-For the Fetch Function (While Loop Process): https://stackoverflow.com/questions/3501338/c-read-file-line-by-line
-For Bitwize Operations (in Decode): https://www.scaler.com/topics/c/bitwise-operators-in-c/
-
 */
 
 #include <stdio.h> //a standard C library that includes the print function
@@ -42,13 +39,14 @@ int pc_val = 0;
 ///////////////////////////////////////////////////////////////////////
 
 // Never changing filename (obviously change when you recieve a finalized file):
-const char *filename = "sample_part1.txt";
+// const char *filename = "sample_part1.txt";
+const char *filename = "sample_part2.txt";
 
 //////////////////////////////////////////////////////////////////////
 
-// Functions declarations: 
+// Functions declarations:
 void CPU_Process(char instruction[32]); // to act as the main CPU function
-int fetch();                           // to fetch instructions for the PC counter
+int fetch();                            // to fetch instructions for the PC counter
 
 //////////////////////////////////////////////////////////////////////
 
@@ -104,18 +102,6 @@ int main()
             ///////////////////// -- increment index -- ///////////////////////////
             instruction_index = instruction_index + 4; // because we need to allow for 4 bytes per instruction
 
-            // i++; // representing the instruction (everytime we grab an instruction we must update i by 1 so the PC counter can point to it)
-            // printf("printing the number of the instruction we are looking at:  %d\n", i);
-
-            // PC = 4 * i; // always update the PC everytime you read an instruction
-            // printf("printing the PC char:  %d\n", PC);
-
-            // int next_PC = PC + 4;
-            // printf("printing the next_pc: %d\n", next_PC);
-
-            // printf("\n");
-
-            //////////////////////////////////////////////////////////////////////
             printf("\n");
         } // end of while
 
@@ -130,6 +116,7 @@ int main()
 We only need to be able to run instructions:
 LW, SW, ADD, SUB, AND, OR, SLT, NOR, BEQ, J
 To get at least 80 points on the project.....
+JAL and JR are extra points (20)
 */
 
 void CPU_Process(char instruction[32])
@@ -137,27 +124,27 @@ void CPU_Process(char instruction[32])
     printf("\n");
     printf("////////////////////////////////// -- CPU Process -- ///////////////////////////////////\n");
     printf("Single Cycle CPU has started with 32 bit instruction: %s\n", instruction);
-    
+
     printf("Preparing to Update PC, and Display Instruction counters ....");
     fetch();
-   
+
     printf("Preparing to Decode the Instruction....");
     DecodeAndExecute(instruction, pc_val);
 
     printf("\n");
-    totalClockCycles = totalClockCycles + 1; //Instruction is done so increament clock
+    totalClockCycles = totalClockCycles + 1; // Instruction is done so increament clock
     printf("Total Clock Cycles: %d\n", totalClockCycles);
     printf("End of Instruction Operation....\n");
     printf("///////////////////////////////////////////// -- END -- ////////////////////////////////////////////////////\n");
 
 } // end of CPU Process Function
 
-// A function to both fetch and decode a given instruction:
+// A function to both fetch attributes related to an instruction:
 int fetch()
 {
     printf("\n");
     printf("////////////////////////////////// -- Fetch -- /////////////////////////////////////\n");
-    //printf("Welcome to fetch!!\n");
+    // printf("Welcome to fetch!!\n");
 
     i++; // representing the instruction (everytime we grab an instruction we must update i by 1 so the PC counter can point to it)
     printf("Current Instruction: %d\n", i);
@@ -173,8 +160,7 @@ int fetch()
 
 } // end of fetch
 
-
-///////////////////// ---first ver of code --///////////////////
+///////////////////// ---first ver of code --///////////////////// (DO NOT USE)
 // #include <stdio.h> //a standard C library that includes the print function
 // #include <string.h>
 // #include <stdlib.h>

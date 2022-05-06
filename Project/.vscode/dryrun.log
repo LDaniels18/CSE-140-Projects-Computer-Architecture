@@ -1,0 +1,7 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/mnt/c/Users/lafra/Desktop/CSE 140/Group Projects/CSE-140-Projects/Project'
+gcc -c -Wall  Single_Cycle_MIPS_CPU.c
+gcc -c -Wall  FunctionHandler.c
+gcc Single_Cycle_MIPS_CPU.o FunctionHandler.o -o output
+make: Leaving directory '/mnt/c/Users/lafra/Desktop/CSE 140/Group Projects/CSE-140-Projects/Project'
+ 
