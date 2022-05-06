@@ -160,14 +160,14 @@ int fetch()
     //printf("Welcome to fetch!!\n");
 
     i++; // representing the instruction (everytime we grab an instruction we must update i by 1 so the PC counter can point to it)
-    printf("Current Instruction:  %d\n", i);
+    printf("Current Instruction: %d\n", i);
 
     PC = 4 * i; // always update the PC everytime you read an instruction
-    printf("PC Pointing to Index:  %d\n", PC);
+    printf("PC Pointing to Index: 0x%d\n", PC);
     pc_val = PC;
 
     int next_PC = PC + 4;
-    printf("Updating the Next PC index: %d\n", next_PC);
+    printf("Updating the Next PC index: 0x%d\n", next_PC);
 
     return pc_val; // ending the instruction
 

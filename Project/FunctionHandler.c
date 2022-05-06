@@ -13,7 +13,7 @@ int registerFile[32] = {0}; // RegisterFile initialized to 0
 char aluOp[4];              // ALU Operation binary code
 int d_mem[32] = {0};        // D MemoryFile -- represents memory of 32 bits
 int alu_zero = 0;
-int branch_target = 0; // place to branch to
+int label = 0; // place to branch to
 // char jump_target[26]; //place to jump to
 
 /*
@@ -599,11 +599,14 @@ int DecodeAndExecute(char instruction[32], int pc_val)
             // Assigning RD Register based off ALU OP:
             printf("Preparing to Execute this I-Type Instruction........\n");
 
-            if (rtValue == rsValue)
+            if (rtValue == rsValue) //we need to check if both registers are equal to branch to label (next pc)
             {
+                //the PC value carried from the Fetch Function needs to be applied to the label 
                 pc_val = pc_val + binToDec(immediate);
-                branch_target = pc_val;
-                printf("The PC now reflects the Branch Target %d\n", pc_val);
+                //making the label the next PC value:
+                label = pc_val;
+
+                printf("The label points to the next instruction: 0x%d\n", pc_val);
             }
         }
         else if (value_branch_Not_equal == 0)
@@ -668,6 +671,7 @@ int DecodeAndExecute(char instruction[32], int pc_val)
             printf("\n");
 
             // grabbing the new register and assigning it to the rt register:
+
             ///// --- need to work on this --- /////
             // char *RTValue;
             // strcpy(RTValue, RegisterValuestoRegisterFiles(rtCodeTransfer,valueFromMemory));
