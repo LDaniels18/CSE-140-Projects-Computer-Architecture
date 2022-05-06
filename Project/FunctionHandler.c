@@ -822,6 +822,11 @@ int DecodeAndExecute(char instruction[32], int pc_val)
         }
     }
 
+    printf("\n");
+    printf("\n");
+    printf("Project Criteria: \n");
+    printf("PC is modified to 0x%x\n",pc_val);
+   
     return 0; // ends function
 
 } // end of decode function
@@ -1075,6 +1080,7 @@ int registerfile(char binCode[5])
         exit(1);
     }
 
+    
     return reg; // return the int number to be displayed
 } // end of helper function
 
@@ -1142,8 +1148,8 @@ char RegWrite(char binCode[5], int value)
 {
 
     // test
-    printf("/////////////////// -- Within Value to Register Write Function -- //////////////////\n");
-    printf("Binary Code currently looked at is: %s\n", binCode);
+    //printf("/////////////////// -- Within Value to Register Write Function -- //////////////////\n");
+    //printf("Binary Code currently looked at is: %s\n", binCode);
 
     // each char array represents a real register in MIPS
     char bin_0[] = "00000";
@@ -1420,6 +1426,10 @@ char RegWrite(char binCode[5], int value)
         exit(1);
     }
 
+    printf("\n");
+    printf("Project Criteria: \n");
+    printf("$%d is modified to 0x%x\n",binToDec(binCode), registerFile[binToDec(binCode)]);
+    printf("\n");
     return 0;
 }
 

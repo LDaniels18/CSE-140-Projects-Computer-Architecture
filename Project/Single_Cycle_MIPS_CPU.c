@@ -39,8 +39,8 @@ int pc_val = 0;
 ///////////////////////////////////////////////////////////////////////
 
 // Never changing filename (obviously change when you recieve a finalized file):
-// const char *filename = "sample_part1.txt";
-const char *filename = "sample_part2.txt";
+ const char *filename = "sample_part1.txt";
+//const char *filename = "sample_part2.txt";
 
 //////////////////////////////////////////////////////////////////////
 
